@@ -1,0 +1,213 @@
+---
+name: tower-cli
+appspec: { version: '0.001' }
+title: Ansible Tower Commandline
+class: App::towercli
+options:
+#- use-token          --Turn on Tower's token-based authentication
+#- certificate=s      --Path to a custom certificate file
+#- insecure           --Turn off insecure connection warnings
+#- description-on     --Show description in human-formatted output
+#- verbose|v          --Show information about requests being made
+#- tower-password|p=s --Password to use to authenticate to Ansible Tower
+#- tower-username|u=s --Username to use to authenticate to Ansible Tower
+#- tower-host|h=s     --The location of the Ansible Tower host
+- name: format
+  summary: Output format
+  type: string
+  enum: [human, json, yaml, id]
+
+subcommands:
+  ad_hoc:
+    summary: Launch commands based on playbook given at...
+    subcommands:
+      cancel:
+        summary: Cancel a currently running job
+      delete:
+        summary: Remove the given ad hoc
+      get:
+        summary: Return one and exactly one ad hoc
+        parameters:
+        - name: host-id
+      launch:
+        summary: Launch a new ad-hoc command
+      list:
+        summary: Return a list of ad hocs
+      monitor:
+        summary: Stream the standard output from a job,...
+      relaunch:
+        summary: Relaunch a stopped job
+      status:
+        summary: Print the current job status
+      stdout:
+        summary: Print out the standard out of a unified job...
+      wait:
+        summary: Wait for a running job to finish
+
+  config:
+    summary: Read or write tower-cli configuration
+
+  credential:
+    summary: Manage credentials within Ansible Tower
+
+  credential_type:
+    summary: Manage credential types within Ansible Tower
+
+  group:
+    summary: Manage groups belonging to an inventory
+
+  host:
+    summary: Manage hosts belonging to a group within an...
+    subcommands:
+      associate:
+        summary: Associate a group with this host
+      copy:
+        summary: Copy a host
+      create:
+        summary: Create a host
+      delete:
+        summary: Remove the given host
+      disassociate:
+        summary: Disassociate a group from this host
+      get:
+        summary: Return one and exactly one host
+        parameters:
+        - name: host-id
+          completion:
+            command_string: >
+              tower-cli host list | perl -nlwE' if (m/^ *(\d+) +(\S+)/) { print "$1 -- $2" }'
+
+      insights:
+        summary: Return a JSON host of host insights
+      list:
+        summary: Return a list of hosts
+      list_facts:
+        summary: Return a JSON host of all available facts of...
+      modify:
+        summary: Modify an already existing host
+
+  instance:
+    summary: Check instances within Ansible Tower
+
+  instance_group:
+    summary: Check instance groups within Ansible Tower
+
+  inventory:
+    summary: Manage inventory within Ansible Tower
+
+  inventory_script:
+    summary: Manage inventory scripts within Ansible...
+
+  inventory_source:
+    summary: Manage inventory sources within Ansible...
+
+  inventory_update:
+    summary: Launch or monitor inventory source updates
+
+  job:
+    summary: Launch or monitor jobs
+    subcommands:
+      cancel:
+        summary: Cancel a currently running job
+        options:
+        - fail-if-not-running --Fail loudly if the job is not currently running.
+      delete:
+        summary: Remove the given job
+      get:
+        summary: Return one and exactly one job
+      launch:
+        summary: Launch a new job based on a job template
+      list:
+        op: list
+        summary: Return a list of jobs
+        options:
+      monitor:
+        summary: Stream the standard output from a job,...
+      relaunch:
+        summary: Relaunch a stopped job
+      status:
+        summary: Print the current job status
+      stdout:
+        summary: Print out the standard out of a unified job...
+      wait:
+        summary: Wait for a running job to finish
+
+  job_template:
+    summary: Manage job templates
+    subcommands:
+      associate_credential:
+        summary: Associate a credential with this job...
+      associate_ig:
+        summary: Associate an instance group with this...
+      associate_label:
+        summary: Associate an label with this job template.
+      associate_notification_template:
+        summary: Associate a notification template from this...
+      callback:
+        summary: Contact Tower and request a configuration...
+      copy:
+        summary: Copy a job template.
+      create:
+        summary: Create a job template.
+      delete:
+        summary: Remove the given job template.
+      disassociate_credential:
+        summary: Disassociate a credential with this job...
+      disassociate_ig:
+        summary: Disassociate an instance group from this...
+      disassociate_label:
+        summary: Disassociate an label from this job template.
+      disassociate_notification_template:
+        summary: Disassociate a notification template from...
+      get:
+        summary: Return one and exactly one job template.
+      list:
+        summary: Return a list of job templates.
+      modify:
+        summary: Modify an already existing job template.
+      survey:
+        summary: Get the survey_spec for the job template.
+
+  label:
+    summary: Manage labels within Ansible Tower
+
+  node:
+    summary: Manage nodes inside of a workflow job...
+
+  notification_template:
+    summary: Manage notification templates within Ansible...
+
+  organization:
+    summary: Manage organizations within Ansible Tower
+
+  project:
+    summary: Manage projects within Ansible Tower
+
+  project_update:
+    summary: Launch or monitor project updates
+
+  role:
+    summary: Add and remove users/teams from roles
+
+  schedule:
+    summary: Manage schedules within Ansible Tower
+
+  setting:
+    summary: Manage settings within Ansible Tower
+
+  team:
+    summary: Manage teams within Ansible Tower
+
+  user:
+    summary: Manage users within Ansible Tower
+
+  version:
+    summary: Display version information
+
+  workflow:
+    summary: Manage workflow job templates
+
+  workflow_job:
+    summary: Launch or monitor workflow jobs
+
+
