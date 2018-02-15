@@ -507,7 +507,74 @@ _tower-cli() {
             FLAGS+=()
             OPTIONS+=()
             __tower-cli_handle_options_flags
-            __comp_current_options true || return # no subcmds, no params/opts
+            case $INDEX in
+
+            2)
+                __comp_current_options || return
+                __tower-cli_dynamic_comp 'commands' 'associate_ig'$'\n''batch_update'$'\n''copy'$'\n''create'$'\n''delete'$'\n''disassociate_ig'$'\n''get'$'\n''list'$'\n''modify'
+
+            ;;
+            *)
+            # subcmds
+            case ${MYWORDS[2]} in
+              associate_ig)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              batch_update)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              copy)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              create)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              delete)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              disassociate_ig)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              get)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              list)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              modify)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+            esac
+
+            ;;
+            esac
           ;;
           inventory_script)
             FLAGS+=()
@@ -919,7 +986,74 @@ _tower-cli() {
         FLAGS+=()
         OPTIONS+=()
         __tower-cli_handle_options_flags
-        __comp_current_options true || return # no subcmds, no params/opts
+        case $INDEX in
+
+        1)
+            __comp_current_options || return
+            __tower-cli_dynamic_comp 'commands' 'associate_ig'$'\t''Associate an ig with this inventory.'$'\n''batch_update'$'\t''Update all related inventory sources of the...'$'\n''copy'$'\t''Copy an inventory.'$'\n''create'$'\t''Create an inventory.'$'\n''delete'$'\t''Remove the given inventory.'$'\n''disassociate_ig'$'\t''Disassociate an ig with this inventory.'$'\n''get'$'\t''Return one and exactly one inventory.'$'\n''list'$'\t''Return a list of inventories.'$'\n''modify'$'\t''Modify an already existing inventory.'
+
+        ;;
+        *)
+        # subcmds
+        case ${MYWORDS[1]} in
+          associate_ig)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          batch_update)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          copy)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          create)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          delete)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          disassociate_ig)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          get)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          list)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          modify)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+        esac
+
+        ;;
+        esac
       ;;
       inventory_script)
         FLAGS+=()
@@ -982,10 +1116,38 @@ _tower-cli() {
             __comp_current_options true || return # no subcmds, no params/opts
           ;;
           launch)
-            FLAGS+=()
-            OPTIONS+=()
+            FLAGS+=('--monitor' 'If sent, immediately calls `job monitor` on the newly launched job' '--wait' 'Monitor the status of the job, but do not print while job is in progress.' '--no-input' 'Suppress any requests for input.' '--extra-vars' 'yaml format text that contains extra variables topass on.' '-e' 'yaml format text that contains extra variables topass on.')
+            OPTIONS+=('--timeout' 'If provided with --monitor, this command will time out after...' '--diff-mode' 'Specify diff mode for job template to run.' '--limit' 'Specify host limit for job template to run.' '--tags' 'Specify tagged actions in the playbook to run.' '--skip-tags' 'Specify tagged actions in the playbook to omit.' '--job-type' 'Specify job type for job template to run.' '--verbosity' 'Specify verbosity of the playbook run.' '--inventory' 'Specify inventory for job template to run.' '--credential' 'Specify machine credential for job template to run.')
             __tower-cli_handle_options_flags
-            __comp_current_options true || return # no subcmds, no params/opts
+              case $INDEX in
+              *)
+                __comp_current_options true || return # after parameters
+                case ${MYWORDS[$INDEX-1]} in
+                  --format)
+                    _tower-cli_compreply "'human'"$'\n'"'json'"$'\n'"'yaml'"$'\n'"'id'"
+                  ;;
+                  --timeout)
+                  ;;
+                  --diff-mode)
+                  ;;
+                  --limit)
+                  ;;
+                  --tags)
+                  ;;
+                  --skip-tags)
+                  ;;
+                  --job-type)
+                  ;;
+                  --verbosity)
+                  ;;
+                  --inventory)
+                  ;;
+                  --credential)
+                  ;;
+
+                esac
+                ;;
+            esac
           ;;
           list)
             FLAGS+=()

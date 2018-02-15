@@ -94,6 +94,25 @@ subcommands:
 
   inventory:
     summary: Manage inventory within Ansible Tower
+    subcommands:
+        associate_ig:
+            summary: Associate an ig with this inventory.
+        batch_update:
+            summary: Update all related inventory sources of the...
+        copy:
+            summary: Copy an inventory.
+        create:
+            summary: Create an inventory.
+        delete:
+            summary: Remove the given inventory.
+        disassociate_ig:
+            summary: Disassociate an ig with this inventory.
+        get:
+            summary: Return one and exactly one inventory.
+        list:
+            summary: Return a list of inventories.
+        modify:
+            summary: Modify an already existing inventory.
 
   inventory_script:
     summary: Manage inventory scripts within Ansible...
@@ -117,6 +136,21 @@ subcommands:
         summary: Return one and exactly one job
       launch:
         summary: Launch a new job based on a job template
+        options:
+        - monitor   --If sent, immediately calls `job monitor` on the newly launched job
+        - wait      --Monitor the status of the job, but do not print while job is in progress.
+        - timeout=i --If provided with --monitor, this command will time out after...
+        - no-input  --Suppress any requests for input.
+        - extra-vars|e --yaml format text that contains extra variables topass on.
+        - diff-mode=s  --Specify diff mode for job template to run.
+        - limit=s      --Specify host limit for job template to run.
+        - tags=s       --Specify tagged actions in the playbook to run.
+        - skip-tags=s  --Specify tagged actions in the playbook to omit.
+        - job-type=s   --Specify job type for job template to run.
+        - verbosity=i  --Specify verbosity of the playbook run.
+        - inventory=i  --Specify inventory for job template to run.
+        - credential=s --Specify machine credential for job template to run.
+
       list:
         op: list
         summary: Return a list of jobs

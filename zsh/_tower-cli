@@ -890,13 +890,158 @@ _tower-cli() {
                         _arguments -s -C \
                             '1: :->cmd1' \
                             '2: :->cmd2' \
-                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
-                            '--help[Show command help]' \
-                            '-h[Show command help]' \
-                            '--all[]' \
+                            '3: :->cmd3' \
+                            '*: :->args' \
                             && ret=0
 
 
+                        case $state in
+                        cmd3)
+                            _alternative 'args:cmd4:((associate_ig batch_update copy create delete disassociate_ig get list modify))'
+                        ;;
+
+                        args)
+                            case $line[3] in
+                            associate_ig)
+
+                                # ---- Command: help inventory associate_ig
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            batch_update)
+
+                                # ---- Command: help inventory batch_update
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            copy)
+
+                                # ---- Command: help inventory copy
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            create)
+
+                                # ---- Command: help inventory create
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            delete)
+
+                                # ---- Command: help inventory delete
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            disassociate_ig)
+
+                                # ---- Command: help inventory disassociate_ig
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            get)
+
+                                # ---- Command: help inventory get
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            list)
+
+                                # ---- Command: help inventory list
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            modify)
+
+                                # ---- Command: help inventory modify
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            esac
+
+                        ;;
+
+                        esac
                     ;;
                     inventory_script)
 
@@ -1768,12 +1913,140 @@ _tower-cli_host_get_param_host_id_completion
                 # ---- Command: inventory
                 _arguments -s -C \
                     '1: :->cmd1' \
-                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
-                    '--help[Show command help]' \
-                    '-h[Show command help]' \
+                    '2: :->cmd2' \
+                    '*: :->args' \
                     && ret=0
 
 
+                case $state in
+                cmd2)
+                    _alternative 'args:cmd3:((associate_ig\:"Associate an ig with this inventory." batch_update\:"Update all related inventory sources of the..." copy\:"Copy an inventory." create\:"Create an inventory." delete\:"Remove the given inventory." disassociate_ig\:"Disassociate an ig with this inventory." get\:"Return one and exactly one inventory." list\:"Return a list of inventories." modify\:"Modify an already existing inventory."))'
+                ;;
+
+                args)
+                    case $line[2] in
+                    associate_ig)
+
+                        # ---- Command: inventory associate_ig
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    batch_update)
+
+                        # ---- Command: inventory batch_update
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    copy)
+
+                        # ---- Command: inventory copy
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    create)
+
+                        # ---- Command: inventory create
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    delete)
+
+                        # ---- Command: inventory delete
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    disassociate_ig)
+
+                        # ---- Command: inventory disassociate_ig
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    get)
+
+                        # ---- Command: inventory get
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    list)
+
+                        # ---- Command: inventory list
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    modify)
+
+                        # ---- Command: inventory modify
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    esac
+
+                ;;
+
+                esac
             ;;
             inventory_script)
 
@@ -1877,6 +2150,20 @@ _tower-cli_host_get_param_host_id_completion
                             '--format[Output format]:format:("human" "json" "yaml" "id")' \
                             '--help[Show command help]' \
                             '-h[Show command help]' \
+                            '--monitor[If sent, immediately calls '"'"'job monitor'"'"' on the newly launched job]' \
+                            '--wait[Monitor the status of the job, but do not print while job is in progress.]' \
+                            '--timeout[If provided with --monitor, this command will time out after...]:timeout' \
+                            '--no-input[Suppress any requests for input.]' \
+                            '--extra-vars[yaml format text that contains extra variables topass on.]' \
+                            '-e[yaml format text that contains extra variables topass on.]' \
+                            '--diff-mode[Specify diff mode for job template to run.]:diff-mode' \
+                            '--limit[Specify host limit for job template to run.]:limit' \
+                            '--tags[Specify tagged actions in the playbook to run.]:tags' \
+                            '--skip-tags[Specify tagged actions in the playbook to omit.]:skip-tags' \
+                            '--job-type[Specify job type for job template to run.]:job-type' \
+                            '--verbosity[Specify verbosity of the playbook run.]:verbosity' \
+                            '--inventory[Specify inventory for job template to run.]:inventory' \
+                            '--credential[Specify machine credential for job template to run.]:credential' \
                             && ret=0
 
 
