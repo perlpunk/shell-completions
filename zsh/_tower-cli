@@ -289,6 +289,9 @@ _tower-cli() {
                     '--format[Output format]:format:("human" "json" "yaml" "id")' \
                     '--help[Show command help]' \
                     '-h[Show command help]' \
+                    '--global[Write this config option to the global configuration.]' \
+                    '--unset[Remove reference to this configuration option from the config file.]' \
+                    '--scope[]:scope:("local" "user" "global")' \
                     && ret=0
 
 
@@ -298,12 +301,101 @@ _tower-cli() {
                 # ---- Command: credential
                 _arguments -s -C \
                     '1: :->cmd1' \
-                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
-                    '--help[Show command help]' \
-                    '-h[Show command help]' \
+                    '2: :->cmd2' \
+                    '*: :->args' \
                     && ret=0
 
 
+                case $state in
+                cmd2)
+                    _alternative 'args:cmd3:((copy\:"Copy a credential." create\:"Create a credential." delete\:"Remove the given credential." get\:"Return one and exactly one credential." list\:"Return a list of credentials." modify\:"Modify an already existing credential."))'
+                ;;
+
+                args)
+                    case $line[2] in
+                    copy)
+
+                        # ---- Command: credential copy
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    create)
+
+                        # ---- Command: credential create
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    delete)
+
+                        # ---- Command: credential delete
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    get)
+
+                        # ---- Command: credential get
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    list)
+
+                        # ---- Command: credential list
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    modify)
+
+                        # ---- Command: credential modify
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    esac
+
+                ;;
+
+                esac
             ;;
             credential_type)
 
@@ -322,12 +414,127 @@ _tower-cli() {
                 # ---- Command: group
                 _arguments -s -C \
                     '1: :->cmd1' \
-                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
-                    '--help[Show command help]' \
-                    '-h[Show command help]' \
+                    '2: :->cmd2' \
+                    '*: :->args' \
                     && ret=0
 
 
+                case $state in
+                cmd2)
+                    _alternative 'args:cmd3:((associate\:"Associate this group with the specified..." copy\:"Copy a group." create\:"Create a group." delete\:"Remove the given group." disassociate\:"Disassociate this group from the specified..." get\:"Return one and exactly one group." list\:"Return a list of groups." modify\:"Modify an already existing group."))'
+                ;;
+
+                args)
+                    case $line[2] in
+                    associate)
+
+                        # ---- Command: group associate
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    copy)
+
+                        # ---- Command: group copy
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    create)
+
+                        # ---- Command: group create
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    delete)
+
+                        # ---- Command: group delete
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    disassociate)
+
+                        # ---- Command: group disassociate
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    get)
+
+                        # ---- Command: group get
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    list)
+
+                        # ---- Command: group list
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    modify)
+
+                        # ---- Command: group modify
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    esac
+
+                ;;
+
+                esac
             ;;
             help)
 
@@ -646,13 +853,113 @@ _tower-cli() {
                         _arguments -s -C \
                             '1: :->cmd1' \
                             '2: :->cmd2' \
-                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
-                            '--help[Show command help]' \
-                            '-h[Show command help]' \
-                            '--all[]' \
+                            '3: :->cmd3' \
+                            '*: :->args' \
                             && ret=0
 
 
+                        case $state in
+                        cmd3)
+                            _alternative 'args:cmd4:((copy create delete get list modify))'
+                        ;;
+
+                        args)
+                            case $line[3] in
+                            copy)
+
+                                # ---- Command: help credential copy
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            create)
+
+                                # ---- Command: help credential create
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            delete)
+
+                                # ---- Command: help credential delete
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            get)
+
+                                # ---- Command: help credential get
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            list)
+
+                                # ---- Command: help credential list
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            modify)
+
+                                # ---- Command: help credential modify
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            esac
+
+                        ;;
+
+                        esac
                     ;;
                     credential_type)
 
@@ -674,13 +981,143 @@ _tower-cli() {
                         _arguments -s -C \
                             '1: :->cmd1' \
                             '2: :->cmd2' \
-                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
-                            '--help[Show command help]' \
-                            '-h[Show command help]' \
-                            '--all[]' \
+                            '3: :->cmd3' \
+                            '*: :->args' \
                             && ret=0
 
 
+                        case $state in
+                        cmd3)
+                            _alternative 'args:cmd4:((associate copy create delete disassociate get list modify))'
+                        ;;
+
+                        args)
+                            case $line[3] in
+                            associate)
+
+                                # ---- Command: help group associate
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            copy)
+
+                                # ---- Command: help group copy
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            create)
+
+                                # ---- Command: help group create
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            delete)
+
+                                # ---- Command: help group delete
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            disassociate)
+
+                                # ---- Command: help group disassociate
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            get)
+
+                                # ---- Command: help group get
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            list)
+
+                                # ---- Command: help group list
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            modify)
+
+                                # ---- Command: help group modify
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            esac
+
+                        ;;
+
+                        esac
                     ;;
                     host)
 
@@ -1585,13 +2022,188 @@ _tower-cli() {
                         _arguments -s -C \
                             '1: :->cmd1' \
                             '2: :->cmd2' \
-                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
-                            '--help[Show command help]' \
-                            '-h[Show command help]' \
-                            '--all[]' \
+                            '3: :->cmd3' \
+                            '*: :->args' \
                             && ret=0
 
 
+                        case $state in
+                        cmd3)
+                            _alternative 'args:cmd4:((copy create delete get list modify monitor status stdout update wait))'
+                        ;;
+
+                        args)
+                            case $line[3] in
+                            copy)
+
+                                # ---- Command: help project copy
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            create)
+
+                                # ---- Command: help project create
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            delete)
+
+                                # ---- Command: help project delete
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            get)
+
+                                # ---- Command: help project get
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            list)
+
+                                # ---- Command: help project list
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            modify)
+
+                                # ---- Command: help project modify
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            monitor)
+
+                                # ---- Command: help project monitor
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            status)
+
+                                # ---- Command: help project status
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            stdout)
+
+                                # ---- Command: help project stdout
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            update)
+
+                                # ---- Command: help project update
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            wait)
+
+                                # ---- Command: help project wait
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            esac
+
+                        ;;
+
+                        esac
                     ;;
                     project_update)
 
@@ -1599,13 +2211,158 @@ _tower-cli() {
                         _arguments -s -C \
                             '1: :->cmd1' \
                             '2: :->cmd2' \
-                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
-                            '--help[Show command help]' \
-                            '-h[Show command help]' \
-                            '--all[]' \
+                            '3: :->cmd3' \
+                            '*: :->args' \
                             && ret=0
 
 
+                        case $state in
+                        cmd3)
+                            _alternative 'args:cmd4:((cancel delete get list monitor relaunch status stdout wait))'
+                        ;;
+
+                        args)
+                            case $line[3] in
+                            cancel)
+
+                                # ---- Command: help project_update cancel
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            delete)
+
+                                # ---- Command: help project_update delete
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            get)
+
+                                # ---- Command: help project_update get
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            list)
+
+                                # ---- Command: help project_update list
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            monitor)
+
+                                # ---- Command: help project_update monitor
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            relaunch)
+
+                                # ---- Command: help project_update relaunch
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            status)
+
+                                # ---- Command: help project_update status
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            stdout)
+
+                                # ---- Command: help project_update stdout
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            wait)
+
+                                # ---- Command: help project_update wait
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            esac
+
+                        ;;
+
+                        esac
                     ;;
                     role)
 
@@ -1613,13 +2370,98 @@ _tower-cli() {
                         _arguments -s -C \
                             '1: :->cmd1' \
                             '2: :->cmd2' \
-                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
-                            '--help[Show command help]' \
-                            '-h[Show command help]' \
-                            '--all[]' \
+                            '3: :->cmd3' \
+                            '*: :->args' \
                             && ret=0
 
 
+                        case $state in
+                        cmd3)
+                            _alternative 'args:cmd4:((copy get grant list revoke))'
+                        ;;
+
+                        args)
+                            case $line[3] in
+                            copy)
+
+                                # ---- Command: help role copy
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            get)
+
+                                # ---- Command: help role get
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            grant)
+
+                                # ---- Command: help role grant
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            list)
+
+                                # ---- Command: help role list
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            revoke)
+
+                                # ---- Command: help role revoke
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            esac
+
+                        ;;
+
+                        esac
                     ;;
                     schedule)
 
@@ -1817,6 +2659,15 @@ _tower-cli() {
                             '--format[Output format]:format:("human" "json" "yaml" "id")' \
                             '--help[Show command help]' \
                             '-h[Show command help]' \
+                            '--name[[REQUIRED] The name field.]' \
+                            '-n[[REQUIRED] The name field.]' \
+                            '--description[The description field.]' \
+                            '-d[The description field.]' \
+                            '--inventory[[REQUIRED] The inventory field.]' \
+                            '-i[[REQUIRED] The inventory field.]' \
+                            '--enabled[The enabled field.]' \
+                            '--variables[Host variables, use "@" to get from file.]' \
+                            '--insights-system-id[The insights_system_id field.]' \
                             && ret=0
 
                         case $state in
@@ -2536,36 +3387,394 @@ _tower-cli_host_get_param_host_id_completion
                 # ---- Command: project
                 _arguments -s -C \
                     '1: :->cmd1' \
-                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
-                    '--help[Show command help]' \
-                    '-h[Show command help]' \
+                    '2: :->cmd2' \
+                    '*: :->args' \
                     && ret=0
 
 
+                case $state in
+                cmd2)
+                    _alternative 'args:cmd3:((copy\:"Copy a project." create\:"Create a new item of resource, with or w/o..." delete\:"Remove the given project." get\:"Return one and exactly one project." list\:"Return a list of projects." modify\:"Modify an already existing." monitor\:"Stream the standard output from a job,..." status\:"Print the status of the most recent update." stdout\:"Print out the standard out of a unified job..." update\:"Trigger a project update job within Ansible..." wait\:"Wait for a running job to finish."))'
+                ;;
+
+                args)
+                    case $line[2] in
+                    copy)
+
+                        # ---- Command: project copy
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    create)
+
+                        # ---- Command: project create
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    delete)
+
+                        # ---- Command: project delete
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    get)
+
+                        # ---- Command: project get
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    list)
+
+                        # ---- Command: project list
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    modify)
+
+                        # ---- Command: project modify
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    monitor)
+
+                        # ---- Command: project monitor
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    status)
+
+                        # ---- Command: project status
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    stdout)
+
+                        # ---- Command: project stdout
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    update)
+
+                        # ---- Command: project update
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    wait)
+
+                        # ---- Command: project wait
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    esac
+
+                ;;
+
+                esac
             ;;
             project_update)
 
                 # ---- Command: project_update
                 _arguments -s -C \
                     '1: :->cmd1' \
-                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
-                    '--help[Show command help]' \
-                    '-h[Show command help]' \
+                    '2: :->cmd2' \
+                    '*: :->args' \
                     && ret=0
 
 
+                case $state in
+                cmd2)
+                    _alternative 'args:cmd3:((cancel\:"Cancel a currently running job." delete\:"Remove the given project update." get\:"Return one and exactly one project update." list\:"Return a list of project updates." monitor\:"Stream the standard output from a job,..." relaunch\:"Relaunch a stopped job." status\:"Print the current job status." stdout\:"Print out the standard out of a unified job..." wait\:"Wait for a running job to finish."))'
+                ;;
+
+                args)
+                    case $line[2] in
+                    cancel)
+
+                        # ---- Command: project_update cancel
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    delete)
+
+                        # ---- Command: project_update delete
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    get)
+
+                        # ---- Command: project_update get
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    list)
+
+                        # ---- Command: project_update list
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    monitor)
+
+                        # ---- Command: project_update monitor
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    relaunch)
+
+                        # ---- Command: project_update relaunch
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    status)
+
+                        # ---- Command: project_update status
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    stdout)
+
+                        # ---- Command: project_update stdout
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    wait)
+
+                        # ---- Command: project_update wait
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    esac
+
+                ;;
+
+                esac
             ;;
             role)
 
                 # ---- Command: role
                 _arguments -s -C \
                     '1: :->cmd1' \
-                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
-                    '--help[Show command help]' \
-                    '-h[Show command help]' \
+                    '2: :->cmd2' \
+                    '*: :->args' \
                     && ret=0
 
 
+                case $state in
+                cmd2)
+                    _alternative 'args:cmd3:((copy\:"Copy a role." get\:"Get information about a role." grant\:"Add a user or a team to a role." list\:"Return a list of roles." revoke\:"Remove a user or a team from a role."))'
+                ;;
+
+                args)
+                    case $line[2] in
+                    copy)
+
+                        # ---- Command: role copy
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    get)
+
+                        # ---- Command: role get
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    grant)
+
+                        # ---- Command: role grant
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    list)
+
+                        # ---- Command: role list
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    revoke)
+
+                        # ---- Command: role revoke
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    esac
+
+                ;;
+
+                esac
             ;;
             schedule)
 
@@ -2661,7 +3870,7 @@ _tower-cli_host_get_param_host_id_completion
 
 _tower-cli_host_get_param_host_id_completion() {
     local __dynamic_completion
-    IFS=$'\n' set -A __dynamic_completion `tower-cli host list | perl -nlwE' if (m/^ *(\d+) +(\S+)/) { print "$1 -- $2" }'
+    IFS=$'\n' set -A __dynamic_completion `tower-cli host list | perl -nlwE ' if (m/^ *(\d+) +(\S+)/) { print "$1 -- $2" }'
 `
     compadd -X "host_id:" $__dynamic_completion
 }

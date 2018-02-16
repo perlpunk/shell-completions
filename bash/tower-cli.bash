@@ -203,16 +203,78 @@ _tower-cli() {
         esac
       ;;
       config)
-        FLAGS+=()
-        OPTIONS+=()
+        FLAGS+=('--global' 'Write this config option to the global configuration.' '--unset' 'Remove reference to this configuration option from the config file.')
+        OPTIONS+=('--scope' '')
         __tower-cli_handle_options_flags
-        __comp_current_options true || return # no subcmds, no params/opts
+          case $INDEX in
+          *)
+            __comp_current_options true || return # after parameters
+            case ${MYWORDS[$INDEX-1]} in
+              --format)
+                _tower-cli_compreply "'human'"$'\n'"'json'"$'\n'"'yaml'"$'\n'"'id'"
+              ;;
+              --scope)
+                _tower-cli_compreply "'local'"$'\n'"'user'"$'\n'"'global'"
+              ;;
+
+            esac
+            ;;
+        esac
       ;;
       credential)
         FLAGS+=()
         OPTIONS+=()
         __tower-cli_handle_options_flags
-        __comp_current_options true || return # no subcmds, no params/opts
+        case $INDEX in
+
+        1)
+            __comp_current_options || return
+            __tower-cli_dynamic_comp 'commands' 'copy'$'\t''Copy a credential.'$'\n''create'$'\t''Create a credential.'$'\n''delete'$'\t''Remove the given credential.'$'\n''get'$'\t''Return one and exactly one credential.'$'\n''list'$'\t''Return a list of credentials.'$'\n''modify'$'\t''Modify an already existing credential.'
+
+        ;;
+        *)
+        # subcmds
+        case ${MYWORDS[1]} in
+          copy)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          create)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          delete)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          get)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          list)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          modify)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+        esac
+
+        ;;
+        esac
       ;;
       credential_type)
         FLAGS+=()
@@ -224,7 +286,68 @@ _tower-cli() {
         FLAGS+=()
         OPTIONS+=()
         __tower-cli_handle_options_flags
-        __comp_current_options true || return # no subcmds, no params/opts
+        case $INDEX in
+
+        1)
+            __comp_current_options || return
+            __tower-cli_dynamic_comp 'commands' 'associate'$'\t''Associate this group with the specified...'$'\n''copy'$'\t''Copy a group.'$'\n''create'$'\t''Create a group.'$'\n''delete'$'\t''Remove the given group.'$'\n''disassociate'$'\t''Disassociate this group from the specified...'$'\n''get'$'\t''Return one and exactly one group.'$'\n''list'$'\t''Return a list of groups.'$'\n''modify'$'\t''Modify an already existing group.'
+
+        ;;
+        *)
+        # subcmds
+        case ${MYWORDS[1]} in
+          associate)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          copy)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          create)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          delete)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          disassociate)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          get)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          list)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          modify)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+        esac
+
+        ;;
+        esac
       ;;
       help)
         FLAGS+=('--all' '')
@@ -398,7 +521,56 @@ _tower-cli() {
             FLAGS+=()
             OPTIONS+=()
             __tower-cli_handle_options_flags
-            __comp_current_options true || return # no subcmds, no params/opts
+            case $INDEX in
+
+            2)
+                __comp_current_options || return
+                __tower-cli_dynamic_comp 'commands' 'copy'$'\n''create'$'\n''delete'$'\n''get'$'\n''list'$'\n''modify'
+
+            ;;
+            *)
+            # subcmds
+            case ${MYWORDS[2]} in
+              copy)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              create)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              delete)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              get)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              list)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              modify)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+            esac
+
+            ;;
+            esac
           ;;
           credential_type)
             FLAGS+=()
@@ -410,7 +582,68 @@ _tower-cli() {
             FLAGS+=()
             OPTIONS+=()
             __tower-cli_handle_options_flags
-            __comp_current_options true || return # no subcmds, no params/opts
+            case $INDEX in
+
+            2)
+                __comp_current_options || return
+                __tower-cli_dynamic_comp 'commands' 'associate'$'\n''copy'$'\n''create'$'\n''delete'$'\n''disassociate'$'\n''get'$'\n''list'$'\n''modify'
+
+            ;;
+            *)
+            # subcmds
+            case ${MYWORDS[2]} in
+              associate)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              copy)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              create)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              delete)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              disassociate)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              get)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              list)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              modify)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+            esac
+
+            ;;
+            esac
           ;;
           host)
             FLAGS+=()
@@ -816,19 +1049,208 @@ _tower-cli() {
             FLAGS+=()
             OPTIONS+=()
             __tower-cli_handle_options_flags
-            __comp_current_options true || return # no subcmds, no params/opts
+            case $INDEX in
+
+            2)
+                __comp_current_options || return
+                __tower-cli_dynamic_comp 'commands' 'copy'$'\n''create'$'\n''delete'$'\n''get'$'\n''list'$'\n''modify'$'\n''monitor'$'\n''status'$'\n''stdout'$'\n''update'$'\n''wait'
+
+            ;;
+            *)
+            # subcmds
+            case ${MYWORDS[2]} in
+              copy)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              create)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              delete)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              get)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              list)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              modify)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              monitor)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              status)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              stdout)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              update)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              wait)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+            esac
+
+            ;;
+            esac
           ;;
           project_update)
             FLAGS+=()
             OPTIONS+=()
             __tower-cli_handle_options_flags
-            __comp_current_options true || return # no subcmds, no params/opts
+            case $INDEX in
+
+            2)
+                __comp_current_options || return
+                __tower-cli_dynamic_comp 'commands' 'cancel'$'\n''delete'$'\n''get'$'\n''list'$'\n''monitor'$'\n''relaunch'$'\n''status'$'\n''stdout'$'\n''wait'
+
+            ;;
+            *)
+            # subcmds
+            case ${MYWORDS[2]} in
+              cancel)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              delete)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              get)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              list)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              monitor)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              relaunch)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              status)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              stdout)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              wait)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+            esac
+
+            ;;
+            esac
           ;;
           role)
             FLAGS+=()
             OPTIONS+=()
             __tower-cli_handle_options_flags
-            __comp_current_options true || return # no subcmds, no params/opts
+            case $INDEX in
+
+            2)
+                __comp_current_options || return
+                __tower-cli_dynamic_comp 'commands' 'copy'$'\n''get'$'\n''grant'$'\n''list'$'\n''revoke'
+
+            ;;
+            *)
+            # subcmds
+            case ${MYWORDS[2]} in
+              copy)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              get)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              grant)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              list)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+              revoke)
+                FLAGS+=()
+                OPTIONS+=()
+                __tower-cli_handle_options_flags
+                __comp_current_options true || return # no subcmds, no params/opts
+              ;;
+            esac
+
+            ;;
+            esac
           ;;
           schedule)
             FLAGS+=()
@@ -922,7 +1344,7 @@ _tower-cli() {
             __comp_current_options true || return # no subcmds, no params/opts
           ;;
           get)
-            FLAGS+=()
+            FLAGS+=('--name' '[REQUIRED] The name field.' '-n' '[REQUIRED] The name field.' '--description' 'The description field.' '-d' 'The description field.' '--inventory' '[REQUIRED] The inventory field.' '-i' '[REQUIRED] The inventory field.' '--enabled' 'The enabled field.' '--variables' 'Host variables, use "@" to get from file.' '--insights-system-id' 'The insights_system_id field.')
             OPTIONS+=()
             __tower-cli_handle_options_flags
               case $INDEX in
@@ -1333,19 +1755,208 @@ _tower-cli() {
         FLAGS+=()
         OPTIONS+=()
         __tower-cli_handle_options_flags
-        __comp_current_options true || return # no subcmds, no params/opts
+        case $INDEX in
+
+        1)
+            __comp_current_options || return
+            __tower-cli_dynamic_comp 'commands' 'copy'$'\t''Copy a project.'$'\n''create'$'\t''Create a new item of resource, with or w/o...'$'\n''delete'$'\t''Remove the given project.'$'\n''get'$'\t''Return one and exactly one project.'$'\n''list'$'\t''Return a list of projects.'$'\n''modify'$'\t''Modify an already existing.'$'\n''monitor'$'\t''Stream the standard output from a job,...'$'\n''status'$'\t''Print the status of the most recent update.'$'\n''stdout'$'\t''Print out the standard out of a unified job...'$'\n''update'$'\t''Trigger a project update job within Ansible...'$'\n''wait'$'\t''Wait for a running job to finish.'
+
+        ;;
+        *)
+        # subcmds
+        case ${MYWORDS[1]} in
+          copy)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          create)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          delete)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          get)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          list)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          modify)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          monitor)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          status)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          stdout)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          update)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          wait)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+        esac
+
+        ;;
+        esac
       ;;
       project_update)
         FLAGS+=()
         OPTIONS+=()
         __tower-cli_handle_options_flags
-        __comp_current_options true || return # no subcmds, no params/opts
+        case $INDEX in
+
+        1)
+            __comp_current_options || return
+            __tower-cli_dynamic_comp 'commands' 'cancel'$'\t''Cancel a currently running job.'$'\n''delete'$'\t''Remove the given project update.'$'\n''get'$'\t''Return one and exactly one project update.'$'\n''list'$'\t''Return a list of project updates.'$'\n''monitor'$'\t''Stream the standard output from a job,...'$'\n''relaunch'$'\t''Relaunch a stopped job.'$'\n''status'$'\t''Print the current job status.'$'\n''stdout'$'\t''Print out the standard out of a unified job...'$'\n''wait'$'\t''Wait for a running job to finish.'
+
+        ;;
+        *)
+        # subcmds
+        case ${MYWORDS[1]} in
+          cancel)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          delete)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          get)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          list)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          monitor)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          relaunch)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          status)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          stdout)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          wait)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+        esac
+
+        ;;
+        esac
       ;;
       role)
         FLAGS+=()
         OPTIONS+=()
         __tower-cli_handle_options_flags
-        __comp_current_options true || return # no subcmds, no params/opts
+        case $INDEX in
+
+        1)
+            __comp_current_options || return
+            __tower-cli_dynamic_comp 'commands' 'copy'$'\t''Copy a role.'$'\n''get'$'\t''Get information about a role.'$'\n''grant'$'\t''Add a user or a team to a role.'$'\n''list'$'\t''Return a list of roles.'$'\n''revoke'$'\t''Remove a user or a team from a role.'
+
+        ;;
+        *)
+        # subcmds
+        case ${MYWORDS[1]} in
+          copy)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          get)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          grant)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          list)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+          revoke)
+            FLAGS+=()
+            OPTIONS+=()
+            __tower-cli_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
+          ;;
+        esac
+
+        ;;
+        esac
       ;;
       schedule)
         FLAGS+=()
@@ -1405,7 +2016,7 @@ _tower-cli_compreply() {
 }
 
 _tower-cli_host_get_param_host_id_completion() {
-    local param_host_id=`tower-cli host list | perl -nlwE' if (m/^ *(\d+) +(\S+)/) { print "$1 -- $2" }'`
+    local param_host_id=`tower-cli host list | perl -nlwE ' if (m/^ *(\d+) +(\S+)/) { print "$1 -- $2" }'`
     _tower-cli_compreply "$param_host_id"
 }
 

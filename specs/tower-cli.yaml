@@ -46,15 +46,51 @@ subcommands:
 
   config:
     summary: Read or write tower-cli configuration
+    options:
+    - global  --Write this config option to the global configuration.
+    - unset   --Remove reference to this configuration option from the config file.
+    - name: scope
+      type: string
+      enum: [local, user, global]
 
   credential:
     summary: Manage credentials within Ansible Tower
+    subcommands:
+      copy:
+        summary: Copy a credential.
+      create:
+        summary: Create a credential.
+      delete:
+        summary: Remove the given credential.
+      get:
+        summary: Return one and exactly one credential.
+      list:
+        summary: Return a list of credentials.
+      modify:
+        summary: Modify an already existing credential.
 
   credential_type:
     summary: Manage credential types within Ansible Tower
 
   group:
     summary: Manage groups belonging to an inventory
+    subcommands:
+      associate:
+        summary: Associate this group with the specified...
+      copy:
+        summary: Copy a group.
+      create:
+        summary: Create a group.
+      delete:
+        summary: Remove the given group.
+      disassociate:
+        summary: Disassociate this group from the specified...
+      get:
+        summary: Return one and exactly one group.
+      list:
+        summary: Return a list of groups.
+      modify:
+        summary: Modify an already existing group.
 
   host:
     summary: Manage hosts belonging to a group within an...
@@ -75,7 +111,14 @@ subcommands:
         - name: host-id
           completion:
             command_string: >
-              tower-cli host list | perl -nlwE' if (m/^ *(\d+) +(\S+)/) { print "$1 -- $2" }'
+              tower-cli host list | perl -nlwE ' if (m/^ *(\d+) +(\S+)/) { print "$1 -- $2" }'
+        options:
+        - name|n        --[REQUIRED] The name field.
+        - description|d --The description field.
+        - inventory|i   --[REQUIRED] The inventory field.
+        - enabled --The enabled field.
+        - variables --Host variables, use "@" to get from file.
+        - insights-system-id --The insights_system_id field.
 
       insights:
         summary: Return a JSON host of host insights
@@ -216,12 +259,65 @@ subcommands:
 
   project:
     summary: Manage projects within Ansible Tower
+    subcommands:
+      copy:
+        summary: Copy a project.
+      create:
+        summary: Create a new item of resource, with or w/o...
+      delete:
+        summary: Remove the given project.
+      get:
+        summary: Return one and exactly one project.
+      list:
+        summary: Return a list of projects.
+      modify:
+        summary: Modify an already existing.
+      monitor:
+        summary: Stream the standard output from a job,...
+      status:
+        summary: Print the status of the most recent update.
+      stdout:
+        summary: Print out the standard out of a unified job...
+      update:
+        summary: Trigger a project update job within Ansible...
+      wait:
+        summary: Wait for a running job to finish.
 
   project_update:
     summary: Launch or monitor project updates
+    subcommands:
+      cancel:
+        summary: Cancel a currently running job.
+      delete:
+        summary: Remove the given project update.
+      get:
+        summary: Return one and exactly one project update.
+      list:
+        summary: Return a list of project updates.
+      monitor:
+        summary: Stream the standard output from a job,...
+      relaunch:
+        summary: Relaunch a stopped job.
+      status:
+        summary: Print the current job status.
+      stdout:
+        summary: Print out the standard out of a unified job...
+      wait:
+        summary: Wait for a running job to finish.
 
   role:
     summary: Add and remove users/teams from roles
+    subcommands:
+      copy:
+        summary: Copy a role.
+      get:
+        summary: Get information about a role.
+      grant:
+        summary: Add a user or a team to a role.
+      list:
+        summary: Return a list of roles.
+      revoke:
+        summary: Remove a user or a team from a role.
 
   schedule:
     summary: Manage schedules within Ansible Tower
