@@ -30,8 +30,6 @@ _dzil() {
     # subcmds
     case ${MYWORDS[0]} in
       _meta)
-        FLAGS+=()
-        OPTIONS+=()
         __dzil_handle_options_flags
         case $INDEX in
 
@@ -44,8 +42,6 @@ _dzil() {
         # subcmds
         case ${MYWORDS[1]} in
           completion)
-            FLAGS+=()
-            OPTIONS+=()
             __dzil_handle_options_flags
             case $INDEX in
 
@@ -61,19 +57,20 @@ _dzil() {
                 FLAGS+=('--zsh' 'for zsh' '--bash' 'for bash')
                 OPTIONS+=('--name' 'name of the program (optional, override name in spec)')
                 __dzil_handle_options_flags
-                  case $INDEX in
-                  *)
-                    __comp_current_options true || return # after parameters
-                    case ${MYWORDS[$INDEX-1]} in
-                      --verbose-plugin|-V)
-                      ;;
-                      --lib-inc|-I)
-                      ;;
-                      --name)
-                      ;;
+                case ${MYWORDS[$INDEX-1]} in
+                  --verbose-plugin|-V)
+                  ;;
+                  --lib-inc|-I)
+                  ;;
+                  --name)
+                  ;;
 
-                    esac
-                    ;;
+                esac
+                case $INDEX in
+
+                *)
+                    __comp_current_options || return
+                ;;
                 esac
               ;;
             esac
@@ -82,8 +79,6 @@ _dzil() {
             esac
           ;;
           pod)
-            FLAGS+=()
-            OPTIONS+=()
             __dzil_handle_options_flags
             case $INDEX in
 
@@ -96,8 +91,6 @@ _dzil() {
             # subcmds
             case ${MYWORDS[2]} in
               generate)
-                FLAGS+=()
-                OPTIONS+=()
                 __dzil_handle_options_flags
                 __comp_current_options true || return # no subcmds, no params/opts
               ;;
@@ -112,90 +105,89 @@ _dzil() {
         esac
       ;;
       add)
-        FLAGS+=()
         OPTIONS+=('--profile' 'name of the profile to use' '-p' 'name of the profile to use' '--provider' 'name of the profile provider to use' '-P' 'name of the profile provider to use')
         __dzil_handle_options_flags
-          case $INDEX in
-          *)
-            __comp_current_options true || return # after parameters
-            case ${MYWORDS[$INDEX-1]} in
-              --verbose-plugin|-V)
-              ;;
-              --lib-inc|-I)
-              ;;
-              --profile|-p)
-              ;;
-              --provider|-P)
-              ;;
+        case ${MYWORDS[$INDEX-1]} in
+          --verbose-plugin|-V)
+          ;;
+          --lib-inc|-I)
+          ;;
+          --profile|-p)
+          ;;
+          --provider|-P)
+          ;;
 
-            esac
-            ;;
+        esac
+        case $INDEX in
+
+        *)
+            __comp_current_options || return
+        ;;
         esac
       ;;
       authordeps)
         FLAGS+=('--missing' 'list only the missing dependencies' '--versions' 'include required version numbers in listing')
         OPTIONS+=('--root' 'the root of the dist; defaults to .')
         __dzil_handle_options_flags
-          case $INDEX in
-          *)
-            __comp_current_options true || return # after parameters
-            case ${MYWORDS[$INDEX-1]} in
-              --verbose-plugin|-V)
-              ;;
-              --lib-inc|-I)
-              ;;
-              --root)
-              ;;
+        case ${MYWORDS[$INDEX-1]} in
+          --verbose-plugin|-V)
+          ;;
+          --lib-inc|-I)
+          ;;
+          --root)
+          ;;
 
-            esac
-            ;;
+        esac
+        case $INDEX in
+
+        *)
+            __comp_current_options || return
+        ;;
         esac
       ;;
       build)
         FLAGS+=('--trial' 'build a trial release that PAUSE will not index' '--tgz' 'build a tarball (default behavior)')
         OPTIONS+=('--in' 'the directory in which to build the distribution')
         __dzil_handle_options_flags
-          case $INDEX in
-          *)
-            __comp_current_options true || return # after parameters
-            case ${MYWORDS[$INDEX-1]} in
-              --verbose-plugin|-V)
-              ;;
-              --lib-inc|-I)
-              ;;
-              --in)
-              ;;
+        case ${MYWORDS[$INDEX-1]} in
+          --verbose-plugin|-V)
+          ;;
+          --lib-inc|-I)
+          ;;
+          --in)
+          ;;
 
-            esac
-            ;;
+        esac
+        case $INDEX in
+
+        *)
+            __comp_current_options || return
+        ;;
         esac
       ;;
       clean)
         FLAGS+=('--dry-run' 'dont actually remove anything, just show what would be done' '-n' 'dont actually remove anything, just show what would be done')
-        OPTIONS+=()
         __dzil_handle_options_flags
-          case $INDEX in
-          *)
-            __comp_current_options true || return # after parameters
-            case ${MYWORDS[$INDEX-1]} in
-              --verbose-plugin|-V)
-              ;;
-              --lib-inc|-I)
-              ;;
+        case ${MYWORDS[$INDEX-1]} in
+          --verbose-plugin|-V)
+          ;;
+          --lib-inc|-I)
+          ;;
 
-            esac
-            ;;
+        esac
+        case $INDEX in
+
+        *)
+            __comp_current_options || return
+        ;;
         esac
       ;;
       commands)
-        FLAGS+=()
-        OPTIONS+=()
         __dzil_handle_options_flags
         __comp_current_options true || return # no subcmds, no params/opts
       ;;
       help)
         FLAGS+=('--all' '')
-        OPTIONS+=()
         __dzil_handle_options_flags
         case $INDEX in
 
@@ -208,8 +200,6 @@ _dzil() {
         # subcmds
         case ${MYWORDS[1]} in
           _meta)
-            FLAGS+=()
-            OPTIONS+=()
             __dzil_handle_options_flags
             case $INDEX in
 
@@ -222,8 +212,6 @@ _dzil() {
             # subcmds
             case ${MYWORDS[2]} in
               completion)
-                FLAGS+=()
-                OPTIONS+=()
                 __dzil_handle_options_flags
                 case $INDEX in
 
@@ -236,8 +224,6 @@ _dzil() {
                 # subcmds
                 case ${MYWORDS[3]} in
                   generate)
-                    FLAGS+=()
-                    OPTIONS+=()
                     __dzil_handle_options_flags
                     __comp_current_options true || return # no subcmds, no params/opts
                   ;;
@@ -247,8 +233,6 @@ _dzil() {
                 esac
               ;;
               pod)
-                FLAGS+=()
-                OPTIONS+=()
                 __dzil_handle_options_flags
                 case $INDEX in
 
@@ -261,8 +245,6 @@ _dzil() {
                 # subcmds
                 case ${MYWORDS[3]} in
                   generate)
-                    FLAGS+=()
-                    OPTIONS+=()
                     __dzil_handle_options_flags
                     __comp_current_options true || return # no subcmds, no params/opts
                   ;;
@@ -277,86 +259,58 @@ _dzil() {
             esac
           ;;
           add)
-            FLAGS+=()
-            OPTIONS+=()
             __dzil_handle_options_flags
             __comp_current_options true || return # no subcmds, no params/opts
           ;;
           authordeps)
-            FLAGS+=()
-            OPTIONS+=()
             __dzil_handle_options_flags
             __comp_current_options true || return # no subcmds, no params/opts
           ;;
           build)
-            FLAGS+=()
-            OPTIONS+=()
             __dzil_handle_options_flags
             __comp_current_options true || return # no subcmds, no params/opts
           ;;
           clean)
-            FLAGS+=()
-            OPTIONS+=()
             __dzil_handle_options_flags
             __comp_current_options true || return # no subcmds, no params/opts
           ;;
           commands)
-            FLAGS+=()
-            OPTIONS+=()
             __dzil_handle_options_flags
             __comp_current_options true || return # no subcmds, no params/opts
           ;;
           install)
-            FLAGS+=()
-            OPTIONS+=()
             __dzil_handle_options_flags
             __comp_current_options true || return # no subcmds, no params/opts
           ;;
           listdeps)
-            FLAGS+=()
-            OPTIONS+=()
             __dzil_handle_options_flags
             __comp_current_options true || return # no subcmds, no params/opts
           ;;
           new)
-            FLAGS+=()
-            OPTIONS+=()
             __dzil_handle_options_flags
             __comp_current_options true || return # no subcmds, no params/opts
           ;;
           nop)
-            FLAGS+=()
-            OPTIONS+=()
             __dzil_handle_options_flags
             __comp_current_options true || return # no subcmds, no params/opts
           ;;
           release)
-            FLAGS+=()
-            OPTIONS+=()
             __dzil_handle_options_flags
             __comp_current_options true || return # no subcmds, no params/opts
           ;;
           run)
-            FLAGS+=()
-            OPTIONS+=()
             __dzil_handle_options_flags
             __comp_current_options true || return # no subcmds, no params/opts
           ;;
           setup)
-            FLAGS+=()
-            OPTIONS+=()
             __dzil_handle_options_flags
             __comp_current_options true || return # no subcmds, no params/opts
           ;;
           smoke)
-            FLAGS+=()
-            OPTIONS+=()
             __dzil_handle_options_flags
             __comp_current_options true || return # no subcmds, no params/opts
           ;;
           test)
-            FLAGS+=()
-            OPTIONS+=()
             __dzil_handle_options_flags
             __comp_current_options true || return # no subcmds, no params/opts
           ;;
@@ -366,150 +320,148 @@ _dzil() {
         esac
       ;;
       install)
-        FLAGS+=()
         OPTIONS+=('--install-command' 'command to run to install (e.g. "cpan .")' '--keep-build-dir' 'keep the build directory even after a success' '--keep' 'keep the build directory even after a success')
         __dzil_handle_options_flags
-          case $INDEX in
-          *)
-            __comp_current_options true || return # after parameters
-            case ${MYWORDS[$INDEX-1]} in
-              --verbose-plugin|-V)
-              ;;
-              --lib-inc|-I)
-              ;;
-              --install-command)
-              ;;
-              --keep-build-dir|--keep)
-              ;;
+        case ${MYWORDS[$INDEX-1]} in
+          --verbose-plugin|-V)
+          ;;
+          --lib-inc|-I)
+          ;;
+          --install-command)
+          ;;
+          --keep-build-dir|--keep)
+          ;;
 
-            esac
-            ;;
+        esac
+        case $INDEX in
+
+        *)
+            __comp_current_options || return
+        ;;
         esac
       ;;
       listdeps)
         FLAGS+=('--missing' 'list only the missing dependencies' '--requires' 'list the required dependencies' '--recommends' 'list the recommended dependencies' '--suggests' 'list the suggested dependencies' '--versions' 'include required version numbers in listing' '--cpanm-versions' 'format versions for consumption by cpanm' '--json' 'list dependencies by phase, in JSON format')
         OPTIONS+=('--author' 'include author/develop dependencies' '--develop' 'include author/develop dependencies' '--omit-core' 'Omit dependencies that are shipped with the specified version of perl')
         __dzil_handle_options_flags
-          case $INDEX in
-          *)
-            __comp_current_options true || return # after parameters
-            case ${MYWORDS[$INDEX-1]} in
-              --verbose-plugin|-V)
-              ;;
-              --lib-inc|-I)
-              ;;
-              --author|--develop)
-              ;;
-              --omit-core)
-              ;;
+        case ${MYWORDS[$INDEX-1]} in
+          --verbose-plugin|-V)
+          ;;
+          --lib-inc|-I)
+          ;;
+          --author|--develop)
+          ;;
+          --omit-core)
+          ;;
 
-            esac
-            ;;
+        esac
+        case $INDEX in
+
+        *)
+            __comp_current_options || return
+        ;;
         esac
       ;;
       new)
-        FLAGS+=()
         OPTIONS+=('--profile' 'name of the profile to use' '-p' 'name of the profile to use' '--provider' 'name of the profile provider to use' '-P' 'name of the profile provider to use')
         __dzil_handle_options_flags
-          case $INDEX in
-          *)
-            __comp_current_options true || return # after parameters
-            case ${MYWORDS[$INDEX-1]} in
-              --verbose-plugin|-V)
-              ;;
-              --lib-inc|-I)
-              ;;
-              --profile|-p)
-              ;;
-              --provider|-P)
-              ;;
+        case ${MYWORDS[$INDEX-1]} in
+          --verbose-plugin|-V)
+          ;;
+          --lib-inc|-I)
+          ;;
+          --profile|-p)
+          ;;
+          --provider|-P)
+          ;;
 
-            esac
-            ;;
+        esac
+        case $INDEX in
+
+        *)
+            __comp_current_options || return
+        ;;
         esac
       ;;
       nop)
-        FLAGS+=()
-        OPTIONS+=()
         __dzil_handle_options_flags
         __comp_current_options true || return # no subcmds, no params/opts
       ;;
       release)
         FLAGS+=('--trial' 'build a trial release that PAUSE will not index')
-        OPTIONS+=()
         __dzil_handle_options_flags
-          case $INDEX in
-          *)
-            __comp_current_options true || return # after parameters
-            case ${MYWORDS[$INDEX-1]} in
-              --verbose-plugin|-V)
-              ;;
-              --lib-inc|-I)
-              ;;
+        case ${MYWORDS[$INDEX-1]} in
+          --verbose-plugin|-V)
+          ;;
+          --lib-inc|-I)
+          ;;
 
-            esac
-            ;;
+        esac
+        case $INDEX in
+
+        *)
+            __comp_current_options || return
+        ;;
         esac
       ;;
       run)
         FLAGS+=('--build' 'do the Build actions before running the command; done by default' '--trial' 'build a trial release that PAUSE will not index')
-        OPTIONS+=()
         __dzil_handle_options_flags
-          case $INDEX in
-          *)
-            __comp_current_options true || return # after parameters
-            case ${MYWORDS[$INDEX-1]} in
-              --verbose-plugin|-V)
-              ;;
-              --lib-inc|-I)
-              ;;
+        case ${MYWORDS[$INDEX-1]} in
+          --verbose-plugin|-V)
+          ;;
+          --lib-inc|-I)
+          ;;
 
-            esac
-            ;;
+        esac
+        case $INDEX in
+
+        *)
+            __comp_current_options || return
+        ;;
         esac
       ;;
       setup)
-        FLAGS+=()
-        OPTIONS+=()
         __dzil_handle_options_flags
         __comp_current_options true || return # no subcmds, no params/opts
       ;;
       smoke)
         FLAGS+=('--release' 'enables the RELEASE_TESTING env variable' '--automated' 'enables the AUTOMATED_TESTING env variable (default behavior)' '--author' 'enables the AUTHOR_TESTING env variable')
-        OPTIONS+=()
         __dzil_handle_options_flags
-          case $INDEX in
-          *)
-            __comp_current_options true || return # after parameters
-            case ${MYWORDS[$INDEX-1]} in
-              --verbose-plugin|-V)
-              ;;
-              --lib-inc|-I)
-              ;;
+        case ${MYWORDS[$INDEX-1]} in
+          --verbose-plugin|-V)
+          ;;
+          --lib-inc|-I)
+          ;;
 
-            esac
-            ;;
+        esac
+        case $INDEX in
+
+        *)
+            __comp_current_options || return
+        ;;
         esac
       ;;
       test)
         FLAGS+=('--release' 'enables the RELEASE_TESTING env variable' '--automated' 'enables the AUTOMATED_TESTING env variable (default behavior)' '--author' 'enables the AUTHOR_TESTING env variable' '--extended' 'enables the EXTENDED_TESTING env variable' '--all' 'enables the RELEASE_TESTING, AUTOMATED_TESTING, EXTENDED_TESTING and AUTHOR_TESTING env variables' '--test-verbose' 'enables verbose testing (TEST_VERBOSE env variable on Makefile.PL, --verbose on Build.PL')
         OPTIONS+=('--keep-build-dir' 'keep the build directory even after a success' '--keep' 'keep the build directory even after a success' '--jobs' 'number of parallel test jobs to run' '-j' 'number of parallel test jobs to run')
         __dzil_handle_options_flags
-          case $INDEX in
-          *)
-            __comp_current_options true || return # after parameters
-            case ${MYWORDS[$INDEX-1]} in
-              --verbose-plugin|-V)
-              ;;
-              --lib-inc|-I)
-              ;;
-              --keep-build-dir|--keep)
-              ;;
-              --jobs|-j)
-              ;;
+        case ${MYWORDS[$INDEX-1]} in
+          --verbose-plugin|-V)
+          ;;
+          --lib-inc|-I)
+          ;;
+          --keep-build-dir|--keep)
+          ;;
+          --jobs|-j)
+          ;;
 
-            esac
-            ;;
+        esac
+        case $INDEX in
+
+        *)
+            __comp_current_options || return
+        ;;
         esac
       ;;
     esac

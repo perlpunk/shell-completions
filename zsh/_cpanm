@@ -1,0 +1,115 @@
+#compdef cpanm
+
+_cpanm() {
+    local program=cpanm
+    typeset -A opt_args
+    local curcontext="$curcontext" state line context
+
+
+        # ---- Command: 
+        _arguments -s  \
+            '1: :->Modules' \
+            '--install[Installs the modules. This is a default behavior]' \
+            '-i[Installs the modules. This is a default behavior]' \
+            '--self-upgrade[Upgrades itself]' \
+            '--info[Displays the distribution information in "AUTHOR/Dist-Name-ver.tar.gz" format]' \
+            '--installdeps[Installs the dependencies of the target distribution but won'"'"'t build itself]' \
+            '--look[Download and unpack the distribution and then open the directory with your shell]' \
+            '--version[Displays the version number]' \
+            '-v[Displays the version number]' \
+            '--force[Force install modules even when testing failed]' \
+            '-f[Force install modules even when testing failed]' \
+            '--notest[Skip the testing of modules]' \
+            '-n[Skip the testing of modules]' \
+            '--test-only[Run the tests only, and do not install the specified module or distributions]' \
+            '--sudo[Switch to the root user with "sudo" when installing modules]' \
+            '-S[Switch to the root user with "sudo" when installing modules]' \
+            '--verbose[Makes the output verbose]' \
+            '-v[Makes the output verbose]' \
+            '--quiet[Makes the output even more quiet than the default]' \
+            '-q[Makes the output even more quiet than the default]' \
+            '--local-lib[Sets the local::lib compatible path to install modules to]:local-lib:_files' \
+            '-l[Sets the local::lib compatible path to install modules to]:local-lib:_files' \
+            '--local-lib-contained[Same with "--local-lib" but with --self-contained set]:local-lib-contained:_files' \
+            '-L[Same with "--local-lib" but with --self-contained set]:local-lib-contained:_files' \
+            '--self-contained[When examining the dependencies, assume no non-core modules are installed on the system]' \
+            '--exclude-vendor[Don'"'"'t include modules installed under the '"'"'vendor'"'"' paths...]' \
+            '--mirror[Specifies the base URL for the CPAN mirror to use]:mirror' \
+            '--mirror-only[Download the mirror'"'"'s index file instead of querying the CPAN Meta DB]' \
+            '--from[Use the given mirror URL and its index as the only source]:from' \
+            '-M[Use the given mirror URL and its index as the only source]:from' \
+            '--mirror-index[EXPERIMENTAL Specifies the file path to "02packages.details.txt"]:mirror-index:_files' \
+            '--cpanmetadb[EXPERIMENTAL Specifies an alternate URI for CPAN MetaDB]:cpanmetadb:_files' \
+            '--metacpan[Prefers MetaCPAN API over CPAN MetaDB]' \
+            '--cpanfile[EXPERIMENTAL Specified an alternate path for cpanfile]:cpanfile:_files' \
+            '--prompt[Prompts when a test fails so that you can skip, force install...]' \
+            '--dev[EXPERIMENTAL search for a newer developer release as well]' \
+            '--reinstall[reinstall module]' \
+            '--interactive[Makes the configuration (such as "Makefile.PL" and "Build.PL") interactive]' \
+            '--pureperl[Prefer Pure perl build of modules]' \
+            '--pp[Prefer Pure perl build of modules]' \
+            '--with-recommends[EXPERIMENTAL Installs dependencies declared as "recommends"]' \
+            '--with-suggests[EXPERIMENTAL Installs dependencies declared as "suggests"]' \
+            '--with-develop[EXPERIMENTAL Installs develop phase dependencies]' \
+            '--with-configure[EXPERIMENTAL Installs configure phase dependencies]' \
+            '--with-feature[EXPERIMENTAL Specifies the feature to enable]' \
+            '--without-feature[EXPERIMENTAL Specifies the feature to enable]' \
+            '--with-all-features[EXPERIMENTAL Specifies the feature to enable]' \
+            '--configure-timeout[Specify the timeout length (in seconds) to wait]:configure-timeout' \
+            '--build-timeout[Specify the timeout length (in seconds) to wait]:build-timeout' \
+            '--test-timeout[Specify the timeout length (in seconds) to wait]:test-timeout' \
+            '--configure-args[EXPERIMENTAL Pass arguments for configure command]:configure-args' \
+            '--build-args[EXPERIMENTAL Pass arguments for build command]:build-args' \
+            '--test-args[EXPERIMENTAL Pass arguments for test command]:test-args' \
+            '--install-args[EXPERIMENTAL Pass arguments for install command]:install-args' \
+            '--scandeps[DEPRECATED Scans the depencencies of given modules]' \
+            '--format[DEPRECATED Determines what format to display the scanned dependency tree]:format:("tree" "json" "yaml" "dists")' \
+            '--save-dists[Specifies the optional directory path to copy downloaded tarballs]:save-dists:_files' \
+            '--uninst-shadows[Uninstalls the shadow files of the distribution]' \
+            '--uninstall[Uninstalls a module from the library path]' \
+            '-U[Uninstalls a module from the library path]' \
+            '--cascade-search[EXPERIMENTAL Specifies whether to cascade search when you specify multiple mirrors]' \
+            '--skip-installed[Specifies whether a module given in the command line is skipped...]' \
+            '--skip-satisfied[EXPERIMENTAL Specifies whether a module (and version) given...]' \
+            '--verify[Verify the integrity of distribution files retrieved from PAUSE]' \
+            '--report-perl-version[Whether it reports the locally installed perl version]' \
+            '--auto-cleanup[Specifies the number of days in which cpanm'"'"'s work directories expire]:auto-cleanup' \
+            '--man-pages[Generates man pages for executables (man1) and libraries (man3)]' \
+            '--lwp[Uses LWP module to download stuff over HTTP]' \
+            '--wget[Uses GNU Wget (if available) to download stuff]' \
+            '--curl[Uses cURL (if available) to download stuff]' \
+            '--help[Show command help]' \
+            '-h[Show command help]' \
+            && ret=0
+
+        case $state in
+        Modules)
+
+        ;;
+        esac
+
+
+}
+
+
+__cpanm_dynamic_comp() {
+    local argname="$1"
+    local arg="$2"
+    local comp="arg:$argname:(("
+    local line
+    while read -r line; do
+        local name="$line"
+        local desc="$line"
+        name="${name%$'\t'*}"
+        desc="${desc/*$'\t'}"
+        comp="$comp$name"
+        if [[ -n "$desc" && "$name" != "$desc" ]]; then
+            comp="$comp\\:"'"'"$desc"'"'
+        fi
+        comp="$comp "
+    done <<< "$arg"
+
+    comp="$comp))"
+    _alternative "$comp"
+}
+

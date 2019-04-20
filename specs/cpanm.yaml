@@ -1,0 +1,76 @@
+---
+name: cpanm
+appspec: { version: 0.001 }
+#class: App::Spec::Example::MySimpleApp
+title: Install CPAN modules
+abstract: get, unpack build and install modules from CPAN
+
+options:
+- install|i            --Installs the modules. This is a default behavior
+- self-upgrade         --Upgrades itself
+- info                 --Displays the distribution information in "AUTHOR/Dist-Name-ver.tar.gz" format
+- installdeps          --Installs the dependencies of the target distribution but won't build itself
+- look                 --Download and unpack the distribution and then open the directory with your shell
+- version|v            --Displays the version number
+- force|f              --Force install modules even when testing failed
+- notest|n             --Skip the testing of modules
+- test-only            --Run the tests only, and do not install the specified module or distributions
+- sudo|S               --Switch to the root user with "sudo" when installing modules
+- verbose|v            --Makes the output verbose
+- quiet|q              --Makes the output even more quiet than the default
+- local-lib|l +file    --Sets the local::lib compatible path to install modules to
+- local-lib-contained|L +file --Same with "--local-lib" but with --self-contained set
+- self-contained       --When examining the dependencies, assume no non-core modules are installed on the system
+- exclude-vendor       --Don't include modules installed under the 'vendor' paths...
+- mirror=s             --Specifies the base URL for the CPAN mirror to use
+- mirror-only          --Download the mirror's index file instead of querying the CPAN Meta DB
+- from|M=s             --Use the given mirror URL and its index as the only source
+- mirror-index +file    --EXPERIMENTAL Specifies the file path to "02packages.details.txt"
+- cpanmetadb +file     --EXPERIMENTAL Specifies an alternate URI for CPAN MetaDB
+- metacpan             --Prefers MetaCPAN API over CPAN MetaDB
+- cpanfile +file       --EXPERIMENTAL Specified an alternate path for cpanfile
+- prompt               --Prompts when a test fails so that you can skip, force install...
+- dev                  --EXPERIMENTAL search for a newer developer release as well
+- reinstall            --reinstall module
+- interactive          --Makes the configuration (such as "Makefile.PL" and "Build.PL") interactive
+- pureperl             --Prefer Pure perl build of modules
+- pp                   --Prefer Pure perl build of modules
+- with-recommends      --EXPERIMENTAL Installs dependencies declared as "recommends"
+- with-suggests        --EXPERIMENTAL Installs dependencies declared as "suggests"
+- with-develop         --EXPERIMENTAL Installs develop phase dependencies
+- with-configure       --EXPERIMENTAL Installs configure phase dependencies
+- with-feature         --EXPERIMENTAL Specifies the feature to enable
+- without-feature      --EXPERIMENTAL Specifies the feature to enable
+- with-all-features    --EXPERIMENTAL Specifies the feature to enable
+- configure-timeout=i  --Specify the timeout length (in seconds) to wait
+- build-timeout=i      --Specify the timeout length (in seconds) to wait
+- test-timeout=i       --Specify the timeout length (in seconds) to wait
+- configure-args=s     --EXPERIMENTAL Pass arguments for configure command
+- build-args=s         --EXPERIMENTAL Pass arguments for build command
+- test-args=s          --EXPERIMENTAL Pass arguments for test command
+- install-args=s       --EXPERIMENTAL Pass arguments for install command
+- scandeps             --DEPRECATED Scans the depencencies of given modules
+- name: format
+  type: string
+  enum: [tree, json, yaml, dists]
+  summary: DEPRECATED Determines what format to display the scanned dependency tree
+- save-dists +file    --Specifies the optional directory path to copy downloaded tarballs
+- uninst-shadows      --Uninstalls the shadow files of the distribution
+- uninstall|U         --Uninstalls a module from the library path
+- cascade-search      --EXPERIMENTAL Specifies whether to cascade search when you specify multiple mirrors
+- skip-installed      --Specifies whether a module given in the command line is skipped...
+- skip-satisfied      --EXPERIMENTAL Specifies whether a module (and version) given...
+- verify              --Verify the integrity of distribution files retrieved from PAUSE
+- report-perl-version --Whether it reports the locally installed perl version
+- auto-cleanup=i      --Specifies the number of days in which cpanm's work directories expire
+- man-pages           --Generates man pages for executables (man1) and libraries (man3)
+- lwp                 --Uses LWP module to download stuff over HTTP
+- wget                --Uses GNU Wget (if available) to download stuff
+- curl                --Uses cURL (if available) to download stuff
+
+parameters:
+- name: Modules
+  summary: Names of modules to install
+  type: string
+# vim:et:sts=2:sws=2:sw=2:foldmethod=indent
+
