@@ -2,9 +2,10 @@
 
 Currently it contains bash and zsh completions.
 
-* tower-cli (incomplete)
-* dzil
 * cpanm
+* dzil
+* jq
+* tower-cli (incomplete)
 
 The specifications for completion can be found under `specs`. They are written
 in YAML and converted to shell completions with the `appspec` tool (see

@@ -1,0 +1,37 @@
+---
+name: jq
+appspec: { version: 0.001 }
+title: Command-line JSON processor
+
+options:
+# TODO --arg and --argjson completion
+- arg=s                   --pre-set a variable to a string
+- argjson               --pre-set a variable to an object
+- ascii-output|a        --restrict output to ASCII
+- color-output|C        --output in color
+- compact-output|c      --don't pretty-print
+- exit-status|e         --report "false" and "null" results via exit code
+- from-file|f +file     --read filter from file
+- indent=i              --indent output using given number of spaces
+- join-output|j         --like -r, without newlines between outputs
+- L +dir                --prepend a directory to the module search path
+- monochrome-output|M   --output without color
+- null-input|n          --input is ignored
+- raw-input|R           --consider each input line as a JSON strings
+- raw-output|r          --don't JSON-quote output if it's a string
+- seq                   --use application/json-seq ASCII RS/LF scheme in input and output
+- slurp|s               --join input JSON objects to array before filtering
+- slurpfile=s           --pre-set a variable to contents of a file
+- sort-keys|S           --output object keys in sorted order
+- stream                --parse input streamily (changes output)
+- tab                   --indent output using TAB characters
+- unbuffered            --flush output after each JSON object
+- version               --output jq's version number
+- run-tests +file       --Runs  the tests in the given file or standard input
+
+parameters:
+- name: filter
+  summary: Filter
+  type: string
+# vim:et:sts=2:sws=2:sw=2:foldmethod=indent
+
