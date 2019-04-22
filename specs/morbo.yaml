@@ -1,0 +1,18 @@
+---
+name: morbo
+appspec: { version: 0.001 }
+title: Morbo HTTP and WebSocket development server
+
+options:
+- backend|b=s   --Morbo backend to use for reloading
+- listen|l=s@   --One or more locations you want to listen on
+- mode|m=s      --Operating mode for your application
+- verbose|v     --Print details about what files changed
+- watch|w +file --One or more directories and files to watch for changes
+
+parameters:
+- name: file
+  summary: File
+  type: file
+
+# vim:et:sts=2:sws=2:sw=2:foldmethod=indent

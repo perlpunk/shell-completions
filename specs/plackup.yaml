@@ -1,0 +1,36 @@
+---
+name: plackup
+appspec: { version: 0.001 }
+title: Run PSGI application with Plack handlers
+
+options:
+- app|a +file         --Specifies the full path to a ".psgi" script
+- e=s                   --Evaluates the given perl code as a PSGI app
+- host|o=s              --Binds to a TCP interface
+- port|p=s              --Binds to a TCP port
+- server|s=s            --Selects a specific server implementation to run on
+- socket|S=s            --Listens on a UNIX domain socket path
+- listen|l=s=@           --Listens on one or more addresses
+- daemonize|D           --Makes the process run in the background
+- I=s@                  --Specifies Perl library include paths
+- M=s@                  --Loads the named modules before loading the app's code
+- env|E=s               --Specifies the environment option
+- no-default-middleware --This prevents loading the default middleware stack...
+- reload|r              --Makes plackup restart the server whenever a file...
+- Reload|R +file      --Makes plackup restart the server whenever a given file...
+- access-log +file    --Specifies the pathname of a file where the access log...
+- path=s                --Specify the root path of your app
+- name: loader
+  type: string
+# TODO colon needs to be escaped in zsh
+#  enum: [Plack::Loader, Restarter, Delayed, Shotgun]
+  enum: [Restarter, Delayed, Shotgun]
+  summary: Specifies the server loading subclass
+  aliases: [L]
+
+parameters:
+- name: file
+  summary: File
+  type: file
+
+# vim:et:sts=2:sws=2:sw=2:foldmethod=indent

@@ -7,6 +7,8 @@ SCRIPTS= \
     json_pp \
     json_xs \
     lwp-request \
+    morbo \
+    plackup \
     tower-cli \
     ysh \
 

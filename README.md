@@ -9,6 +9,8 @@ Currently it contains bash and zsh completions.
 * `json_pp`
 * `json_xs`
 * `lwp-request`
+* `morbo`
+* `plackup`
 * `tower-cli` (incomplete)
 * `ysh`
 
@@ -26,7 +28,7 @@ Instructions on how to install `appspec` and use it will follow.
 
 Put this in your `.bashrc`:
 
-    source /path/to/shell-completions/bash/*.bash
+    for i in /path/to/shell-completions/bash/*.bash; do source $i; done
 
 ### Zsh
 
