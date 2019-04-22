@@ -1,5 +1,6 @@
 
 SCRIPTS= \
+    cpan \
     cpanm \
     cpan-upload \
     dzil \
@@ -9,6 +10,7 @@ SCRIPTS= \
     json_xs \
     lwp-request \
     morbo \
+    pip \
     plackup \
     starman \
     tower-cli \

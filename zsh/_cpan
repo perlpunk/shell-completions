@@ -1,0 +1,70 @@
+#compdef cpan
+
+_cpan() {
+    local program=cpan
+    typeset -A opt_args
+    local curcontext="$curcontext" state line context
+
+
+        # ---- Command: 
+        _arguments -s  \
+            '1: :->Modules' \
+            '-a[Creates a CPAN.pm autobundle with CPAN::Shell->autobundle]' \
+            '-A[Shows the primary maintainers for the specified modules]' \
+            '-c[Runs a '"'"'make clean'"'"' in the specified module'"'"'s directories]' \
+            '-C[Show the Changes files for the specified modules]' \
+            '-D[Show the module details]' \
+            '-f[Force the specified action, when it normally would have failed]' \
+            '-F[Turn off CPAN.pm'"'"'s attempts to lock anything]' \
+            '-g[Downloads to the current directory the latest distribution...]' \
+            '-i[Install the specified modules]' \
+            '-I[Load "local::lib" (think like "-I" for loading lib paths)]' \
+            '-j[Load the file that has the CPAN configuration data]:j:_files' \
+            '-J[Dump the configuration in the same format that CPAN.pm uses]' \
+            '-l[List all installed modules with their versions]' \
+            '-L[List the modules by the specified authors]' \
+            '-m[Make the specified modules]' \
+            '-O[Show the out-of-date modules]' \
+            '-p[Ping the configured mirrors]' \
+            '-P[Find the best mirrors you could be using]' \
+            '-r[Recompiles dynamically loaded modules with CPAN::Shell->recompile]' \
+            '-t[Run a '"'"'make test'"'"' on the specified modules]' \
+            '-T[Do not test modules. Simply install them]' \
+            '-u[Upgrade all installed modules]' \
+            '-v[Print the script version and CPAN.pm version]' \
+            '-V[Print detailed information about the cpan client]' \
+            '--help[Show command help]' \
+            '-h[Show command help]' \
+            && ret=0
+
+        case $state in
+        Modules)
+
+        ;;
+        esac
+
+
+}
+
+
+__cpan_dynamic_comp() {
+    local argname="$1"
+    local arg="$2"
+    local comp="arg:$argname:(("
+    local line
+    while read -r line; do
+        local name="$line"
+        local desc="$line"
+        name="${name%$'\t'*}"
+        desc="${desc/*$'\t'}"
+        comp="$comp$name"
+        if [[ -n "$desc" && "$name" != "$desc" ]]; then
+            comp="$comp\\:"'"'"$desc"'"'
+        fi
+        comp="$comp "
+    done <<< "$arg"
+
+    comp="$comp))"
+    _alternative "$comp"
+}
+

@@ -1,0 +1,37 @@
+---
+name: cpan
+appspec: { version: 0.001 }
+title: easily interact with CPAN from the command line
+
+options:
+- a         --Creates a CPAN.pm autobundle with CPAN::Shell->autobundle
+- A         --Shows the primary maintainers for the specified modules
+- c         --Runs a 'make clean' in the specified module's directories
+- C         --Show the Changes files for the specified modules
+- D         --Show the module details
+- f         --Force the specified action, when it normally would have failed
+- F         --Turn off CPAN.pm's attempts to lock anything
+- g         --Downloads to the current directory the latest distribution...
+- i         --Install the specified modules
+- I         --Load "local::lib" (think like "-I" for loading lib paths)
+- j +file   --Load the file that has the CPAN configuration data
+- J         --Dump the configuration in the same format that CPAN.pm uses
+- l         --List all installed modules with their versions
+- L         --List the modules by the specified authors
+- m         --Make the specified modules
+- O         --Show the out-of-date modules
+- p         --Ping the configured mirrors
+- P         --Find the best mirrors you could be using
+- r         --Recompiles dynamically loaded modules with CPAN::Shell->recompile
+- t         --Run a 'make test' on the specified modules
+- T         --Do not test modules. Simply install them
+- u         --Upgrade all installed modules
+- v         --Print the script version and CPAN.pm version
+- V         --Print detailed information about the cpan client
+
+parameters:
+- name: Modules
+  summary: Names of modules to install
+  type: string
+# vim:et:sts=2:sws=2:sw=2:foldmethod=indent
+

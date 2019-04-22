@@ -1,0 +1,129 @@
+---
+name: pip
+appspec: { version: '0.001' }
+title: A tool for installing and managing Python packages
+
+options:
+- verbose|v         --Give more output
+- version|V         --Show version and exit
+- quiet|q           --Give less output
+- log-file +file    --Path to a verbose non-appending log...
+- log +file         --Path to a verbose appending log
+- proxy=s           --Specify a proxy
+- timeout=i         --Set the socket timeout
+- cert +file        --Path to alternate CA bundle
+- isolated          --Run pip in an isolated mode
+- retries=i         --Maximum number of retries
+- trusted-host=s    --Mark this host as trusted
+- client-cert +file --Path to SSL client certificate
+- cache-dir +dir    --Store the cache data in <dir>
+- no-cache-dir      --Disable the cache
+- disable-pip-version-check --Don't periodically check PyPI...
+- name: exists-action
+  type: string
+  enum: [s, i, w, b, a]
+  summary: Default action when a path already exists
+
+subcommands:
+
+  install:
+    summary: Install packages
+    options:
+    - &requirement requirement|r +file     --from the given requirements file
+    - &findlinks find-links|f=s            --If a url or path to an html file, then parse for links...
+    - &nobinary no-binary=s@               --Do not use binary packages
+    - &onlybinary only-binary=s@           --Do not use source packages
+    - &constraint constraint|c=@ +file     --Constrain versions using the given constraints file
+    - &editable editable|e +file           --Install a project in editable mode
+    - &src src +dir                --Directory to check out editable projects
+    - &ignorerequires ignore-requires-python  --Ignore the Requires-Python information
+    - &nodeps no-deps                 --Don't install package dependencies
+    - &build build|b +dir            --Directory to unpack packages into and build in
+    - &globalopt global-option=s@        --Extra global options to be supplied to the setup.py...
+    - &pre pre                     --Include pre-release and development versions
+    - &noclean no-clean                --Don't clean up build directories
+    - &requirehashes require-hashes          --Require a hash to check each requirement...
+    - target|t +dir           --Install packages into <dir>
+    - download|d +dir         --Download packages into <dir>
+    - upgrade|U               --Upgrade all specified packages to the newest...
+    - upgrade-strategy=s      --Determines how dependency upgrading should be handled
+    - force-reinstall         --When upgrading, reinstall all packages..
+    - ignore-installed|I      --Ignore the installed packages
+    - install-option=s@       --Extra arguments to be supplied to the setup.py...
+    - user                    --Install to the Python user install directory
+    - system                  --Install using the system scheme
+    - egg                     --Install packages as eggs, not 'flat'
+    - root +dir               --Install everything relative to this...
+    - prefix +dir             --Installation prefix...
+    - compile                 --Compile py files to pyc
+    - no-compile              --Do not compile py files to pyc
+    - no-use-wheel            --Do not Find and prefer wheel archives...
+    # Package Index Options
+    - &indexurl index-url|i=s               --Base URL of Python Package Index
+    - &extraindexurl extra-index-url=s      --Extra URLs of package indexes to use
+    - &noindex no-index                     --Ignore package index
+    - &processdep process-dependency-links  --Enable the processing of dependency links
+
+
+  uninstall:
+    summary: Uninstall packages
+    options:
+    - *requirement
+    - yes|y               --Don't ask for confirmation
+
+  freeze:
+    summary: Output installed packages in requirements format
+    options:
+    - *requirement
+    - *findlinks
+    - local|l   --If in a virtualenv that has global access, do not output globally-installed packages
+    - user      --Only output packages installed in user-site
+    - all       --Do not skip pip, setuptools, distribute, wheel
+
+
+  list:
+    summary: List installed packages
+    options:
+    - outdated|o
+    - uptodate|u
+    - editable|e
+    - local|l
+    - format=s
+    - not-required
+    # Package Index Options
+    - *indexurl
+    - *extraindexurl
+    - *noindex
+    - *processdep
+
+  show:
+    summary: Show information about installed packages
+    options:
+    - files|f --Show the full list of installed files
+
+  search:
+    summary: Search PyPI for packages
+    options:
+    - index|i=s --Base URL of Python Package Index
+
+  wheel:
+    summary: Build wheels from your requirements
+    options:
+    - wheel-dir|w +dir
+    - no-use-wheel
+    - *nobinary
+    - *onlybinary
+    - build-option=s
+    - *constraint
+    - *editable
+    - *requirement
+    - *src
+    - *ignorerequires
+    - *nodeps
+    - *build
+    - *globalopt
+    - *pre
+    - *noclean
+    - *requirehashes
+
+# vim:et:sts=2:sws=2:sw=2:foldmethod=indent

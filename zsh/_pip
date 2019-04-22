@@ -1,0 +1,884 @@
+#compdef pip
+
+_pip() {
+    local program=pip
+    typeset -A opt_args
+    local curcontext="$curcontext" state line context
+
+
+        # ---- Command: 
+        _arguments -s  \
+            '1: :->cmd1' \
+            '*: :->args' \
+            && ret=0
+
+
+        case $state in
+        cmd1)
+            _alternative 'args:cmd2:((freeze\:"Output installed packages in requirements format" help\:"Show command help" install\:"Install packages" list\:"List installed packages" search\:"Search PyPI for packages" show\:"Show information about installed packages" uninstall\:"Uninstall packages" wheel\:"Build wheels from your requirements"))'
+        ;;
+
+        args)
+            case $line[1] in
+            _meta)
+
+                # ---- Command: _meta
+                _arguments -s -C \
+                    '1: :->cmd1' \
+                    '2: :->cmd2' \
+                    '*: :->args' \
+                    && ret=0
+
+
+                case $state in
+                cmd2)
+                    _alternative 'args:cmd3:((completion\:"Shell completion functions" pod\:"Pod documentation"))'
+                ;;
+
+                args)
+                    case $line[2] in
+                    completion)
+
+                        # ---- Command: _meta completion
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '3: :->cmd3' \
+                            '*: :->args' \
+                            && ret=0
+
+
+                        case $state in
+                        cmd3)
+                            _alternative 'args:cmd4:((generate\:"Generate self completion"))'
+                        ;;
+
+                        args)
+                            case $line[3] in
+                            generate)
+
+                                # ---- Command: _meta completion generate
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--verbose[Give more output]' \
+                                    '-v[Give more output]' \
+                                    '--version[Show version and exit]' \
+                                    '-V[Show version and exit]' \
+                                    '--quiet[Give less output]' \
+                                    '-q[Give less output]' \
+                                    '--log-file[Path to a verbose non-appending log...]:log-file:_files' \
+                                    '--log[Path to a verbose appending log]:log:_files' \
+                                    '--proxy[Specify a proxy]:proxy' \
+                                    '--timeout[Set the socket timeout]:timeout' \
+                                    '--cert[Path to alternate CA bundle]:cert:_files' \
+                                    '--isolated[Run pip in an isolated mode]' \
+                                    '--retries[Maximum number of retries]:retries' \
+                                    '--trusted-host[Mark this host as trusted]:trusted-host' \
+                                    '--client-cert[Path to SSL client certificate]:client-cert:_files' \
+                                    '--cache-dir[Store the cache data in <dir>]:cache-dir:_files' \
+                                    '--no-cache-dir[Disable the cache]' \
+                                    '--disable-pip-version-check[Don'"'"'t periodically check PyPI...]' \
+                                    '--exists-action[Default action when a path already exists]:exists-action:("s" "i" "w" "b" "a")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--name[name of the program (optional, override name in spec)]:name' \
+                                    '--zsh[for zsh]' \
+                                    '--bash[for bash]' \
+                                    && ret=0
+
+
+                            ;;
+                            esac
+
+                        ;;
+
+                        esac
+                    ;;
+                    pod)
+
+                        # ---- Command: _meta pod
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '3: :->cmd3' \
+                            '*: :->args' \
+                            && ret=0
+
+
+                        case $state in
+                        cmd3)
+                            _alternative 'args:cmd4:((generate\:"Generate self pod"))'
+                        ;;
+
+                        args)
+                            case $line[3] in
+                            generate)
+
+                                # ---- Command: _meta pod generate
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--verbose[Give more output]' \
+                                    '-v[Give more output]' \
+                                    '--version[Show version and exit]' \
+                                    '-V[Show version and exit]' \
+                                    '--quiet[Give less output]' \
+                                    '-q[Give less output]' \
+                                    '--log-file[Path to a verbose non-appending log...]:log-file:_files' \
+                                    '--log[Path to a verbose appending log]:log:_files' \
+                                    '--proxy[Specify a proxy]:proxy' \
+                                    '--timeout[Set the socket timeout]:timeout' \
+                                    '--cert[Path to alternate CA bundle]:cert:_files' \
+                                    '--isolated[Run pip in an isolated mode]' \
+                                    '--retries[Maximum number of retries]:retries' \
+                                    '--trusted-host[Mark this host as trusted]:trusted-host' \
+                                    '--client-cert[Path to SSL client certificate]:client-cert:_files' \
+                                    '--cache-dir[Store the cache data in <dir>]:cache-dir:_files' \
+                                    '--no-cache-dir[Disable the cache]' \
+                                    '--disable-pip-version-check[Don'"'"'t periodically check PyPI...]' \
+                                    '--exists-action[Default action when a path already exists]:exists-action:("s" "i" "w" "b" "a")' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    && ret=0
+
+
+                            ;;
+                            esac
+
+                        ;;
+
+                        esac
+                    ;;
+                    esac
+
+                ;;
+
+                esac
+            ;;
+            freeze)
+
+                # ---- Command: freeze
+                _arguments -s -C \
+                    '1: :->cmd1' \
+                    '--verbose[Give more output]' \
+                    '-v[Give more output]' \
+                    '--version[Show version and exit]' \
+                    '-V[Show version and exit]' \
+                    '--quiet[Give less output]' \
+                    '-q[Give less output]' \
+                    '--log-file[Path to a verbose non-appending log...]:log-file:_files' \
+                    '--log[Path to a verbose appending log]:log:_files' \
+                    '--proxy[Specify a proxy]:proxy' \
+                    '--timeout[Set the socket timeout]:timeout' \
+                    '--cert[Path to alternate CA bundle]:cert:_files' \
+                    '--isolated[Run pip in an isolated mode]' \
+                    '--retries[Maximum number of retries]:retries' \
+                    '--trusted-host[Mark this host as trusted]:trusted-host' \
+                    '--client-cert[Path to SSL client certificate]:client-cert:_files' \
+                    '--cache-dir[Store the cache data in <dir>]:cache-dir:_files' \
+                    '--no-cache-dir[Disable the cache]' \
+                    '--disable-pip-version-check[Don'"'"'t periodically check PyPI...]' \
+                    '--exists-action[Default action when a path already exists]:exists-action:("s" "i" "w" "b" "a")' \
+                    '--help[Show command help]' \
+                    '-h[Show command help]' \
+                    '--requirement[from the given requirements file]:requirement:_files' \
+                    '-r[from the given requirements file]:requirement:_files' \
+                    '--find-links[If a url or path to an html file, then parse for links...]:find-links' \
+                    '-f[If a url or path to an html file, then parse for links...]:find-links' \
+                    '--local[If in a virtualenv that has global access, do not output globally-installed packages]' \
+                    '-l[If in a virtualenv that has global access, do not output globally-installed packages]' \
+                    '--user[Only output packages installed in user-site]' \
+                    '--all[Do not skip pip, setuptools, distribute, wheel]' \
+                    && ret=0
+
+
+            ;;
+            help)
+
+                # ---- Command: help
+                _arguments -s -C \
+                    '1: :->cmd1' \
+                    '2: :->cmd2' \
+                    '*: :->args' \
+                    && ret=0
+
+
+                case $state in
+                cmd2)
+                    _alternative 'args:cmd3:((freeze install list search show uninstall wheel))'
+                ;;
+
+                args)
+                    case $line[2] in
+                    _meta)
+
+                        # ---- Command: help _meta
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '3: :->cmd3' \
+                            '*: :->args' \
+                            && ret=0
+
+
+                        case $state in
+                        cmd3)
+                            _alternative 'args:cmd4:((completion pod))'
+                        ;;
+
+                        args)
+                            case $line[3] in
+                            completion)
+
+                                # ---- Command: help _meta completion
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '4: :->cmd4' \
+                                    '*: :->args' \
+                                    && ret=0
+
+
+                                case $state in
+                                cmd4)
+                                    _alternative 'args:cmd5:((generate))'
+                                ;;
+
+                                args)
+                                    case $line[4] in
+                                    generate)
+
+                                        # ---- Command: help _meta completion generate
+                                        _arguments -s -C \
+                                            '1: :->cmd1' \
+                                            '2: :->cmd2' \
+                                            '3: :->cmd3' \
+                                            '4: :->cmd4' \
+                                            '--verbose[Give more output]' \
+                                            '-v[Give more output]' \
+                                            '--version[Show version and exit]' \
+                                            '-V[Show version and exit]' \
+                                            '--quiet[Give less output]' \
+                                            '-q[Give less output]' \
+                                            '--log-file[Path to a verbose non-appending log...]:log-file:_files' \
+                                            '--log[Path to a verbose appending log]:log:_files' \
+                                            '--proxy[Specify a proxy]:proxy' \
+                                            '--timeout[Set the socket timeout]:timeout' \
+                                            '--cert[Path to alternate CA bundle]:cert:_files' \
+                                            '--isolated[Run pip in an isolated mode]' \
+                                            '--retries[Maximum number of retries]:retries' \
+                                            '--trusted-host[Mark this host as trusted]:trusted-host' \
+                                            '--client-cert[Path to SSL client certificate]:client-cert:_files' \
+                                            '--cache-dir[Store the cache data in <dir>]:cache-dir:_files' \
+                                            '--no-cache-dir[Disable the cache]' \
+                                            '--disable-pip-version-check[Don'"'"'t periodically check PyPI...]' \
+                                            '--exists-action[Default action when a path already exists]:exists-action:("s" "i" "w" "b" "a")' \
+                                            '--help[Show command help]' \
+                                            '-h[Show command help]' \
+                                            '--all[]' \
+                                            && ret=0
+
+
+                                    ;;
+                                    esac
+
+                                ;;
+
+                                esac
+                            ;;
+                            pod)
+
+                                # ---- Command: help _meta pod
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '4: :->cmd4' \
+                                    '*: :->args' \
+                                    && ret=0
+
+
+                                case $state in
+                                cmd4)
+                                    _alternative 'args:cmd5:((generate))'
+                                ;;
+
+                                args)
+                                    case $line[4] in
+                                    generate)
+
+                                        # ---- Command: help _meta pod generate
+                                        _arguments -s -C \
+                                            '1: :->cmd1' \
+                                            '2: :->cmd2' \
+                                            '3: :->cmd3' \
+                                            '4: :->cmd4' \
+                                            '--verbose[Give more output]' \
+                                            '-v[Give more output]' \
+                                            '--version[Show version and exit]' \
+                                            '-V[Show version and exit]' \
+                                            '--quiet[Give less output]' \
+                                            '-q[Give less output]' \
+                                            '--log-file[Path to a verbose non-appending log...]:log-file:_files' \
+                                            '--log[Path to a verbose appending log]:log:_files' \
+                                            '--proxy[Specify a proxy]:proxy' \
+                                            '--timeout[Set the socket timeout]:timeout' \
+                                            '--cert[Path to alternate CA bundle]:cert:_files' \
+                                            '--isolated[Run pip in an isolated mode]' \
+                                            '--retries[Maximum number of retries]:retries' \
+                                            '--trusted-host[Mark this host as trusted]:trusted-host' \
+                                            '--client-cert[Path to SSL client certificate]:client-cert:_files' \
+                                            '--cache-dir[Store the cache data in <dir>]:cache-dir:_files' \
+                                            '--no-cache-dir[Disable the cache]' \
+                                            '--disable-pip-version-check[Don'"'"'t periodically check PyPI...]' \
+                                            '--exists-action[Default action when a path already exists]:exists-action:("s" "i" "w" "b" "a")' \
+                                            '--help[Show command help]' \
+                                            '-h[Show command help]' \
+                                            '--all[]' \
+                                            && ret=0
+
+
+                                    ;;
+                                    esac
+
+                                ;;
+
+                                esac
+                            ;;
+                            esac
+
+                        ;;
+
+                        esac
+                    ;;
+                    freeze)
+
+                        # ---- Command: help freeze
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--verbose[Give more output]' \
+                            '-v[Give more output]' \
+                            '--version[Show version and exit]' \
+                            '-V[Show version and exit]' \
+                            '--quiet[Give less output]' \
+                            '-q[Give less output]' \
+                            '--log-file[Path to a verbose non-appending log...]:log-file:_files' \
+                            '--log[Path to a verbose appending log]:log:_files' \
+                            '--proxy[Specify a proxy]:proxy' \
+                            '--timeout[Set the socket timeout]:timeout' \
+                            '--cert[Path to alternate CA bundle]:cert:_files' \
+                            '--isolated[Run pip in an isolated mode]' \
+                            '--retries[Maximum number of retries]:retries' \
+                            '--trusted-host[Mark this host as trusted]:trusted-host' \
+                            '--client-cert[Path to SSL client certificate]:client-cert:_files' \
+                            '--cache-dir[Store the cache data in <dir>]:cache-dir:_files' \
+                            '--no-cache-dir[Disable the cache]' \
+                            '--disable-pip-version-check[Don'"'"'t periodically check PyPI...]' \
+                            '--exists-action[Default action when a path already exists]:exists-action:("s" "i" "w" "b" "a")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            '--all[]' \
+                            && ret=0
+
+
+                    ;;
+                    install)
+
+                        # ---- Command: help install
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--verbose[Give more output]' \
+                            '-v[Give more output]' \
+                            '--version[Show version and exit]' \
+                            '-V[Show version and exit]' \
+                            '--quiet[Give less output]' \
+                            '-q[Give less output]' \
+                            '--log-file[Path to a verbose non-appending log...]:log-file:_files' \
+                            '--log[Path to a verbose appending log]:log:_files' \
+                            '--proxy[Specify a proxy]:proxy' \
+                            '--timeout[Set the socket timeout]:timeout' \
+                            '--cert[Path to alternate CA bundle]:cert:_files' \
+                            '--isolated[Run pip in an isolated mode]' \
+                            '--retries[Maximum number of retries]:retries' \
+                            '--trusted-host[Mark this host as trusted]:trusted-host' \
+                            '--client-cert[Path to SSL client certificate]:client-cert:_files' \
+                            '--cache-dir[Store the cache data in <dir>]:cache-dir:_files' \
+                            '--no-cache-dir[Disable the cache]' \
+                            '--disable-pip-version-check[Don'"'"'t periodically check PyPI...]' \
+                            '--exists-action[Default action when a path already exists]:exists-action:("s" "i" "w" "b" "a")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            '--all[]' \
+                            && ret=0
+
+
+                    ;;
+                    list)
+
+                        # ---- Command: help list
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--verbose[Give more output]' \
+                            '-v[Give more output]' \
+                            '--version[Show version and exit]' \
+                            '-V[Show version and exit]' \
+                            '--quiet[Give less output]' \
+                            '-q[Give less output]' \
+                            '--log-file[Path to a verbose non-appending log...]:log-file:_files' \
+                            '--log[Path to a verbose appending log]:log:_files' \
+                            '--proxy[Specify a proxy]:proxy' \
+                            '--timeout[Set the socket timeout]:timeout' \
+                            '--cert[Path to alternate CA bundle]:cert:_files' \
+                            '--isolated[Run pip in an isolated mode]' \
+                            '--retries[Maximum number of retries]:retries' \
+                            '--trusted-host[Mark this host as trusted]:trusted-host' \
+                            '--client-cert[Path to SSL client certificate]:client-cert:_files' \
+                            '--cache-dir[Store the cache data in <dir>]:cache-dir:_files' \
+                            '--no-cache-dir[Disable the cache]' \
+                            '--disable-pip-version-check[Don'"'"'t periodically check PyPI...]' \
+                            '--exists-action[Default action when a path already exists]:exists-action:("s" "i" "w" "b" "a")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            '--all[]' \
+                            && ret=0
+
+
+                    ;;
+                    search)
+
+                        # ---- Command: help search
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--verbose[Give more output]' \
+                            '-v[Give more output]' \
+                            '--version[Show version and exit]' \
+                            '-V[Show version and exit]' \
+                            '--quiet[Give less output]' \
+                            '-q[Give less output]' \
+                            '--log-file[Path to a verbose non-appending log...]:log-file:_files' \
+                            '--log[Path to a verbose appending log]:log:_files' \
+                            '--proxy[Specify a proxy]:proxy' \
+                            '--timeout[Set the socket timeout]:timeout' \
+                            '--cert[Path to alternate CA bundle]:cert:_files' \
+                            '--isolated[Run pip in an isolated mode]' \
+                            '--retries[Maximum number of retries]:retries' \
+                            '--trusted-host[Mark this host as trusted]:trusted-host' \
+                            '--client-cert[Path to SSL client certificate]:client-cert:_files' \
+                            '--cache-dir[Store the cache data in <dir>]:cache-dir:_files' \
+                            '--no-cache-dir[Disable the cache]' \
+                            '--disable-pip-version-check[Don'"'"'t periodically check PyPI...]' \
+                            '--exists-action[Default action when a path already exists]:exists-action:("s" "i" "w" "b" "a")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            '--all[]' \
+                            && ret=0
+
+
+                    ;;
+                    show)
+
+                        # ---- Command: help show
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--verbose[Give more output]' \
+                            '-v[Give more output]' \
+                            '--version[Show version and exit]' \
+                            '-V[Show version and exit]' \
+                            '--quiet[Give less output]' \
+                            '-q[Give less output]' \
+                            '--log-file[Path to a verbose non-appending log...]:log-file:_files' \
+                            '--log[Path to a verbose appending log]:log:_files' \
+                            '--proxy[Specify a proxy]:proxy' \
+                            '--timeout[Set the socket timeout]:timeout' \
+                            '--cert[Path to alternate CA bundle]:cert:_files' \
+                            '--isolated[Run pip in an isolated mode]' \
+                            '--retries[Maximum number of retries]:retries' \
+                            '--trusted-host[Mark this host as trusted]:trusted-host' \
+                            '--client-cert[Path to SSL client certificate]:client-cert:_files' \
+                            '--cache-dir[Store the cache data in <dir>]:cache-dir:_files' \
+                            '--no-cache-dir[Disable the cache]' \
+                            '--disable-pip-version-check[Don'"'"'t periodically check PyPI...]' \
+                            '--exists-action[Default action when a path already exists]:exists-action:("s" "i" "w" "b" "a")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            '--all[]' \
+                            && ret=0
+
+
+                    ;;
+                    uninstall)
+
+                        # ---- Command: help uninstall
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--verbose[Give more output]' \
+                            '-v[Give more output]' \
+                            '--version[Show version and exit]' \
+                            '-V[Show version and exit]' \
+                            '--quiet[Give less output]' \
+                            '-q[Give less output]' \
+                            '--log-file[Path to a verbose non-appending log...]:log-file:_files' \
+                            '--log[Path to a verbose appending log]:log:_files' \
+                            '--proxy[Specify a proxy]:proxy' \
+                            '--timeout[Set the socket timeout]:timeout' \
+                            '--cert[Path to alternate CA bundle]:cert:_files' \
+                            '--isolated[Run pip in an isolated mode]' \
+                            '--retries[Maximum number of retries]:retries' \
+                            '--trusted-host[Mark this host as trusted]:trusted-host' \
+                            '--client-cert[Path to SSL client certificate]:client-cert:_files' \
+                            '--cache-dir[Store the cache data in <dir>]:cache-dir:_files' \
+                            '--no-cache-dir[Disable the cache]' \
+                            '--disable-pip-version-check[Don'"'"'t periodically check PyPI...]' \
+                            '--exists-action[Default action when a path already exists]:exists-action:("s" "i" "w" "b" "a")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            '--all[]' \
+                            && ret=0
+
+
+                    ;;
+                    wheel)
+
+                        # ---- Command: help wheel
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--verbose[Give more output]' \
+                            '-v[Give more output]' \
+                            '--version[Show version and exit]' \
+                            '-V[Show version and exit]' \
+                            '--quiet[Give less output]' \
+                            '-q[Give less output]' \
+                            '--log-file[Path to a verbose non-appending log...]:log-file:_files' \
+                            '--log[Path to a verbose appending log]:log:_files' \
+                            '--proxy[Specify a proxy]:proxy' \
+                            '--timeout[Set the socket timeout]:timeout' \
+                            '--cert[Path to alternate CA bundle]:cert:_files' \
+                            '--isolated[Run pip in an isolated mode]' \
+                            '--retries[Maximum number of retries]:retries' \
+                            '--trusted-host[Mark this host as trusted]:trusted-host' \
+                            '--client-cert[Path to SSL client certificate]:client-cert:_files' \
+                            '--cache-dir[Store the cache data in <dir>]:cache-dir:_files' \
+                            '--no-cache-dir[Disable the cache]' \
+                            '--disable-pip-version-check[Don'"'"'t periodically check PyPI...]' \
+                            '--exists-action[Default action when a path already exists]:exists-action:("s" "i" "w" "b" "a")' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            '--all[]' \
+                            && ret=0
+
+
+                    ;;
+                    esac
+
+                ;;
+
+                esac
+            ;;
+            install)
+
+                # ---- Command: install
+                _arguments -s -C \
+                    '1: :->cmd1' \
+                    '--verbose[Give more output]' \
+                    '-v[Give more output]' \
+                    '--version[Show version and exit]' \
+                    '-V[Show version and exit]' \
+                    '--quiet[Give less output]' \
+                    '-q[Give less output]' \
+                    '--log-file[Path to a verbose non-appending log...]:log-file:_files' \
+                    '--log[Path to a verbose appending log]:log:_files' \
+                    '--proxy[Specify a proxy]:proxy' \
+                    '--timeout[Set the socket timeout]:timeout' \
+                    '--cert[Path to alternate CA bundle]:cert:_files' \
+                    '--isolated[Run pip in an isolated mode]' \
+                    '--retries[Maximum number of retries]:retries' \
+                    '--trusted-host[Mark this host as trusted]:trusted-host' \
+                    '--client-cert[Path to SSL client certificate]:client-cert:_files' \
+                    '--cache-dir[Store the cache data in <dir>]:cache-dir:_files' \
+                    '--no-cache-dir[Disable the cache]' \
+                    '--disable-pip-version-check[Don'"'"'t periodically check PyPI...]' \
+                    '--exists-action[Default action when a path already exists]:exists-action:("s" "i" "w" "b" "a")' \
+                    '--help[Show command help]' \
+                    '-h[Show command help]' \
+                    '--requirement[from the given requirements file]:requirement:_files' \
+                    '-r[from the given requirements file]:requirement:_files' \
+                    '--find-links[If a url or path to an html file, then parse for links...]:find-links' \
+                    '-f[If a url or path to an html file, then parse for links...]:find-links' \
+                    '*--no-binary[Do not use binary packages]:no-binary' \
+                    '*--only-binary[Do not use source packages]:only-binary' \
+                    '*--constraint[Constrain versions using the given constraints file]:constraint:_files' \
+                    '*-c[Constrain versions using the given constraints file]:constraint:_files' \
+                    '--editable[Install a project in editable mode]:editable:_files' \
+                    '-e[Install a project in editable mode]:editable:_files' \
+                    '--src[Directory to check out editable projects]:src:_files' \
+                    '--ignore-requires-python[Ignore the Requires-Python information]' \
+                    '--no-deps[Don'"'"'t install package dependencies]' \
+                    '--build[Directory to unpack packages into and build in]:build:_files' \
+                    '-b[Directory to unpack packages into and build in]:build:_files' \
+                    '*--global-option[Extra global options to be supplied to the setup.py...]:global-option' \
+                    '--pre[Include pre-release and development versions]' \
+                    '--no-clean[Don'"'"'t clean up build directories]' \
+                    '--require-hashes[Require a hash to check each requirement...]' \
+                    '--target[Install packages into <dir>]:target:_files' \
+                    '-t[Install packages into <dir>]:target:_files' \
+                    '--download[Download packages into <dir>]:download:_files' \
+                    '-d[Download packages into <dir>]:download:_files' \
+                    '--upgrade[Upgrade all specified packages to the newest...]' \
+                    '-U[Upgrade all specified packages to the newest...]' \
+                    '--upgrade-strategy[Determines how dependency upgrading should be handled]:upgrade-strategy' \
+                    '--force-reinstall[When upgrading, reinstall all packages..]' \
+                    '--ignore-installed[Ignore the installed packages]' \
+                    '-I[Ignore the installed packages]' \
+                    '*--install-option[Extra arguments to be supplied to the setup.py...]:install-option' \
+                    '--user[Install to the Python user install directory]' \
+                    '--system[Install using the system scheme]' \
+                    '--egg[Install packages as eggs, not '"'"'flat'"'"']' \
+                    '--root[Install everything relative to this...]:root:_files' \
+                    '--prefix[Installation prefix...]:prefix:_files' \
+                    '--compile[Compile py files to pyc]' \
+                    '--no-compile[Do not compile py files to pyc]' \
+                    '--no-use-wheel[Do not Find and prefer wheel archives...]' \
+                    '--index-url[Base URL of Python Package Index]:index-url' \
+                    '-i[Base URL of Python Package Index]:index-url' \
+                    '--extra-index-url[Extra URLs of package indexes to use]:extra-index-url' \
+                    '--no-index[Ignore package index]' \
+                    '--process-dependency-links[Enable the processing of dependency links]' \
+                    && ret=0
+
+
+            ;;
+            list)
+
+                # ---- Command: list
+                _arguments -s -C \
+                    '1: :->cmd1' \
+                    '--verbose[Give more output]' \
+                    '-v[Give more output]' \
+                    '--version[Show version and exit]' \
+                    '-V[Show version and exit]' \
+                    '--quiet[Give less output]' \
+                    '-q[Give less output]' \
+                    '--log-file[Path to a verbose non-appending log...]:log-file:_files' \
+                    '--log[Path to a verbose appending log]:log:_files' \
+                    '--proxy[Specify a proxy]:proxy' \
+                    '--timeout[Set the socket timeout]:timeout' \
+                    '--cert[Path to alternate CA bundle]:cert:_files' \
+                    '--isolated[Run pip in an isolated mode]' \
+                    '--retries[Maximum number of retries]:retries' \
+                    '--trusted-host[Mark this host as trusted]:trusted-host' \
+                    '--client-cert[Path to SSL client certificate]:client-cert:_files' \
+                    '--cache-dir[Store the cache data in <dir>]:cache-dir:_files' \
+                    '--no-cache-dir[Disable the cache]' \
+                    '--disable-pip-version-check[Don'"'"'t periodically check PyPI...]' \
+                    '--exists-action[Default action when a path already exists]:exists-action:("s" "i" "w" "b" "a")' \
+                    '--help[Show command help]' \
+                    '-h[Show command help]' \
+                    '--outdated[]' \
+                    '-o[]' \
+                    '--uptodate[]' \
+                    '-u[]' \
+                    '--editable[]' \
+                    '-e[]' \
+                    '--local[]' \
+                    '-l[]' \
+                    '--format[]:format' \
+                    '--not-required[]' \
+                    '--index-url[Base URL of Python Package Index]:index-url' \
+                    '-i[Base URL of Python Package Index]:index-url' \
+                    '--extra-index-url[Extra URLs of package indexes to use]:extra-index-url' \
+                    '--no-index[Ignore package index]' \
+                    '--process-dependency-links[Enable the processing of dependency links]' \
+                    && ret=0
+
+
+            ;;
+            search)
+
+                # ---- Command: search
+                _arguments -s -C \
+                    '1: :->cmd1' \
+                    '--verbose[Give more output]' \
+                    '-v[Give more output]' \
+                    '--version[Show version and exit]' \
+                    '-V[Show version and exit]' \
+                    '--quiet[Give less output]' \
+                    '-q[Give less output]' \
+                    '--log-file[Path to a verbose non-appending log...]:log-file:_files' \
+                    '--log[Path to a verbose appending log]:log:_files' \
+                    '--proxy[Specify a proxy]:proxy' \
+                    '--timeout[Set the socket timeout]:timeout' \
+                    '--cert[Path to alternate CA bundle]:cert:_files' \
+                    '--isolated[Run pip in an isolated mode]' \
+                    '--retries[Maximum number of retries]:retries' \
+                    '--trusted-host[Mark this host as trusted]:trusted-host' \
+                    '--client-cert[Path to SSL client certificate]:client-cert:_files' \
+                    '--cache-dir[Store the cache data in <dir>]:cache-dir:_files' \
+                    '--no-cache-dir[Disable the cache]' \
+                    '--disable-pip-version-check[Don'"'"'t periodically check PyPI...]' \
+                    '--exists-action[Default action when a path already exists]:exists-action:("s" "i" "w" "b" "a")' \
+                    '--help[Show command help]' \
+                    '-h[Show command help]' \
+                    '--index[Base URL of Python Package Index]:index' \
+                    '-i[Base URL of Python Package Index]:index' \
+                    && ret=0
+
+
+            ;;
+            show)
+
+                # ---- Command: show
+                _arguments -s -C \
+                    '1: :->cmd1' \
+                    '--verbose[Give more output]' \
+                    '-v[Give more output]' \
+                    '--version[Show version and exit]' \
+                    '-V[Show version and exit]' \
+                    '--quiet[Give less output]' \
+                    '-q[Give less output]' \
+                    '--log-file[Path to a verbose non-appending log...]:log-file:_files' \
+                    '--log[Path to a verbose appending log]:log:_files' \
+                    '--proxy[Specify a proxy]:proxy' \
+                    '--timeout[Set the socket timeout]:timeout' \
+                    '--cert[Path to alternate CA bundle]:cert:_files' \
+                    '--isolated[Run pip in an isolated mode]' \
+                    '--retries[Maximum number of retries]:retries' \
+                    '--trusted-host[Mark this host as trusted]:trusted-host' \
+                    '--client-cert[Path to SSL client certificate]:client-cert:_files' \
+                    '--cache-dir[Store the cache data in <dir>]:cache-dir:_files' \
+                    '--no-cache-dir[Disable the cache]' \
+                    '--disable-pip-version-check[Don'"'"'t periodically check PyPI...]' \
+                    '--exists-action[Default action when a path already exists]:exists-action:("s" "i" "w" "b" "a")' \
+                    '--help[Show command help]' \
+                    '-h[Show command help]' \
+                    '--files[Show the full list of installed files]' \
+                    '-f[Show the full list of installed files]' \
+                    && ret=0
+
+
+            ;;
+            uninstall)
+
+                # ---- Command: uninstall
+                _arguments -s -C \
+                    '1: :->cmd1' \
+                    '--verbose[Give more output]' \
+                    '-v[Give more output]' \
+                    '--version[Show version and exit]' \
+                    '-V[Show version and exit]' \
+                    '--quiet[Give less output]' \
+                    '-q[Give less output]' \
+                    '--log-file[Path to a verbose non-appending log...]:log-file:_files' \
+                    '--log[Path to a verbose appending log]:log:_files' \
+                    '--proxy[Specify a proxy]:proxy' \
+                    '--timeout[Set the socket timeout]:timeout' \
+                    '--cert[Path to alternate CA bundle]:cert:_files' \
+                    '--isolated[Run pip in an isolated mode]' \
+                    '--retries[Maximum number of retries]:retries' \
+                    '--trusted-host[Mark this host as trusted]:trusted-host' \
+                    '--client-cert[Path to SSL client certificate]:client-cert:_files' \
+                    '--cache-dir[Store the cache data in <dir>]:cache-dir:_files' \
+                    '--no-cache-dir[Disable the cache]' \
+                    '--disable-pip-version-check[Don'"'"'t periodically check PyPI...]' \
+                    '--exists-action[Default action when a path already exists]:exists-action:("s" "i" "w" "b" "a")' \
+                    '--help[Show command help]' \
+                    '-h[Show command help]' \
+                    '--requirement[from the given requirements file]:requirement:_files' \
+                    '-r[from the given requirements file]:requirement:_files' \
+                    '--yes[Don'"'"'t ask for confirmation]' \
+                    '-y[Don'"'"'t ask for confirmation]' \
+                    && ret=0
+
+
+            ;;
+            wheel)
+
+                # ---- Command: wheel
+                _arguments -s -C \
+                    '1: :->cmd1' \
+                    '--verbose[Give more output]' \
+                    '-v[Give more output]' \
+                    '--version[Show version and exit]' \
+                    '-V[Show version and exit]' \
+                    '--quiet[Give less output]' \
+                    '-q[Give less output]' \
+                    '--log-file[Path to a verbose non-appending log...]:log-file:_files' \
+                    '--log[Path to a verbose appending log]:log:_files' \
+                    '--proxy[Specify a proxy]:proxy' \
+                    '--timeout[Set the socket timeout]:timeout' \
+                    '--cert[Path to alternate CA bundle]:cert:_files' \
+                    '--isolated[Run pip in an isolated mode]' \
+                    '--retries[Maximum number of retries]:retries' \
+                    '--trusted-host[Mark this host as trusted]:trusted-host' \
+                    '--client-cert[Path to SSL client certificate]:client-cert:_files' \
+                    '--cache-dir[Store the cache data in <dir>]:cache-dir:_files' \
+                    '--no-cache-dir[Disable the cache]' \
+                    '--disable-pip-version-check[Don'"'"'t periodically check PyPI...]' \
+                    '--exists-action[Default action when a path already exists]:exists-action:("s" "i" "w" "b" "a")' \
+                    '--help[Show command help]' \
+                    '-h[Show command help]' \
+                    '--wheel-dir[]:wheel-dir:_files' \
+                    '-w[]:wheel-dir:_files' \
+                    '--no-use-wheel[]' \
+                    '*--no-binary[Do not use binary packages]:no-binary' \
+                    '*--only-binary[Do not use source packages]:only-binary' \
+                    '--build-option[]:build-option' \
+                    '*--constraint[Constrain versions using the given constraints file]:constraint:_files' \
+                    '*-c[Constrain versions using the given constraints file]:constraint:_files' \
+                    '--editable[Install a project in editable mode]:editable:_files' \
+                    '-e[Install a project in editable mode]:editable:_files' \
+                    '--requirement[from the given requirements file]:requirement:_files' \
+                    '-r[from the given requirements file]:requirement:_files' \
+                    '--src[Directory to check out editable projects]:src:_files' \
+                    '--ignore-requires-python[Ignore the Requires-Python information]' \
+                    '--no-deps[Don'"'"'t install package dependencies]' \
+                    '--build[Directory to unpack packages into and build in]:build:_files' \
+                    '-b[Directory to unpack packages into and build in]:build:_files' \
+                    '*--global-option[Extra global options to be supplied to the setup.py...]:global-option' \
+                    '--pre[Include pre-release and development versions]' \
+                    '--no-clean[Don'"'"'t clean up build directories]' \
+                    '--require-hashes[Require a hash to check each requirement...]' \
+                    && ret=0
+
+
+            ;;
+            esac
+
+        ;;
+
+        esac
+
+}
+
+
+__pip_dynamic_comp() {
+    local argname="$1"
+    local arg="$2"
+    local comp="arg:$argname:(("
+    local line
+    while read -r line; do
+        local name="$line"
+        local desc="$line"
+        name="${name%$'\t'*}"
+        desc="${desc/*$'\t'}"
+        comp="$comp$name"
+        if [[ -n "$desc" && "$name" != "$desc" ]]; then
+            comp="$comp\\:"'"'"$desc"'"'
+        fi
+        comp="$comp "
+    done <<< "$arg"
+
+    comp="$comp))"
+    _alternative "$comp"
+}
+

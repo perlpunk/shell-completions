@@ -2,6 +2,7 @@
 
 Currently it contains bash and zsh completions.
 
+* `cpan`
 * `cpanm`
 * `cpan-upload`
 * `dzil`
@@ -11,6 +12,7 @@ Currently it contains bash and zsh completions.
 * `json_xs`
 * `lwp-request`
 * `morbo`
+* `pip`
 * `plackup`
 * `starman`
 * `tower-cli` (incomplete)
