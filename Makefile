@@ -10,6 +10,7 @@ SCRIPTS= \
     json_xs \
     lwp-request \
     morbo \
+    mpath \
     pip \
     plackup \
     starman \

@@ -1,0 +1,19 @@
+---
+name: mpath
+appspec: { version: 0.001 }
+title: display the full path to a perl module (installed locally)
+
+options:
+- full  --Print module name
+- quiet --Don't print any error when one of the module requested could not be found
+
+parameters:
+- name: module
+  summary: Module names
+  multiple: true
+  type: string
+  completion:
+    command_string: |
+      perl -E'use ExtUtils::Installed;say for ExtUtils::Installed->new(skip_cwd=>1)->modules'
+
+# vim:et:sts=2:sws=2:sw=2:foldmethod=indent

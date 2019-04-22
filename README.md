@@ -12,6 +12,7 @@ Currently it contains bash and zsh completions.
 * `json_xs`
 * `lwp-request`
 * `morbo`
+* `mpath`
 * `pip`
 * `plackup`
 * `starman`
