@@ -1,0 +1,24 @@
+---
+name: json_xs
+appspec: { version: 0.001 }
+title: JSON::XS commandline utility
+
+options:
+- name: f
+  type: string
+  enum: [json, cbor, storable, storable-file, bencode, clzf, eval, yaml, string, none]
+  summary: Read a file in the given format from STDIN
+- name: t
+  type: string
+  enum: [json, json-utf-8, json-pretty, json-utf-16le, json-utf-16be,
+        json-utf-32le, json-utf-32be, cbor, cbor-packed, storable, storable-file,
+        bencode, clzf, yaml, dump, dumper, string, none]
+  summary: Write the file in the given format to STDOUT
+- e=s --Evaluate perl code after reading the data
+
+parameters:
+- name: file
+  summary: File
+  type: file
+
+# vim:et:sts=2:sws=2:sw=2:foldmethod=indent
