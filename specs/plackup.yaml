@@ -4,7 +4,7 @@ appspec: { version: 0.001 }
 title: Run PSGI application with Plack handlers
 
 options:
-- app|a +file         --Specifies the full path to a ".psgi" script
+- app|a +file           --Specifies the full path to a ".psgi" script
 - e=s                   --Evaluates the given perl code as a PSGI app
 - host|o=s              --Binds to a TCP interface
 - port|p=s              --Binds to a TCP port
@@ -17,8 +17,8 @@ options:
 - env|E=s               --Specifies the environment option
 - no-default-middleware --This prevents loading the default middleware stack...
 - reload|r              --Makes plackup restart the server whenever a file...
-- Reload|R +file      --Makes plackup restart the server whenever a given file...
-- access-log +file    --Specifies the pathname of a file where the access log...
+- Reload|R +file        --Makes plackup restart the server whenever a given file...
+- access-log +file      --Specifies the pathname of a file where the access log...
 - path=s                --Specify the root path of your app
 - name: loader
   type: string

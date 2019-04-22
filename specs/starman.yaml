@@ -1,0 +1,54 @@
+---
+name: starman
+appspec: { version: 0.001 }
+title: High-performance preforking PSGI/Plack web server
+
+options:
+- listen|l=s@           --Specifies the TCP address, ports and UNIX domain sockets
+- host=s                --Specifies the address to bind
+- port=s                --Specifies the port to bind
+- socket|S +file        --Specifies the path to UNIX domain socket to bind
+- workers=i             --Specifies the number of worker pool
+- backlog=i             --Specifies the number of backlog (listen queue size)...
+- max-requests          --Number of the requests to process per one worker process
+- preload-app           --This option lets Starman preload the specified PSGI application...
+- disable-keepalive     --Disable Keep-alive persistent connections
+- keepalive-timeout=i   --The number of seconds Starman will wait for a subsequent request
+- read-timeout=i        --The number of seconds Starman will wait for a request on a new...
+- user=s                --To listen on a low-numbered (<1024) port...
+- group=s               --Specify the group id or group name that the server...
+- pid +file             --Specify the pid file path
+- error-log +file       --Specify the pathname of a file where the error log...
+- ssl-cert +file        --Specify the path to SSL certificate file
+- ssl-key +file         --Specify the path to SSL key file
+- enable-ssl            --Enable SSL on all TCP sockets
+- disable-proctitle     --Disable the behavior to set proctitle to "starman (master)"
+
+# plackup options
+- app|a +file           --Specifies the full path to a ".psgi" script
+- e=s                   --Evaluates the given perl code as a PSGI app
+- server|s=s            --Selects a specific server implementation to run on
+- socket|S=s            --Listens on a UNIX domain socket path
+- daemonize|D           --Makes the process run in the background
+- I=s@                  --Specifies Perl library include paths
+- M=s@                  --Loads the named modules before loading the app's code
+- env|E=s               --Specifies the environment option
+- no-default-middleware --This prevents loading the default middleware stack...
+- reload|r              --Makes plackup restart the server whenever a file...
+- Reload|R +file        --Makes plackup restart the server whenever a given file...
+- access-log +file      --Specifies the pathname of a file where the access log...
+- path=s                --Specify the root path of your app
+- name: loader
+  type: string
+# TODO colon needs to be escaped in zsh
+#  enum: [Plack::Loader, Restarter, Delayed, Shotgun]
+  enum: [Restarter, Delayed, Shotgun]
+  summary: Specifies the server loading subclass
+  aliases: [L]
+
+parameters:
+- name: file
+  summary: File
+  type: file
+
+# vim:et:sts=2:sws=2:sw=2:foldmethod=indent

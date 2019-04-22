@@ -1,0 +1,16 @@
+---
+name: hypnotoad
+appspec: { version: 0.001 }
+title: Hypnotoad HTTP and WebSocket server
+
+options:
+- foreground|f  --Keep manager process in foreground
+- stop|s        --Stop server gracefully
+- test|t        --Test application and exit
+
+parameters:
+- name: file
+  summary: File
+  type: file
+
+# vim:et:sts=2:sws=2:sw=2:foldmethod=indent

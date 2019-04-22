@@ -5,12 +5,14 @@ Currently it contains bash and zsh completions.
 * `cpanm`
 * `cpan-upload`
 * `dzil`
+* `hypnotoad`
 * `jq`
 * `json_pp`
 * `json_xs`
 * `lwp-request`
 * `morbo`
 * `plackup`
+* `starman`
 * `tower-cli` (incomplete)
 * `ysh`
 

@@ -3,12 +3,14 @@ SCRIPTS= \
     cpanm \
     cpan-upload \
     dzil \
+    hypnotoad \
     jq \
     json_pp \
     json_xs \
     lwp-request \
     morbo \
     plackup \
+    starman \
     tower-cli \
     ysh \
 
