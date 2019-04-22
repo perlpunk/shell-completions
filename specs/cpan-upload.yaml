@@ -1,0 +1,22 @@
+---
+name: cpan-upload
+appspec: { version: 0.001 }
+title: upload a distribution to the CPAN
+
+options:
+- verbose|v         --enable verbose logging
+- dry-run           --do not actually upload anything
+- user|u=s          --your PAUSE username
+- password|p=s      --the password to your PAUSE account
+- directory|d +file --a dir in your CPAN space in which to put the file
+- http-proxy        --URL of the http proxy to use in uploading
+- ignore-errors     --instead of aborting, continue to next file on error
+- config|c +file    --config file to use; defaults to ~/.pause
+- md5               --compute MD5 checksums of the files
+
+parameters:
+- name: file
+  summary: File
+  type: file
+
+# vim:et:sts=2:sws=2:sw=2:foldmethod=indent
