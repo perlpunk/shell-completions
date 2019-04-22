@@ -4,7 +4,7 @@ appspec: { version: 0.001 }
 title: JSON::PP command utility
 
 options:
-- name: from
+- name: f
   type: string
   enum: [json, eval]
   summary: Reads a data in the given format from STDIN

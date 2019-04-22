@@ -14,11 +14,11 @@ _json_pp() {
     MYWORDS=("${COMP_WORDS[@]:1:$COMP_CWORD}")
 
     FLAGS=('-v' 'Verbose option, but currently no action in fact' '-V' 'Prints version and exits' '--help' 'Show command help' '-h' 'Show command help')
-    OPTIONS=('--from' 'Reads a data in the given format from STDIN' '-t' 'Writes a data in the given format to STDOUT' '--json_opt' 'options to JSON::PP')
+    OPTIONS=('-f' 'Reads a data in the given format from STDIN' '-t' 'Writes a data in the given format to STDOUT' '--json_opt' 'options to JSON::PP')
     __json_pp_handle_options_flags
 
     case ${MYWORDS[$INDEX-1]} in
-      --from)
+      -f)
         _json_pp_compreply "'json'"$'\n'"'eval'"
         return
       ;;

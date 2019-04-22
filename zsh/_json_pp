@@ -9,7 +9,7 @@ _json_pp() {
         # ---- Command: 
         _arguments -s  \
             '1: :->file' \
-            '--from[Reads a data in the given format from STDIN]:from:("json" "eval")' \
+            '-f[Reads a data in the given format from STDIN]:f:("json" "eval")' \
             '-t[Writes a data in the given format to STDOUT]:t:("null" "json" "dumper")' \
             '--json_opt[options to JSON::PP]:json_opt:("ascii" "latin1" "utf8" "pretty" "indent" "space_before" "space_after" "relaxed" "canonical" "allow_nonref" "allow_singlequote" "allow_barekey" "allow_bignum" "loose" "escape_slash")' \
             '-v[Verbose option, but currently no action in fact]' \
