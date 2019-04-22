@@ -1,0 +1,39 @@
+---
+name: lwp-request
+appspec: { version: 0.001 }
+title: Simple command line user agent
+
+options:
+- name: m
+  type: string
+  enum: [GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH]
+  summary: use method for the request (default is 'GET')
+- f        --make request even if lwp-request believes method is illegal
+- b=s      --Use the specified URL as base
+- t=i      --Set timeout value
+- i=s      --Set the If-Modified-Since header on the request
+- c=s      --use this content-type for POST, PUT, CHECKIN
+- a        --Use text mode for content I/O
+- p=s      --use this as a proxy
+- P        --don't load proxy settings from environment
+- H=s      --send this HTTP header (you can specify several)
+- C=s      --provide credentials for basic authentication (<username>:<password>)
+- u        --Display method and URL before any response
+- U        --Display request headers (implies -u)
+- s        --Display response status code
+- S        --Display response status chain (implies -u)
+- e        --Display response headers (implies -s)
+- E        --Display whole chain of headers (implies -S and -U)
+- d        --Do not display content
+- v        --Show program version
+- name: o
+  type: string
+  enum: [text, ps, links, html, dump]
+  summary: Process HTML content in various ways
+
+parameters:
+- name: url
+  summary: URL
+  type: string
+
+# vim:et:sts=2:sws=2:sw=2:foldmethod=indent
