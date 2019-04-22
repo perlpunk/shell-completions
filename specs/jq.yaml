@@ -33,5 +33,8 @@ parameters:
 - name: filter
   summary: Filter
   type: string
+- name: files
+  summary: Files
+  type: file
 # vim:et:sts=2:sws=2:sw=2:foldmethod=indent
 

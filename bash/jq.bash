@@ -36,6 +36,9 @@ _jq() {
       0)
           __comp_current_options || return
       ;;
+      1)
+          __comp_current_options || return
+      ;;
 
 
     *)

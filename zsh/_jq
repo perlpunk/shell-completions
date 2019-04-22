@@ -9,6 +9,7 @@ _jq() {
         # ---- Command: 
         _arguments -s  \
             '1: :->filter' \
+            '2: :->files' \
             '--arg[pre-set a variable to a string]:arg' \
             '--argjson[pre-set a variable to an object]' \
             '--ascii-output[restrict output to ASCII]' \
@@ -51,6 +52,9 @@ _jq() {
         case $state in
         filter)
 
+        ;;
+        files)
+_files
         ;;
         esac
 
