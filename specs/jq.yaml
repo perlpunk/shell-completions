@@ -12,7 +12,10 @@ options:
 - compact-output|c      --don't pretty-print
 - exit-status|e         --report "false" and "null" results via exit code
 - from-file|f +file     --read filter from file
-- indent=i              --indent output using given number of spaces
+- name: indent
+  type: integer
+  enum: [1,2,3,4,5,6,7,8]
+  summary: indent output using given number of spaces
 - join-output|j         --like -r, without newlines between outputs
 - L +dir                --prepend a directory to the module search path
 - monochrome-output|M   --output without color

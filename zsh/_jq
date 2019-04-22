@@ -22,7 +22,7 @@ _jq() {
             '-e[report "false" and "null" results via exit code]' \
             '--from-file[read filter from file]:from-file:_files' \
             '-f[read filter from file]:from-file:_files' \
-            '--indent[indent output using given number of spaces]:indent' \
+            '--indent[indent output using given number of spaces]:indent:("1" "2" "3" "4" "5" "6" "7" "8")' \
             '--join-output[like -r, without newlines between outputs]' \
             '-j[like -r, without newlines between outputs]' \
             '-L[prepend a directory to the module search path]:L:_files' \
