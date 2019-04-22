@@ -2,10 +2,15 @@
 
 Currently it contains bash and zsh completions.
 
-* cpanm
-* dzil
-* jq
-* tower-cli (incomplete)
+* `cpanm`
+* `cpan-upload`
+* `dzil`
+* `jq`
+* `json_pp`
+* `json_xs`
+* `lwp-request`
+* `tower-cli` (incomplete)
+* `ysh`
 
 The specifications for completion can be found under `specs`. They are written
 in YAML and converted to shell completions with the `appspec` tool (see
