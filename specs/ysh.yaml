@@ -1,0 +1,24 @@
+---
+name: ysh
+appspec: { version: 0.001 }
+title: The YAML Test Shell
+
+options:
+- M --Set the YAML implementation module you wish
+- l --Keep a log of all ysh activity in './ysh.log'. Append mode
+- L --Keep a log of all ysh activity in './ysh.log'. Delete first
+- r --Test roundtripping
+- R --Same as -r, except that a confirmation message will be printed when the roundtrip succeeds
+- name: i
+  type: integer
+  enum: [1,2,3,4,5,6,7,8]
+  summary: Specify the number of characters to indent each level
+- v --Print the versions of ysh and the YAML implementation module in use
+- V --Like -v, and print the versions of YAML related modules
+
+parameters:
+- name: file
+  summary: File
+  type: file
+
+# vim:et:sts=2:sws=2:sw=2:foldmethod=indent
