@@ -1,0 +1,29 @@
+---
+name: json_pp
+appspec: { version: 0.001 }
+title: JSON::PP command utility
+
+options:
+- name: from
+  type: string
+  enum: [json, eval]
+  summary: Reads a data in the given format from STDIN
+- name: t
+  type: string
+  enum: ['null', json, dumper]
+  summary: Writes a data in the given format to STDOUT
+- name: json_opt
+  type: string
+  enum: [ascii, latin1, utf8, pretty, indent, space_before, space_after,
+    relaxed, canonical, allow_nonref, allow_singlequote, allow_barekey,
+    allow_bignum, loose, escape_slash]
+  summary: options to JSON::PP
+- v  --Verbose option, but currently no action in fact
+- V  --Prints version and exits
+
+parameters:
+- name: file
+  summary: File
+  type: file
+
+# vim:et:sts=2:sws=2:sw=2:foldmethod=indent
