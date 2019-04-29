@@ -1,5 +1,5 @@
 
-SCRIPTS= \
+SCRIPTS = \
     cpan \
     cpanm \
     cpan-upload \
@@ -17,10 +17,10 @@ SCRIPTS= \
     tower-cli \
     ysh \
 
-completion:
-	for script in $(SCRIPTS); do \
-		echo $$script; \
-		appspec completion specs/$$script.yaml --bash > bash/$$script.bash; \
-		appspec completion specs/$$script.yaml --zsh > zsh/_$$script; \
-	done
+all: $(SCRIPTS)
+
+$(SCRIPTS):
+		@echo "=== $@"
+		appspec completion specs/$@.yaml --bash > bash/$@.bash
+		appspec completion specs/$@.yaml --zsh > zsh/_$@
 
