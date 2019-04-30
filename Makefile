@@ -1,4 +1,6 @@
 
+TASK = shells
+
 SCRIPTS = \
     cpan \
     cpanm \
@@ -17,10 +19,27 @@ SCRIPTS = \
     tower-cli \
     ysh \
 
-all: $(SCRIPTS)
+all: check $(SCRIPTS)
+
+bash: TASK = bash
+zsh: TASK = zsh
+
+bash zsh: check $(SCRIPTS)
 
 $(SCRIPTS):
-		@echo "=== $@"
-		appspec completion specs/$@.yaml --bash > bash/$@.bash
-		appspec completion specs/$@.yaml --zsh > zsh/_$@
+	$(MAKE) $(TASK)-$@
 
+zsh/_%: specs/%.yaml
+	appspec completion $< --zsh > $@
+
+bash/%.bash: specs/%.yaml
+	appspec completion $< --bash > $@
+
+zsh-%: zsh/_% ;
+
+bash-%: bash/%.bash ;
+
+shells-%: zsh/_% bash/%.bash ;
+
+check:
+	@which appspec || (echo "appspec not installed" && exit 1)
