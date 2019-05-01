@@ -1,33 +1,17 @@
 
-TASK = shells
+BASH = $(wildcard bash/*.bash)
+ZSH = $(wildcard zsh/_*)
 
-SCRIPTS = \
-    cpan \
-    cpanm \
-    cpan-upload \
-    dzil \
-    hypnotoad \
-    jq \
-    json_pp \
-    json_xs \
-    lwp-request \
-    morbo \
-    mpath \
-    pip \
-    plackup \
-    starman \
-    tower-cli \
-    ysh \
+SCRIPTS = $(notdir $(basename $(wildcard specs/*.yaml) ) )
 
-all: check $(SCRIPTS)
-
-bash: TASK = bash
-zsh: TASK = zsh
-
-bash zsh: check $(SCRIPTS)
+all: bash zsh
 
 $(SCRIPTS):
-	$(MAKE) $(TASK)-$@
+	$(MAKE) bash/$@.bash
+	$(MAKE) zsh/_$@
+
+zsh: check $(ZSH)
+bash: check $(BASH)
 
 zsh/_%: specs/%.yaml
 	appspec completion $< --zsh > $@
@@ -35,11 +19,5 @@ zsh/_%: specs/%.yaml
 bash/%.bash: specs/%.yaml
 	appspec completion $< --bash > $@
 
-zsh-%: zsh/_% ;
-
-bash-%: bash/%.bash ;
-
-shells-%: zsh/_% bash/%.bash ;
-
 check:
-	@which appspec || (echo "appspec not installed" && exit 1)
+	@which appspec >/dev/null || (echo "appspec not installed" && exit 1)
