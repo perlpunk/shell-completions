@@ -4,7 +4,7 @@ ZSH = $(wildcard zsh/_*)
 
 SCRIPTS = $(notdir $(basename $(wildcard specs/*.yaml) ) )
 
-all: bash zsh
+all: bash zsh README.md
 
 $(SCRIPTS):
 	$(MAKE) bash/$@.bash
@@ -21,3 +21,6 @@ bash/%.bash: specs/%.yaml
 
 check:
 	@which appspec >/dev/null || (echo "appspec not installed" && exit 1)
+
+README.md: specs/*.yaml
+	perl tools/update-readme.pl

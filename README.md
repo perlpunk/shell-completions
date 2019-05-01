@@ -1,29 +1,37 @@
-## Collection of shell completion scripts for various command line tools
+## Collection of shell tab completion scripts for various command line tools
 
-Currently it contains bash and zsh completions.
+These scripts are automatically generated from YAML files which can be found
+under `specs/`.
 
-* `cpan`
-* `cpanm`
-* `cpan-upload`
-* `dzil`
-* `hypnotoad`
-* `jq`
-* `json_pp`
-* `json_xs`
-* `lwp-request`
-* `morbo`
-* `mpath`
-* `pip`
-* `plackup`
-* `starman`
-* `tower-cli` (incomplete)
-* `ysh`
+The format supports nested subcommands, specifying enums for possible
+parameters/option values and dynamic completion calling an external
+command.
 
-The specifications for completion can be found under `specs`. They are written
-in YAML and converted to shell completions with the `appspec` tool (see
+The generation is done with the `appspec` tool (see
 https://github.com/perlpunk/App-Spec-p5 and
-https://github.com/perlpunk/App-AppSpec-p5).
-Instructions on how to install `appspec` and use it will follow.
+https://github.com/perlpunk/App-AppSpec-p5).  Instructions on how to install
+`appspec` and use it will follow.
+
+Currently it supports bash and zsh completions.
+
+## List of commands
+
+* `cpan-upload` - upload a distribution to the CPAN
+* `cpan` - easily interact with CPAN from the command line
+* `cpanm` - Install CPAN modules
+* `dzil` - do stuff with your dist
+* `hypnotoad` - Hypnotoad HTTP and WebSocket server
+* `jq` - Command-line JSON processor
+* `json_pp` - JSON::PP command utility
+* `json_xs` - JSON::XS commandline utility
+* `lwp-request` - Simple command line user agent
+* `morbo` - Morbo HTTP and WebSocket development server
+* `mpath` - display the full path to a perl module (installed locally)
+* `pip` - A tool for installing and managing Python packages
+* `plackup` - Run PSGI application with Plack handlers
+* `starman` - High-performance preforking PSGI/Plack web server
+* `tower-cli` - Ansible Tower Commandline
+* `ysh` - The YAML Test Shell
 
 ## Installation
 
@@ -48,3 +56,9 @@ If you just updated an existing completion script, it's enough to source it:
 
     source /path/to/shell-completions/zsh/_scriptname
 
+## See Also
+
+* https://github.com/zsh-users/zsh-completions - Over 130 completion scripts
+  for zsh
+* https://github.com/complete-shell - A different approach for generating
+  completions
