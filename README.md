@@ -8,9 +8,7 @@ parameters/option values and dynamic completion calling an external
 command.
 
 The generation is done with the `appspec` tool (see
-https://github.com/perlpunk/App-Spec-p5 and
-https://github.com/perlpunk/App-AppSpec-p5).  Instructions on how to install
-`appspec` and use it will follow.
+https://github.com/perlpunk/App-AppSpec-p5 for installation and usage)
 
 Currently it supports bash and zsh completions.
 
