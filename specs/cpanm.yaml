@@ -71,6 +71,8 @@ options:
 parameters:
 - name: Modules
   summary: Names of modules to install
-  type: string
+  # Can be a filename or directory, too
+  type: file
+
 # vim:et:sts=2:sws=2:sw=2:foldmethod=indent
 

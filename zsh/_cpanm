@@ -84,7 +84,7 @@ _cpanm() {
 
         case $state in
         Modules)
-
+_files
         ;;
         esac
 

@@ -39,7 +39,7 @@ _cpan() {
 
         case $state in
         Modules)
-
+_files
         ;;
         esac
 
