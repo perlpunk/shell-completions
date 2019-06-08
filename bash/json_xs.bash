@@ -1,17 +1,19 @@
 #!bash
 
+# Generated with perl module App::Spec v0.009
+
 _json_xs() {
 
     COMPREPLY=()
     local program=json_xs
-    local cur=${COMP_WORDS[$COMP_CWORD]}
-#    echo "COMP_CWORD:$COMP_CWORD cur:$cur" >>/tmp/comp
+    local cur prev words cword
+    _init_completion -n : || return
     declare -a FLAGS
     declare -a OPTIONS
     declare -a MYWORDS
 
-    local INDEX=`expr $COMP_CWORD - 1`
-    MYWORDS=("${COMP_WORDS[@]:1:$COMP_CWORD}")
+    local INDEX=`expr $cword - 1`
+    MYWORDS=("${words[@]:1:$cword}")
 
     FLAGS=('--help' 'Show command help' '-h' 'Show command help')
     OPTIONS=('-f' 'Read a file in the given format from STDIN' '-t' 'Write the file in the given format to STDOUT' '-e' 'Evaluate perl code after reading the data')
@@ -19,11 +21,11 @@ _json_xs() {
 
     case ${MYWORDS[$INDEX-1]} in
       -f)
-        _json_xs_compreply "'json'"$'\n'"'cbor'"$'\n'"'storable'"$'\n'"'storable-file'"$'\n'"'bencode'"$'\n'"'clzf'"$'\n'"'eval'"$'\n'"'yaml'"$'\n'"'string'"$'\n'"'none'"
+        _json_xs_compreply "json" "cbor" "storable" "storable-file" "bencode" "clzf" "eval" "yaml" "string" "none"
         return
       ;;
       -t)
-        _json_xs_compreply "'json'"$'\n'"'json-utf-8'"$'\n'"'json-pretty'"$'\n'"'json-utf-16le'"$'\n'"'json-utf-16be'"$'\n'"'json-utf-32le'"$'\n'"'json-utf-32be'"$'\n'"'cbor'"$'\n'"'cbor-packed'"$'\n'"'storable'"$'\n'"'storable-file'"$'\n'"'bencode'"$'\n'"'clzf'"$'\n'"'yaml'"$'\n'"'dump'"$'\n'"'dumper'"$'\n'"'string'"$'\n'"'none'"
+        _json_xs_compreply "json" "json-utf-8" "json-pretty" "json-utf-16le" "json-utf-16be" "json-utf-32le" "json-utf-32be" "cbor" "cbor-packed" "storable" "storable-file" "bencode" "clzf" "yaml" "dump" "dumper" "string" "none"
         return
       ;;
       -e)
@@ -44,12 +46,15 @@ _json_xs() {
 }
 
 _json_xs_compreply() {
-    IFS=$'\n' COMPREPLY=($(compgen -W "$1" -- ${COMP_WORDS[COMP_CWORD]}))
+    local prefix=""
+    cur="$(printf '%q' "$cur")"
+    IFS=$'\n' COMPREPLY=($(compgen -P "$prefix" -W "$*" -- "$cur"))
+    __ltrim_colon_completions "$prefix$cur"
 
     # http://stackoverflow.com/questions/7267185/bash-autocompletion-add-description-for-possible-completions
     if [[ ${#COMPREPLY[*]} -eq 1 ]]; then # Only one completion
-        COMPREPLY=( ${COMPREPLY[0]%% -- *} ) # Remove ' -- ' and everything after
-        COMPREPLY=( ${COMPREPLY[0]%% *} ) # Remove trailing spaces
+        COMPREPLY=( "${COMPREPLY[0]%% -- *}" ) # Remove ' -- ' and everything after
+        COMPREPLY=( "${COMPREPLY[0]%%+( )}" ) # Remove trailing spaces
     fi
 }
 
@@ -57,7 +62,8 @@ _json_xs_compreply() {
 __json_xs_dynamic_comp() {
     local argname="$1"
     local arg="$2"
-    local comp name desc cols desclength formatted
+    local name desc cols desclength formatted
+    local comp=()
     local max=0
 
     while read -r line; do
@@ -80,12 +86,12 @@ __json_xs_dynamic_comp() {
             [[ -z $cols ]] && cols=80
             desclength=`expr $cols - 4 - $max`
             formatted=`printf "%-*s -- %-*s" "$max" "$name" "$desclength" "$desc"`
-            comp="$comp$formatted"$'\n'
+            comp+=("$formatted")
         else
-            comp="$comp'$name'"$'\n'
+            comp+=("'$name'")
         fi
     done <<< "$arg"
-    _json_xs_compreply "$comp"
+    _json_xs_compreply ${comp[@]}
 }
 
 function __json_xs_handle_options() {

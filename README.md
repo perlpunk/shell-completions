@@ -35,6 +35,10 @@ Currently it supports bash and zsh completions.
 
     git clone https://github.com/perlpunk/shell-completions
 
+## Usage
+
+Look into the `spec/commandname.yaml` for specific usage instructions.
+
 ### Bash
 
 Put this in your `.bashrc`:

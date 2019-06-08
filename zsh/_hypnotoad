@@ -1,5 +1,7 @@
 #compdef hypnotoad
 
+# Generated with perl module App::Spec v0.009
+
 _hypnotoad() {
     local program=hypnotoad
     typeset -A opt_args

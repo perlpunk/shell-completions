@@ -1,17 +1,19 @@
 #!bash
 
+# Generated with perl module App::Spec v0.009
+
 _json_pp() {
 
     COMPREPLY=()
     local program=json_pp
-    local cur=${COMP_WORDS[$COMP_CWORD]}
-#    echo "COMP_CWORD:$COMP_CWORD cur:$cur" >>/tmp/comp
+    local cur prev words cword
+    _init_completion -n : || return
     declare -a FLAGS
     declare -a OPTIONS
     declare -a MYWORDS
 
-    local INDEX=`expr $COMP_CWORD - 1`
-    MYWORDS=("${COMP_WORDS[@]:1:$COMP_CWORD}")
+    local INDEX=`expr $cword - 1`
+    MYWORDS=("${words[@]:1:$cword}")
 
     FLAGS=('-v' 'Verbose option, but currently no action in fact' '-V' 'Prints version and exits' '--help' 'Show command help' '-h' 'Show command help')
     OPTIONS=('-f' 'Reads a data in the given format from STDIN' '-t' 'Writes a data in the given format to STDOUT' '--json_opt' 'options to JSON::PP')
@@ -19,15 +21,15 @@ _json_pp() {
 
     case ${MYWORDS[$INDEX-1]} in
       -f)
-        _json_pp_compreply "'json'"$'\n'"'eval'"
+        _json_pp_compreply "json" "eval"
         return
       ;;
       -t)
-        _json_pp_compreply "'null'"$'\n'"'json'"$'\n'"'dumper'"
+        _json_pp_compreply "null" "json" "dumper"
         return
       ;;
       --json_opt)
-        _json_pp_compreply "'ascii'"$'\n'"'latin1'"$'\n'"'utf8'"$'\n'"'pretty'"$'\n'"'indent'"$'\n'"'space_before'"$'\n'"'space_after'"$'\n'"'relaxed'"$'\n'"'canonical'"$'\n'"'allow_nonref'"$'\n'"'allow_singlequote'"$'\n'"'allow_barekey'"$'\n'"'allow_bignum'"$'\n'"'loose'"$'\n'"'escape_slash'"
+        _json_pp_compreply "ascii" "latin1" "utf8" "pretty" "indent" "space_before" "space_after" "relaxed" "canonical" "allow_nonref" "allow_singlequote" "allow_barekey" "allow_bignum" "loose" "escape_slash"
         return
       ;;
 
@@ -46,12 +48,15 @@ _json_pp() {
 }
 
 _json_pp_compreply() {
-    IFS=$'\n' COMPREPLY=($(compgen -W "$1" -- ${COMP_WORDS[COMP_CWORD]}))
+    local prefix=""
+    cur="$(printf '%q' "$cur")"
+    IFS=$'\n' COMPREPLY=($(compgen -P "$prefix" -W "$*" -- "$cur"))
+    __ltrim_colon_completions "$prefix$cur"
 
     # http://stackoverflow.com/questions/7267185/bash-autocompletion-add-description-for-possible-completions
     if [[ ${#COMPREPLY[*]} -eq 1 ]]; then # Only one completion
-        COMPREPLY=( ${COMPREPLY[0]%% -- *} ) # Remove ' -- ' and everything after
-        COMPREPLY=( ${COMPREPLY[0]%% *} ) # Remove trailing spaces
+        COMPREPLY=( "${COMPREPLY[0]%% -- *}" ) # Remove ' -- ' and everything after
+        COMPREPLY=( "${COMPREPLY[0]%%+( )}" ) # Remove trailing spaces
     fi
 }
 
@@ -59,7 +64,8 @@ _json_pp_compreply() {
 __json_pp_dynamic_comp() {
     local argname="$1"
     local arg="$2"
-    local comp name desc cols desclength formatted
+    local name desc cols desclength formatted
+    local comp=()
     local max=0
 
     while read -r line; do
@@ -82,12 +88,12 @@ __json_pp_dynamic_comp() {
             [[ -z $cols ]] && cols=80
             desclength=`expr $cols - 4 - $max`
             formatted=`printf "%-*s -- %-*s" "$max" "$name" "$desclength" "$desc"`
-            comp="$comp$formatted"$'\n'
+            comp+=("$formatted")
         else
-            comp="$comp'$name'"$'\n'
+            comp+=("'$name'")
         fi
     done <<< "$arg"
-    _json_pp_compreply "$comp"
+    _json_pp_compreply ${comp[@]}
 }
 
 function __json_pp_handle_options() {

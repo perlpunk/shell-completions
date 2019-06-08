@@ -1,17 +1,19 @@
 #!bash
 
+# Generated with perl module App::Spec v0.009
+
 _pip() {
 
     COMPREPLY=()
     local program=pip
-    local cur=${COMP_WORDS[$COMP_CWORD]}
-#    echo "COMP_CWORD:$COMP_CWORD cur:$cur" >>/tmp/comp
+    local cur prev words cword
+    _init_completion -n : || return
     declare -a FLAGS
     declare -a OPTIONS
     declare -a MYWORDS
 
-    local INDEX=`expr $COMP_CWORD - 1`
-    MYWORDS=("${COMP_WORDS[@]:1:$COMP_CWORD}")
+    local INDEX=`expr $cword - 1`
+    MYWORDS=("${words[@]:1:$cword}")
 
     FLAGS=('--verbose' 'Give more output' '-v' 'Give more output' '--version' 'Show version and exit' '-V' 'Show version and exit' '--quiet' 'Give less output' '-q' 'Give less output' '--isolated' 'Run pip in an isolated mode' '--no-cache-dir' 'Disable the cache' '--disable-pip-version-check' 'Don'"\\'"'t periodically check PyPI...' '--help' 'Show command help' '-h' 'Show command help')
     OPTIONS=('--log-file' 'Path to a verbose non-appending log...' '--log' 'Path to a verbose appending log' '--proxy' 'Specify a proxy' '--timeout' 'Set the socket timeout' '--cert' 'Path to alternate CA bundle' '--retries' 'Maximum number of retries' '--trusted-host' 'Mark this host as trusted' '--client-cert' 'Path to SSL client certificate' '--cache-dir' 'Store the cache data in <dir>' '--exists-action' 'Default action when a path already exists')
@@ -75,7 +77,7 @@ _pip() {
                   --cache-dir)
                   ;;
                   --exists-action)
-                    _pip_compreply "'s'"$'\n'"'i'"$'\n'"'w'"$'\n'"'b'"$'\n'"'a'"
+                    _pip_compreply "s" "i" "w" "b" "a"
                     return
                   ;;
                   --name)
@@ -144,7 +146,7 @@ _pip() {
           --cache-dir)
           ;;
           --exists-action)
-            _pip_compreply "'s'"$'\n'"'i'"$'\n'"'w'"$'\n'"'b'"$'\n'"'a'"
+            _pip_compreply "s" "i" "w" "b" "a"
             return
           ;;
           --requirement|-r)
@@ -289,7 +291,7 @@ _pip() {
           --cache-dir)
           ;;
           --exists-action)
-            _pip_compreply "'s'"$'\n'"'i'"$'\n'"'w'"$'\n'"'b'"$'\n'"'a'"
+            _pip_compreply "s" "i" "w" "b" "a"
             return
           ;;
           --requirement|-r)
@@ -359,7 +361,7 @@ _pip() {
           --cache-dir)
           ;;
           --exists-action)
-            _pip_compreply "'s'"$'\n'"'i'"$'\n'"'w'"$'\n'"'b'"$'\n'"'a'"
+            _pip_compreply "s" "i" "w" "b" "a"
             return
           ;;
           --format)
@@ -400,7 +402,7 @@ _pip() {
           --cache-dir)
           ;;
           --exists-action)
-            _pip_compreply "'s'"$'\n'"'i'"$'\n'"'w'"$'\n'"'b'"$'\n'"'a'"
+            _pip_compreply "s" "i" "w" "b" "a"
             return
           ;;
           --index|-i)
@@ -437,7 +439,7 @@ _pip() {
           --cache-dir)
           ;;
           --exists-action)
-            _pip_compreply "'s'"$'\n'"'i'"$'\n'"'w'"$'\n'"'b'"$'\n'"'a'"
+            _pip_compreply "s" "i" "w" "b" "a"
             return
           ;;
 
@@ -473,7 +475,7 @@ _pip() {
           --cache-dir)
           ;;
           --exists-action)
-            _pip_compreply "'s'"$'\n'"'i'"$'\n'"'w'"$'\n'"'b'"$'\n'"'a'"
+            _pip_compreply "s" "i" "w" "b" "a"
             return
           ;;
           --requirement|-r)
@@ -511,7 +513,7 @@ _pip() {
           --cache-dir)
           ;;
           --exists-action)
-            _pip_compreply "'s'"$'\n'"'i'"$'\n'"'w'"$'\n'"'b'"$'\n'"'a'"
+            _pip_compreply "s" "i" "w" "b" "a"
             return
           ;;
           --wheel-dir|-w)
@@ -551,12 +553,15 @@ _pip() {
 }
 
 _pip_compreply() {
-    IFS=$'\n' COMPREPLY=($(compgen -W "$1" -- ${COMP_WORDS[COMP_CWORD]}))
+    local prefix=""
+    cur="$(printf '%q' "$cur")"
+    IFS=$'\n' COMPREPLY=($(compgen -P "$prefix" -W "$*" -- "$cur"))
+    __ltrim_colon_completions "$prefix$cur"
 
     # http://stackoverflow.com/questions/7267185/bash-autocompletion-add-description-for-possible-completions
     if [[ ${#COMPREPLY[*]} -eq 1 ]]; then # Only one completion
-        COMPREPLY=( ${COMPREPLY[0]%% -- *} ) # Remove ' -- ' and everything after
-        COMPREPLY=( ${COMPREPLY[0]%% *} ) # Remove trailing spaces
+        COMPREPLY=( "${COMPREPLY[0]%% -- *}" ) # Remove ' -- ' and everything after
+        COMPREPLY=( "${COMPREPLY[0]%%+( )}" ) # Remove trailing spaces
     fi
 }
 
@@ -564,7 +569,8 @@ _pip_compreply() {
 __pip_dynamic_comp() {
     local argname="$1"
     local arg="$2"
-    local comp name desc cols desclength formatted
+    local name desc cols desclength formatted
+    local comp=()
     local max=0
 
     while read -r line; do
@@ -587,12 +593,12 @@ __pip_dynamic_comp() {
             [[ -z $cols ]] && cols=80
             desclength=`expr $cols - 4 - $max`
             formatted=`printf "%-*s -- %-*s" "$max" "$name" "$desclength" "$desc"`
-            comp="$comp$formatted"$'\n'
+            comp+=("$formatted")
         else
-            comp="$comp'$name'"$'\n'
+            comp+=("'$name'")
         fi
     done <<< "$arg"
-    _pip_compreply "$comp"
+    _pip_compreply ${comp[@]}
 }
 
 function __pip_handle_options() {

@@ -1,5 +1,7 @@
 #compdef json_pp
 
+# Generated with perl module App::Spec v0.009
+
 _json_pp() {
     local program=json_pp
     typeset -A opt_args

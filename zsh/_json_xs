@@ -1,5 +1,7 @@
 #compdef json_xs
 
+# Generated with perl module App::Spec v0.009
+
 _json_xs() {
     local program=json_xs
     typeset -A opt_args

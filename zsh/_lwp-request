@@ -1,5 +1,7 @@
 #compdef lwp-request
 
+# Generated with perl module App::Spec v0.009
+
 _lwp-request() {
     local program=lwp-request
     typeset -A opt_args

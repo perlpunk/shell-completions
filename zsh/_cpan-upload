@@ -1,5 +1,7 @@
 #compdef cpan-upload
 
+# Generated with perl module App::Spec v0.009
+
 _cpan-upload() {
     local program=cpan-upload
     typeset -A opt_args

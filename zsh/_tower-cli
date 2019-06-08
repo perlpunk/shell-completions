@@ -1,5 +1,7 @@
 #compdef tower-cli
 
+# Generated with perl module App::Spec v0.009
+
 _tower-cli() {
     local program=tower-cli
     typeset -A opt_args
@@ -3870,8 +3872,9 @@ _tower-cli_host_get_param_host_id_completion
 
 _tower-cli_host_get_param_host_id_completion() {
     local __dynamic_completion
-    IFS=$'\n' set -A __dynamic_completion `tower-cli host list | perl -nlwE ' if (m/^ *(\d+) +(\S+)/) { print "$1 -- $2" }'
-`
+    local CURRENT_WORD="$words[CURRENT]"
+    IFS=$'\n' set -A __dynamic_completion $( tower-cli host list | perl -nlwE ' if (m/^ *(\d+) +(\S+)/) { print "$1 -- $2" }'
+ )
     compadd -X "host_id:" $__dynamic_completion
 }
 

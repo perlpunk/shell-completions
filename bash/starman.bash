@@ -1,17 +1,19 @@
 #!bash
 
+# Generated with perl module App::Spec v0.009
+
 _starman() {
 
     COMPREPLY=()
     local program=starman
-    local cur=${COMP_WORDS[$COMP_CWORD]}
-#    echo "COMP_CWORD:$COMP_CWORD cur:$cur" >>/tmp/comp
+    local cur prev words cword
+    _init_completion -n : || return
     declare -a FLAGS
     declare -a OPTIONS
     declare -a MYWORDS
 
-    local INDEX=`expr $COMP_CWORD - 1`
-    MYWORDS=("${COMP_WORDS[@]:1:$COMP_CWORD}")
+    local INDEX=`expr $cword - 1`
+    MYWORDS=("${words[@]:1:$cword}")
 
     FLAGS=('--max-requests' 'Number of the requests to process per one worker process' '--preload-app' 'This option lets Starman preload the specified PSGI application...' '--disable-keepalive' 'Disable Keep-alive persistent connections' '--enable-ssl' 'Enable SSL on all TCP sockets' '--disable-proctitle' 'Disable the behavior to set proctitle to "starman (master)"' '--daemonize' 'Makes the process run in the background' '-D' 'Makes the process run in the background' '--no-default-middleware' 'This prevents loading the default middleware stack...' '--reload' 'Makes plackup restart the server whenever a file...' '-r' 'Makes plackup restart the server whenever a file...' '--help' 'Show command help' '-h' 'Show command help')
     OPTIONS=('--listen' 'Specifies the TCP address, ports and UNIX domain sockets' '-l' 'Specifies the TCP address, ports and UNIX domain sockets' '--host' 'Specifies the address to bind' '--port' 'Specifies the port to bind' '--socket' 'Specifies the path to UNIX domain socket to bind' '-S' 'Specifies the path to UNIX domain socket to bind' '--workers' 'Specifies the number of worker pool' '--backlog' 'Specifies the number of backlog (listen queue size)...' '--keepalive-timeout' 'The number of seconds Starman will wait for a subsequent request' '--read-timeout' 'The number of seconds Starman will wait for a request on a new...' '--user' 'To listen on a low-numbered (<1024) port...' '--group' 'Specify the group id or group name that the server...' '--pid' 'Specify the pid file path' '--error-log' 'Specify the pathname of a file where the error log...' '--ssl-cert' 'Specify the path to SSL certificate file' '--ssl-key' 'Specify the path to SSL key file' '--app' 'Specifies the full path to a ".psgi" script' '-a' 'Specifies the full path to a ".psgi" script' '-e' 'Evaluates the given perl code as a PSGI app' '--server' 'Selects a specific server implementation to run on' '-s' 'Selects a specific server implementation to run on' '--socket' 'Listens on a UNIX domain socket path' '-S' 'Listens on a UNIX domain socket path' '-I' 'Specifies Perl library include paths' '-M' 'Loads the named modules before loading the app'"\\'"'s code' '--env' 'Specifies the environment option' '-E' 'Specifies the environment option' '--Reload' 'Makes plackup restart the server whenever a given file...' '-R' 'Makes plackup restart the server whenever a given file...' '--access-log' 'Specifies the pathname of a file where the access log...' '--path' 'Specify the root path of your app' '--loader' 'Specifies the server loading subclass' '-L' 'Specifies the server loading subclass')
@@ -67,7 +69,7 @@ _starman() {
       --path)
       ;;
       --loader|-L)
-        _starman_compreply "'Restarter'"$'\n'"'Delayed'"$'\n'"'Shotgun'"
+        _starman_compreply "Restarter" "Delayed" "Shotgun"
         return
       ;;
 
@@ -86,12 +88,15 @@ _starman() {
 }
 
 _starman_compreply() {
-    IFS=$'\n' COMPREPLY=($(compgen -W "$1" -- ${COMP_WORDS[COMP_CWORD]}))
+    local prefix=""
+    cur="$(printf '%q' "$cur")"
+    IFS=$'\n' COMPREPLY=($(compgen -P "$prefix" -W "$*" -- "$cur"))
+    __ltrim_colon_completions "$prefix$cur"
 
     # http://stackoverflow.com/questions/7267185/bash-autocompletion-add-description-for-possible-completions
     if [[ ${#COMPREPLY[*]} -eq 1 ]]; then # Only one completion
-        COMPREPLY=( ${COMPREPLY[0]%% -- *} ) # Remove ' -- ' and everything after
-        COMPREPLY=( ${COMPREPLY[0]%% *} ) # Remove trailing spaces
+        COMPREPLY=( "${COMPREPLY[0]%% -- *}" ) # Remove ' -- ' and everything after
+        COMPREPLY=( "${COMPREPLY[0]%%+( )}" ) # Remove trailing spaces
     fi
 }
 
@@ -99,7 +104,8 @@ _starman_compreply() {
 __starman_dynamic_comp() {
     local argname="$1"
     local arg="$2"
-    local comp name desc cols desclength formatted
+    local name desc cols desclength formatted
+    local comp=()
     local max=0
 
     while read -r line; do
@@ -122,12 +128,12 @@ __starman_dynamic_comp() {
             [[ -z $cols ]] && cols=80
             desclength=`expr $cols - 4 - $max`
             formatted=`printf "%-*s -- %-*s" "$max" "$name" "$desclength" "$desc"`
-            comp="$comp$formatted"$'\n'
+            comp+=("$formatted")
         else
-            comp="$comp'$name'"$'\n'
+            comp+=("'$name'")
         fi
     done <<< "$arg"
-    _starman_compreply "$comp"
+    _starman_compreply ${comp[@]}
 }
 
 function __starman_handle_options() {

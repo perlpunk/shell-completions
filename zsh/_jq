@@ -1,5 +1,7 @@
 #compdef jq
 
+# Generated with perl module App::Spec v0.009
+
 _jq() {
     local program=jq
     typeset -A opt_args

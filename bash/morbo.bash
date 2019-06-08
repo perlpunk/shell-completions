@@ -1,17 +1,19 @@
 #!bash
 
+# Generated with perl module App::Spec v0.009
+
 _morbo() {
 
     COMPREPLY=()
     local program=morbo
-    local cur=${COMP_WORDS[$COMP_CWORD]}
-#    echo "COMP_CWORD:$COMP_CWORD cur:$cur" >>/tmp/comp
+    local cur prev words cword
+    _init_completion -n : || return
     declare -a FLAGS
     declare -a OPTIONS
     declare -a MYWORDS
 
-    local INDEX=`expr $COMP_CWORD - 1`
-    MYWORDS=("${COMP_WORDS[@]:1:$COMP_CWORD}")
+    local INDEX=`expr $cword - 1`
+    MYWORDS=("${words[@]:1:$cword}")
 
     FLAGS=('--verbose' 'Print details about what files changed' '-v' 'Print details about what files changed' '--help' 'Show command help' '-h' 'Show command help')
     OPTIONS=('--backend' 'Morbo backend to use for reloading' '-b' 'Morbo backend to use for reloading' '--listen' 'One or more locations you want to listen on' '-l' 'One or more locations you want to listen on' '--mode' 'Operating mode for your application' '-m' 'Operating mode for your application' '--watch' 'One or more directories and files to watch for changes' '-w' 'One or more directories and files to watch for changes')
@@ -42,12 +44,15 @@ _morbo() {
 }
 
 _morbo_compreply() {
-    IFS=$'\n' COMPREPLY=($(compgen -W "$1" -- ${COMP_WORDS[COMP_CWORD]}))
+    local prefix=""
+    cur="$(printf '%q' "$cur")"
+    IFS=$'\n' COMPREPLY=($(compgen -P "$prefix" -W "$*" -- "$cur"))
+    __ltrim_colon_completions "$prefix$cur"
 
     # http://stackoverflow.com/questions/7267185/bash-autocompletion-add-description-for-possible-completions
     if [[ ${#COMPREPLY[*]} -eq 1 ]]; then # Only one completion
-        COMPREPLY=( ${COMPREPLY[0]%% -- *} ) # Remove ' -- ' and everything after
-        COMPREPLY=( ${COMPREPLY[0]%% *} ) # Remove trailing spaces
+        COMPREPLY=( "${COMPREPLY[0]%% -- *}" ) # Remove ' -- ' and everything after
+        COMPREPLY=( "${COMPREPLY[0]%%+( )}" ) # Remove trailing spaces
     fi
 }
 
@@ -55,7 +60,8 @@ _morbo_compreply() {
 __morbo_dynamic_comp() {
     local argname="$1"
     local arg="$2"
-    local comp name desc cols desclength formatted
+    local name desc cols desclength formatted
+    local comp=()
     local max=0
 
     while read -r line; do
@@ -78,12 +84,12 @@ __morbo_dynamic_comp() {
             [[ -z $cols ]] && cols=80
             desclength=`expr $cols - 4 - $max`
             formatted=`printf "%-*s -- %-*s" "$max" "$name" "$desclength" "$desc"`
-            comp="$comp$formatted"$'\n'
+            comp+=("$formatted")
         else
-            comp="$comp'$name'"$'\n'
+            comp+=("'$name'")
         fi
     done <<< "$arg"
-    _morbo_compreply "$comp"
+    _morbo_compreply ${comp[@]}
 }
 
 function __morbo_handle_options() {

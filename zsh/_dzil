@@ -1,5 +1,7 @@
 #compdef dzil
 
+# Generated with perl module App::Spec v0.009
+
 _dzil() {
     local program=dzil
     typeset -A opt_args

@@ -1,5 +1,7 @@
 #compdef ysh
 
+# Generated with perl module App::Spec v0.009
+
 _ysh() {
     local program=ysh
     typeset -A opt_args

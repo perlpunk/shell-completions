@@ -1,5 +1,7 @@
 #compdef pip
 
+# Generated with perl module App::Spec v0.009
+
 _pip() {
     local program=pip
     typeset -A opt_args

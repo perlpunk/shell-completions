@@ -1,5 +1,7 @@
 #compdef starman
 
+# Generated with perl module App::Spec v0.009
+
 _starman() {
     local program=starman
     typeset -A opt_args

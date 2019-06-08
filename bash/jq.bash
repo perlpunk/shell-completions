@@ -1,17 +1,19 @@
 #!bash
 
+# Generated with perl module App::Spec v0.009
+
 _jq() {
 
     COMPREPLY=()
     local program=jq
-    local cur=${COMP_WORDS[$COMP_CWORD]}
-#    echo "COMP_CWORD:$COMP_CWORD cur:$cur" >>/tmp/comp
+    local cur prev words cword
+    _init_completion -n : || return
     declare -a FLAGS
     declare -a OPTIONS
     declare -a MYWORDS
 
-    local INDEX=`expr $COMP_CWORD - 1`
-    MYWORDS=("${COMP_WORDS[@]:1:$COMP_CWORD}")
+    local INDEX=`expr $cword - 1`
+    MYWORDS=("${words[@]:1:$cword}")
 
     FLAGS=('--argjson' 'pre-set a variable to an object' '--ascii-output' 'restrict output to ASCII' '-a' 'restrict output to ASCII' '--color-output' 'output in color' '-C' 'output in color' '--compact-output' 'don'"\\'"'t pretty-print' '-c' 'don'"\\'"'t pretty-print' '--exit-status' 'report "false" and "null" results via exit code' '-e' 'report "false" and "null" results via exit code' '--join-output' 'like -r, without newlines between outputs' '-j' 'like -r, without newlines between outputs' '--monochrome-output' 'output without color' '-M' 'output without color' '--null-input' 'input is ignored' '-n' 'input is ignored' '--raw-input' 'consider each input line as a JSON strings' '-R' 'consider each input line as a JSON strings' '--raw-output' 'don'"\\'"'t JSON-quote output if it'"\\'"'s a string' '-r' 'don'"\\'"'t JSON-quote output if it'"\\'"'s a string' '--seq' 'use application/json-seq ASCII RS/LF scheme in input and output' '--slurp' 'join input JSON objects to array before filtering' '-s' 'join input JSON objects to array before filtering' '--sort-keys' 'output object keys in sorted order' '-S' 'output object keys in sorted order' '--stream' 'parse input streamily (changes output)' '--tab' 'indent output using TAB characters' '--unbuffered' 'flush output after each JSON object' '--version' 'output jq'"\\'"'s version number' '--help' 'Show command help' '-h' 'Show command help')
     OPTIONS=('--arg' 'pre-set a variable to a string' '--from-file' 'read filter from file' '-f' 'read filter from file' '--indent' 'indent output using given number of spaces' '-L' 'prepend a directory to the module search path' '--slurpfile' 'pre-set a variable to contents of a file' '--run-tests' 'Runs  the tests in the given file or standard input')
@@ -23,7 +25,7 @@ _jq() {
       --from-file|-f)
       ;;
       --indent)
-        _jq_compreply "'1'"$'\n'"'2'"$'\n'"'3'"$'\n'"'4'"$'\n'"'5'"$'\n'"'6'"$'\n'"'7'"$'\n'"'8'"
+        _jq_compreply "1" "2" "3" "4" "5" "6" "7" "8"
         return
       ;;
       -L)
@@ -51,12 +53,15 @@ _jq() {
 }
 
 _jq_compreply() {
-    IFS=$'\n' COMPREPLY=($(compgen -W "$1" -- ${COMP_WORDS[COMP_CWORD]}))
+    local prefix=""
+    cur="$(printf '%q' "$cur")"
+    IFS=$'\n' COMPREPLY=($(compgen -P "$prefix" -W "$*" -- "$cur"))
+    __ltrim_colon_completions "$prefix$cur"
 
     # http://stackoverflow.com/questions/7267185/bash-autocompletion-add-description-for-possible-completions
     if [[ ${#COMPREPLY[*]} -eq 1 ]]; then # Only one completion
-        COMPREPLY=( ${COMPREPLY[0]%% -- *} ) # Remove ' -- ' and everything after
-        COMPREPLY=( ${COMPREPLY[0]%% *} ) # Remove trailing spaces
+        COMPREPLY=( "${COMPREPLY[0]%% -- *}" ) # Remove ' -- ' and everything after
+        COMPREPLY=( "${COMPREPLY[0]%%+( )}" ) # Remove trailing spaces
     fi
 }
 
@@ -64,7 +69,8 @@ _jq_compreply() {
 __jq_dynamic_comp() {
     local argname="$1"
     local arg="$2"
-    local comp name desc cols desclength formatted
+    local name desc cols desclength formatted
+    local comp=()
     local max=0
 
     while read -r line; do
@@ -87,12 +93,12 @@ __jq_dynamic_comp() {
             [[ -z $cols ]] && cols=80
             desclength=`expr $cols - 4 - $max`
             formatted=`printf "%-*s -- %-*s" "$max" "$name" "$desclength" "$desc"`
-            comp="$comp$formatted"$'\n'
+            comp+=("$formatted")
         else
-            comp="$comp'$name'"$'\n'
+            comp+=("'$name'")
         fi
     done <<< "$arg"
-    _jq_compreply "$comp"
+    _jq_compreply ${comp[@]}
 }
 
 function __jq_handle_options() {

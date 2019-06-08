@@ -1,17 +1,19 @@
 #!bash
 
+# Generated with perl module App::Spec v0.009
+
 _lwp-request() {
 
     COMPREPLY=()
     local program=lwp-request
-    local cur=${COMP_WORDS[$COMP_CWORD]}
-#    echo "COMP_CWORD:$COMP_CWORD cur:$cur" >>/tmp/comp
+    local cur prev words cword
+    _init_completion -n : || return
     declare -a FLAGS
     declare -a OPTIONS
     declare -a MYWORDS
 
-    local INDEX=`expr $COMP_CWORD - 1`
-    MYWORDS=("${COMP_WORDS[@]:1:$COMP_CWORD}")
+    local INDEX=`expr $cword - 1`
+    MYWORDS=("${words[@]:1:$cword}")
 
     FLAGS=('-f' 'make request even if lwp-request believes method is illegal' '-a' 'Use text mode for content I/O' '-P' 'don'"\\'"'t load proxy settings from environment' '-u' 'Display method and URL before any response' '-U' 'Display request headers (implies -u)' '-s' 'Display response status code' '-S' 'Display response status chain (implies -u)' '-e' 'Display response headers (implies -s)' '-E' 'Display whole chain of headers (implies -S and -U)' '-d' 'Do not display content' '-v' 'Show program version' '--help' 'Show command help' '-h' 'Show command help')
     OPTIONS=('-m' 'use method for the request (default is '"\\'"'GET'"\\'"')' '-b' 'Use the specified URL as base' '-t' 'Set timeout value' '-i' 'Set the If-Modified-Since header on the request' '-c' 'use this content-type for POST, PUT, CHECKIN' '-p' 'use this as a proxy' '-H' 'send this HTTP header (you can specify several)' '-C' 'provide credentials for basic authentication (<username>:<password>)' '-o' 'Process HTML content in various ways')
@@ -19,7 +21,7 @@ _lwp-request() {
 
     case ${MYWORDS[$INDEX-1]} in
       -m)
-        _lwp-request_compreply "'GET'"$'\n'"'HEAD'"$'\n'"'POST'"$'\n'"'PUT'"$'\n'"'DELETE'"$'\n'"'CONNECT'"$'\n'"'OPTIONS'"$'\n'"'TRACE'"$'\n'"'PATCH'"
+        _lwp-request_compreply "GET" "HEAD" "POST" "PUT" "DELETE" "CONNECT" "OPTIONS" "TRACE" "PATCH"
         return
       ;;
       -b)
@@ -37,7 +39,7 @@ _lwp-request() {
       -C)
       ;;
       -o)
-        _lwp-request_compreply "'text'"$'\n'"'ps'"$'\n'"'links'"$'\n'"'html'"$'\n'"'dump'"
+        _lwp-request_compreply "text" "ps" "links" "html" "dump"
         return
       ;;
 
@@ -56,12 +58,15 @@ _lwp-request() {
 }
 
 _lwp-request_compreply() {
-    IFS=$'\n' COMPREPLY=($(compgen -W "$1" -- ${COMP_WORDS[COMP_CWORD]}))
+    local prefix=""
+    cur="$(printf '%q' "$cur")"
+    IFS=$'\n' COMPREPLY=($(compgen -P "$prefix" -W "$*" -- "$cur"))
+    __ltrim_colon_completions "$prefix$cur"
 
     # http://stackoverflow.com/questions/7267185/bash-autocompletion-add-description-for-possible-completions
     if [[ ${#COMPREPLY[*]} -eq 1 ]]; then # Only one completion
-        COMPREPLY=( ${COMPREPLY[0]%% -- *} ) # Remove ' -- ' and everything after
-        COMPREPLY=( ${COMPREPLY[0]%% *} ) # Remove trailing spaces
+        COMPREPLY=( "${COMPREPLY[0]%% -- *}" ) # Remove ' -- ' and everything after
+        COMPREPLY=( "${COMPREPLY[0]%%+( )}" ) # Remove trailing spaces
     fi
 }
 
@@ -69,7 +74,8 @@ _lwp-request_compreply() {
 __lwp-request_dynamic_comp() {
     local argname="$1"
     local arg="$2"
-    local comp name desc cols desclength formatted
+    local name desc cols desclength formatted
+    local comp=()
     local max=0
 
     while read -r line; do
@@ -92,12 +98,12 @@ __lwp-request_dynamic_comp() {
             [[ -z $cols ]] && cols=80
             desclength=`expr $cols - 4 - $max`
             formatted=`printf "%-*s -- %-*s" "$max" "$name" "$desclength" "$desc"`
-            comp="$comp$formatted"$'\n'
+            comp+=("$formatted")
         else
-            comp="$comp'$name'"$'\n'
+            comp+=("'$name'")
         fi
     done <<< "$arg"
-    _lwp-request_compreply "$comp"
+    _lwp-request_compreply ${comp[@]}
 }
 
 function __lwp-request_handle_options() {

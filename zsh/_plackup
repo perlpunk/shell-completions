@@ -1,5 +1,7 @@
 #compdef plackup
 
+# Generated with perl module App::Spec v0.009
+
 _plackup() {
     local program=plackup
     typeset -A opt_args
@@ -35,8 +37,8 @@ _plackup() {
             '-R[Makes plackup restart the server whenever a given file...]:Reload:_files' \
             '--access-log[Specifies the pathname of a file where the access log...]:access-log:_files' \
             '--path[Specify the root path of your app]:path' \
-            '--loader[Specifies the server loading subclass]:loader:("Restarter" "Delayed" "Shotgun")' \
-            '-L[Specifies the server loading subclass]:loader:("Restarter" "Delayed" "Shotgun")' \
+            '--loader[Specifies the server loading subclass]:loader:("Plack\:\:Loader" "Restarter" "Delayed" "Shotgun")' \
+            '-L[Specifies the server loading subclass]:loader:("Plack\:\:Loader" "Restarter" "Delayed" "Shotgun")' \
             '--help[Show command help]' \
             '-h[Show command help]' \
             && ret=0

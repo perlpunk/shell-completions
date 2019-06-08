@@ -1,5 +1,7 @@
 #compdef mpath
 
+# Generated with perl module App::Spec v0.009
+
 _mpath() {
     local program=mpath
     typeset -A opt_args
@@ -26,8 +28,9 @@ _mpath__param_module_completion
 
 _mpath__param_module_completion() {
     local __dynamic_completion
-    IFS=$'\n' set -A __dynamic_completion `perl -E'use ExtUtils::Installed;say for ExtUtils::Installed->new(skip_cwd=>1)->modules'
-`
+    local CURRENT_WORD="$words[CURRENT]"
+    IFS=$'\n' set -A __dynamic_completion $( perl -E'use ExtUtils::Installed;say for ExtUtils::Installed->new(skip_cwd=>1)->modules'
+ )
     compadd -X "module:" $__dynamic_completion
 }
 

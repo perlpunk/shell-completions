@@ -1,7 +1,14 @@
+# USAGE:
+# For module name completion, the file
+# ~/.cpanm/sources/http%www.cpan.org/02packages.details.txt.gz
+# is used.
+# You can also use a different file by setting CPAN_PACKAGES_DETAILS
+# By default, it will complete up to 10000 modules. You can change that
+# by setting CPAN_MAX_MODULES
+
 ---
 name: cpanm
 appspec: { version: 0.001 }
-#class: App::Spec::Example::MySimpleApp
 title: Install CPAN modules
 abstract: get, unpack build and install modules from CPAN
 
@@ -71,8 +78,18 @@ options:
 parameters:
 - name: Modules
   summary: Names of modules to install
-  # Can be a filename or directory, too
-  type: file
+  # TODO zsh: Can be a filename or directory, too
+  multiple: true
+  completion:
+    # idea with 02packages.details.txt.gz from @ingydotnet
+    command_string: |-
+      \
+      ( [[ "$CURRENT_WORD{0:1}" == . ]] || [[ "$CURRENT_WORD{0:1}" == / ]] ) \
+        || zless ${CPAN_PACKAGES_DETAILS:-~/.cpanm/sources/http%www.cpan.org/02packages.details.txt.gz} \
+        | tail -n +8 \
+        | cut -f 1 -d ' ' \
+        | grep "^$CURRENT_WORD" \
+        | head -${CPAN_MAX_MODULES:-10000}
 
 # vim:et:sts=2:sws=2:sw=2:foldmethod=indent
 
