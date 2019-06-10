@@ -55,7 +55,7 @@ _cpan__param_Modules_completion() {
     local CURRENT_WORD="${words[$cword]}"
     local param_Modules="$(\
 ( [[ "$CURRENT_WORD{0:1}" == . ]] || [[ "$CURRENT_WORD{0:1}" == / ]] ) \
-  || zless ${CPAN_PACKAGES_DETAILS:-~/.local/share/.cpan/sources/modules/02packages.details.txt.gz} \
+  || ${ZCAT_BIN:-zcat} ${CPAN_PACKAGES_DETAILS:-~/.local/share/.cpan/sources/modules/02packages.details.txt.gz} \
   | tail -n +8 \
   | cut -f 1 -d ' ' \
   | grep "^$CURRENT_WORD" \

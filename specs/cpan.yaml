@@ -5,6 +5,8 @@
 # You can also use a different file by setting CPAN_PACKAGES_DETAILS
 # By default, it will complete up to 10000 modules. You can change that
 # by setting CPAN_MAX_MODULES
+# For uncompressing, `zcat` is used. Set ZCAT_BIN to change the path to zcat
+# (e.g. gzcat)
 
 ---
 name: cpan
@@ -47,7 +49,7 @@ parameters:
     command_string: |-
       \
       ( [[ "$CURRENT_WORD{0:1}" == . ]] || [[ "$CURRENT_WORD{0:1}" == / ]] ) \
-        || zless ${CPAN_PACKAGES_DETAILS:-~/.local/share/.cpan/sources/modules/02packages.details.txt.gz} \
+        || ${ZCAT_BIN:-zcat} ${CPAN_PACKAGES_DETAILS:-~/.local/share/.cpan/sources/modules/02packages.details.txt.gz} \
         | tail -n +8 \
         | cut -f 1 -d ' ' \
         | grep "^$CURRENT_WORD" \
