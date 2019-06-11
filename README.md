@@ -30,6 +30,7 @@ Currently it supports bash and zsh completions.
 * `starman` - High-performance preforking PSGI/Plack web server
 * `tower-cli` - Ansible Tower Commandline
 * `ysh` - The YAML Test Shell
+* `zild` - Dist::Zilla Mixed Up
 
 ## Installation
 

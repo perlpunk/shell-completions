@@ -1,0 +1,40 @@
+---
+name: zild
+appspec: { version: '0.001' }
+title: Dist::Zilla Mixed Up
+
+subcommands:
+  test:
+    summary: Run the test suite.
+
+  release:
+    summary: Build the dist, then "cpan-upload" it.
+
+  install:
+    summary: Build and install the software. Same as install from CPAN.
+
+  update:
+    summary: Rebuild the ReadMe.pod and other generated files.
+
+  prereqs:
+    summary: Install the prereqs from CPAN
+
+  cpan:
+    summary: Turn repo into a "Dist::Zilla" ready subdirectory called "./cpan/"
+
+  cpanshell:
+    summary: Start a shell in cpan dir
+
+  dist:
+    summary: Basically the same as "zild cpan; cd cpan; dzil build".
+
+  distdir:
+    summary: Create a dist dir
+
+  distshell:
+    summary: Start a shell in the dist dir
+
+  disttest:
+    summary: Run tests of generated dist package
+
+# vim:et:sts=2:sws=2:sw=2:foldmethod=indent
