@@ -1,0 +1,20 @@
+---
+name: dancer2
+appspec: { version: '0.001' }
+title: Dancer2 command line interface
+
+subcommands:
+  commands:
+    summary: list the application's commands
+
+  gen:
+    summary: create new Dancer2 application
+    options:
+    - application|a=s      --application name
+    - directory|d +dir     --application folder
+    - path|p +file         --application path
+    - overwrite|o          --overwrite existing files
+    - no-check|x           --don't check latest Dancer2 version
+    - skel|s +dir          --skeleton directory
+
+# vim:et:sts=2:sws=2:sw=2:foldmethod=indent

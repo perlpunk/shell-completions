@@ -17,6 +17,7 @@ Currently it supports bash and zsh completions.
 * `cpan-upload` - upload a distribution to the CPAN
 * `cpan` - easily interact with CPAN from the command line
 * `cpanm` - Install CPAN modules
+* `dancer2` - Dancer2 command line interface
 * `dzil` - do stuff with your dist
 * `hypnotoad` - Hypnotoad HTTP and WebSocket server
 * `jq` - Command-line JSON processor
