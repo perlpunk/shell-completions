@@ -1,0 +1,90 @@
+# USAGE:
+# -M <TAB> will complete to a module name
+# -P <TAB> will complete to any installed App::Prove::Plugin::* modules
+---
+name: prove
+appspec: { version: 0.001 }
+title: Run tests through a TAP harness
+
+options:
+- verbose|v         --Print all test lines
+- lib|l             --Add 'lib' to the path for your tests
+- blib|b            --Add 'blib/lib' and 'blib/arch' to the path
+- shuffle|s         --Run the tests in random order
+- color|c           --Colored test output (default)
+- nocolor           --Do not color test output
+- count             --Show the X/Y test count when not verbose
+- nocount           --Disable the X/Y test count
+- dry|D             --Dry run
+- failures|f        --Show failed tests
+- comments|o        --Show comments
+- ignore-exit       --Ignore exit status from test scripts
+- merge|m           --Merge test scripts' STDERR with their STDOUT
+- recurse|r         --Recursively descend into directories
+- reverse           --Run the tests in reverse order
+- quiet|q           --Suppress some test output
+- QUIET|Q           --Only print summary results
+- parse|p           --Show full list of TAP parse errors
+- directives        --Only show results with TODO or SKIP directives
+- timer             --Print elapsed time after each test
+- trap              --Trap Ctrl-C and print summary on interrupt
+- normalize         --Normalize TAP output in verbose output
+- T                 --Enable tainting checks
+- t                 --Enable tainting warnings
+- W                 --Enable fatal warnings
+- w                 --Enable warnings
+- version|V         --Display the version
+- man|H             --Longer manpage
+- norc              --Don't process default .proverc
+
+- I +file           --Library paths to include
+- exec|e=s          --Interpreter to run the tests
+- ext=s             --Set the extension for tests
+- harness=s         --Define test harness to use
+- formatter=s       --Result formatter to use
+- source=s          --Load and/or configure a SourceHandler
+- archive|a +file   --Store the resulting TAP in an archive file
+- rc +file          --Process options from rcfile
+- rules=s           --Rules for parallel vs sequential processing
+
+
+- name: j
+  summary: Run N test jobs in parallel
+  type: integer
+  enum: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+- name: state
+  summary: Control prove's persistent state
+  aliases: [s]
+  type: string
+  multiple: true
+  enum: [last, failed, passed, all, hot, todo, slow, fast, new, old, fresh, save]
+
+- name: P
+  summary: Load plugin
+  type: string
+  multiple: true
+  completion:
+    command_string: |-
+        find `perl -wE'say for @INC'` | grep '/App/Prove/Plugin/.*.pm$' | perl -plE's{^.*/(App/Prove/Plugin/.*)\.pm$}{$1}; s{/}{::}g'
+
+- name: M
+  summary: Load a module
+  type: string
+  multiple: true
+  completion:
+    # TODO filter directories like x86_64-linux
+    command_string: |-
+        \
+        for incpath in $(perl -wE'say for @INC'); do \
+        find $incpath -name "*.pm" -printf "%P\n" \
+        | perl -plE's{/}{::}g; s{\.pm}{}'; \
+        done
+
+parameters:
+- name: tests
+  summary: test files
+  type: file
+  multiple: true
+
+# vim:et:sts=2:sws=2:sw=2:foldmethod=indent

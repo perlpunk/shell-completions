@@ -28,6 +28,7 @@ Currently it supports bash and zsh completions.
 * `mpath` - display the full path to a perl module (installed locally)
 * `pip` - A tool for installing and managing Python packages
 * `plackup` - Run PSGI application with Plack handlers
+* `prove` - Run tests through a TAP harness
 * `starman` - High-performance preforking PSGI/Plack web server
 * `tower-cli` - Ansible Tower Commandline
 * `ysh` - The YAML Test Shell

@@ -1,6 +1,6 @@
 #compdef json_pp
 
-# Generated with perl module App::Spec v0.009
+# Generated with perl module App::Spec v0.010
 
 _json_pp() {
     local program=json_pp
