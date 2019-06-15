@@ -13,7 +13,11 @@ parameters:
   multiple: true
   type: string
   completion:
-    command_string: |
-      perl -E'use ExtUtils::Installed;say for ExtUtils::Installed->new(skip_cwd=>1)->modules'
+    command_string: |-
+        \
+        for incpath in $(perl -wE'say for @INC'); do \
+        find $incpath -name "*.pm" -printf "%P\n" \
+        | perl -plE's{/}{::}g; s{\.pm}{}'; \
+        done
 
 # vim:et:sts=2:sws=2:sw=2:foldmethod=indent

@@ -1,6 +1,6 @@
 #!bash
 
-# Generated with perl module App::Spec v0.009
+# Generated with perl module App::Spec v0.010
 
 _mpath() {
 
@@ -51,7 +51,11 @@ _mpath_compreply() {
 
 _mpath__param_module_completion() {
     local CURRENT_WORD="${words[$cword]}"
-    local param_module="$(perl -E'use ExtUtils::Installed;say for ExtUtils::Installed->new(skip_cwd=>1)->modules')"
+    local param_module="$(\
+for incpath in $(perl -wE'say for @INC'); do \
+find $incpath -name "*.pm" -printf "%P\n" \
+| perl -plE's{/}{::}g; s{\.pm}{}'; \
+done)"
     _mpath_compreply "$param_module"
 }
 

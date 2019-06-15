@@ -1,6 +1,6 @@
 #compdef mpath
 
-# Generated with perl module App::Spec v0.009
+# Generated with perl module App::Spec v0.010
 
 _mpath() {
     local program=mpath
@@ -29,8 +29,11 @@ _mpath__param_module_completion
 _mpath__param_module_completion() {
     local __dynamic_completion
     local CURRENT_WORD="$words[CURRENT]"
-    IFS=$'\n' set -A __dynamic_completion $( perl -E'use ExtUtils::Installed;say for ExtUtils::Installed->new(skip_cwd=>1)->modules'
- )
+    IFS=$'\n' set -A __dynamic_completion $( \
+for incpath in $(perl -wE'say for @INC'); do \
+find $incpath -name "*.pm" -printf "%P\n" \
+| perl -plE's{/}{::}g; s{\.pm}{}'; \
+done )
     compadd -X "module:" $__dynamic_completion
 }
 
