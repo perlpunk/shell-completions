@@ -19,6 +19,7 @@ Currently it supports bash and zsh completions.
 * `cpanm` - Install CPAN modules
 * `dancer2` - Dancer2 command line interface
 * `dzil` - do stuff with your dist
+* `fatpack` - Pack perl script and modules into standalone script
 * `hypnotoad` - Hypnotoad HTTP and WebSocket server
 * `jq` - Command-line JSON processor
 * `json_pp` - JSON::PP command utility
@@ -40,7 +41,7 @@ Currently it supports bash and zsh completions.
 
 ## Usage
 
-Look into the `spec/commandname.yaml` for specific usage instructions.
+Look into the `specs/commandname.yaml` for specific usage instructions.
 
 ### Bash
 

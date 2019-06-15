@@ -1,0 +1,37 @@
+---
+name: fatpack
+appspec: { version: '0.001' }
+title: Pack perl script and modules into standalone script
+
+subcommands:
+
+  pack:
+    summary: Pack script and modules
+  trace:
+    summary: Writes out a trace file containing every module required
+
+    options:
+    - to +file      --Location of trace file
+    - to-stderr     --Write the trace to STDERR instead
+    - name: use
+      summary: Specify module(s) to be included additionally
+      multiple: true
+      completion:
+        command_string: |-
+            \
+            for incpath in $(perl -wE'say for @INC'); do \
+              find $incpath -name "*.pm" -printf "%P\n" \
+              | perl -plE's{/}{::}g; s{\.pm}{}' \
+              | grep "^$CURRENT_WORD"; \
+            done
+
+  packlists-for:
+    summary: Searches your perls @INC for .packlist files containing the .pm files
+
+  tree:
+    summary: Takes a list of packlist files and copies their contents into a tree at the requested location
+
+  file:
+    summary: Recurses into the 'lib' and 'fatlib' directories and bundles all .pm files found into a BEGIN block...
+
+# vim:et:sts=2:sws=2:sw=2:foldmethod=indent
