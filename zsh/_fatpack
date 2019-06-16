@@ -127,10 +127,16 @@ _fatpack() {
                 # ---- Command: file
                 _arguments -s -C \
                     '1: :->cmd1' \
+                    '2: :->file' \
                     '--help[Show command help]' \
                     '-h[Show command help]' \
                     && ret=0
 
+                case $state in
+                file)
+_files
+                ;;
+                esac
 
             ;;
             help)
@@ -330,10 +336,16 @@ _fatpack() {
                 # ---- Command: pack
                 _arguments -s -C \
                     '1: :->cmd1' \
+                    '2: :->script' \
                     '--help[Show command help]' \
                     '-h[Show command help]' \
                     && ret=0
 
+                case $state in
+                script)
+_files
+                ;;
+                esac
 
             ;;
             packlists-for)
@@ -341,10 +353,16 @@ _fatpack() {
                 # ---- Command: packlists-for
                 _arguments -s -C \
                     '1: :->cmd1' \
+                    '*: :->modules' \
                     '--help[Show command help]' \
                     '-h[Show command help]' \
                     && ret=0
 
+                case $state in
+                modules)
+_fatpack_packlists-for_param_modules_completion
+                ;;
+                esac
 
             ;;
             trace)
@@ -366,10 +384,16 @@ _fatpack() {
                 # ---- Command: tree
                 _arguments -s -C \
                     '1: :->cmd1' \
+                    '*: :->file' \
                     '--help[Show command help]' \
                     '-h[Show command help]' \
                     && ret=0
 
+                case $state in
+                file)
+_files
+                ;;
+                esac
 
             ;;
             esac
@@ -380,6 +404,17 @@ _fatpack() {
 
 }
 
+_fatpack_packlists-for_param_modules_completion() {
+    local __dynamic_completion
+    local CURRENT_WORD="$words[CURRENT]"
+    IFS=$'\n' set -A __dynamic_completion $( \
+for incpath in $(perl -wE'say for @INC'); do \
+  find $incpath -name "*.pm" -printf "%P\n" \
+  | perl -plE's{/}{::}g; s{\.pm}{}' \
+  | grep "^$CURRENT_WORD"; \
+done )
+    compadd -X "modules:" $__dynamic_completion
+}
 _fatpack_trace_option_use_completion() {
     local __dynamic_completion
     local CURRENT_WORD="$words[CURRENT]"

@@ -102,7 +102,19 @@ _fatpack() {
       ;;
       file)
         __fatpack_handle_options_flags
-        __comp_current_options true || return # no subcmds, no params/opts
+        case ${MYWORDS[$INDEX-1]} in
+
+        esac
+        case $INDEX in
+          1)
+              __comp_current_options || return
+          ;;
+
+
+        *)
+            __comp_current_options || return
+        ;;
+        esac
       ;;
       help)
         FLAGS+=('--all' '')
@@ -203,11 +215,36 @@ _fatpack() {
       ;;
       pack)
         __fatpack_handle_options_flags
-        __comp_current_options true || return # no subcmds, no params/opts
+        case ${MYWORDS[$INDEX-1]} in
+
+        esac
+        case $INDEX in
+          1)
+              __comp_current_options || return
+          ;;
+
+
+        *)
+            __comp_current_options || return
+        ;;
+        esac
       ;;
       packlists-for)
         __fatpack_handle_options_flags
-        __comp_current_options true || return # no subcmds, no params/opts
+        case ${MYWORDS[$INDEX-1]} in
+
+        esac
+        case $INDEX in
+          1)
+              __comp_current_options || return
+                _fatpack_packlists-for_param_modules_completion
+          ;;
+
+
+        *)
+            __comp_current_options || return
+        ;;
+        esac
       ;;
       trace)
         FLAGS+=('--to-stderr' 'Write the trace to STDERR instead')
@@ -230,7 +267,19 @@ _fatpack() {
       ;;
       tree)
         __fatpack_handle_options_flags
-        __comp_current_options true || return # no subcmds, no params/opts
+        case ${MYWORDS[$INDEX-1]} in
+
+        esac
+        case $INDEX in
+          1)
+              __comp_current_options || return
+          ;;
+
+
+        *)
+            __comp_current_options || return
+        ;;
+        esac
       ;;
     esac
 
@@ -252,6 +301,16 @@ _fatpack_compreply() {
     fi
 }
 
+_fatpack_packlists-for_param_modules_completion() {
+    local CURRENT_WORD="${words[$cword]}"
+    local param_modules="$(\
+for incpath in $(perl -wE'say for @INC'); do \
+  find $incpath -name "*.pm" -printf "%P\n" \
+  | perl -plE's{/}{::}g; s{\.pm}{}' \
+  | grep "^$CURRENT_WORD"; \
+done)"
+    _fatpack_compreply "$param_modules"
+}
 _fatpack_trace_option_use_completion() {
     local CURRENT_WORD="${words[$cword]}"
     local param_use="$(\

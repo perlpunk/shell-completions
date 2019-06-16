@@ -7,8 +7,14 @@ subcommands:
 
   pack:
     summary: Pack script and modules
+    parameters:
+    - script +file --Script
+
   trace:
     summary: Writes out a trace file containing every module required
+
+    parameters:
+    - script +file --Script
 
     options:
     - to +file      --Location of trace file
@@ -17,7 +23,7 @@ subcommands:
       summary: Specify module(s) to be included additionally
       multiple: true
       completion:
-        command_string: |-
+        command_string: &module-names |-
             \
             for incpath in $(perl -wE'say for @INC'); do \
               find $incpath -name "*.pm" -printf "%P\n" \
@@ -27,11 +33,21 @@ subcommands:
 
   packlists-for:
     summary: Searches your perls @INC for .packlist files containing the .pm files
+    parameters:
+    - name: modules
+      multiple: true
+      type: string
+      completion:
+        command_string: *module-names
 
   tree:
     summary: Takes a list of packlist files and copies their contents into a tree at the requested location
+    parameters:
+    - file=@ +file --Packlist files
 
   file:
     summary: Recurses into the 'lib' and 'fatlib' directories and bundles all .pm files found into a BEGIN block...
+    parameters:
+    - file +file --File
 
 # vim:et:sts=2:sws=2:sw=2:foldmethod=indent
