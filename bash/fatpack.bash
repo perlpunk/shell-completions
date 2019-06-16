@@ -259,6 +259,10 @@ _fatpack() {
 
         esac
         case $INDEX in
+          1)
+              __comp_current_options || return
+          ;;
+
 
         *)
             __comp_current_options || return

@@ -370,6 +370,7 @@ _fatpack_packlists-for_param_modules_completion
                 # ---- Command: trace
                 _arguments -s -C \
                     '1: :->cmd1' \
+                    '2: :->script' \
                     '--help[Show command help]' \
                     '-h[Show command help]' \
                     '--to[Location of trace file]:to:_files' \
@@ -377,6 +378,11 @@ _fatpack_packlists-for_param_modules_completion
                     '*--use[Specify module(s) to be included additionally]:use:_fatpack_trace_option_use_completion' \
                     && ret=0
 
+                case $state in
+                script)
+_files
+                ;;
+                esac
 
             ;;
             tree)
