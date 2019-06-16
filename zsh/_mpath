@@ -31,8 +31,9 @@ _mpath__param_module_completion() {
     local CURRENT_WORD="$words[CURRENT]"
     IFS=$'\n' set -A __dynamic_completion $( \
 for incpath in $(perl -wE'say for @INC'); do \
-find $incpath -name "*.pm" -printf "%P\n" \
-| perl -plE's{/}{::}g; s{\.pm}{}'; \
+    find $incpath -name "*.pm" -printf "%P\n" \
+    | perl -plE's{/}{::}g; s{\.pm}{}' \
+    | grep "^$CURRENT_WORD"; \
 done )
     compadd -X "module:" $__dynamic_completion
 }
