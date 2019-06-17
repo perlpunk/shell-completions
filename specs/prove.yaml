@@ -19,7 +19,7 @@ options:
 - failures|f        --Show failed tests
 - comments|o        --Show comments
 - ignore-exit       --Ignore exit status from test scripts
-- merge|m           --Merge test scripts' STDERR with their STDOUT
+- merge|m           --Merge test scripts STDERR with their STDOUT
 - recurse|r         --Recursively descend into directories
 - reverse           --Run the tests in reverse order
 - quiet|q           --Suppress some test output
@@ -35,7 +35,7 @@ options:
 - w                 --Enable warnings
 - version|V         --Display the version
 - man|H             --Longer manpage
-- norc              --Don't process default .proverc
+- norc              --Dont process default .proverc
 
 - I +file           --Library paths to include
 - exec|e=s          --Interpreter to run the tests
@@ -54,7 +54,7 @@ options:
   enum: [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 - name: state
-  summary: Control prove's persistent state
+  summary: Control proves persistent state
   aliases: [s]
   type: string
   multiple: true
