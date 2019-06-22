@@ -8,7 +8,11 @@ parameters/option values and dynamic completion calling an external
 command.
 
 The generation is done with the `appspec` tool (see
-https://github.com/perlpunk/App-AppSpec-p5 for installation and usage)
+https://github.com/perlpunk/App-AppSpec-p5 for installation and usage).
+For a quick standalone installation, do:
+
+    % git clone https://github.com/perlpunk/App-AppSpec-p5 -b standalone appspec
+    % PATH=$PWD/appspec/bin:$PATH
 
 Currently it supports bash and zsh completions.
 
@@ -45,26 +49,44 @@ Look into the `specs/commandname.yaml` for specific usage instructions.
 
 ### Bash
 
-Put this in your `.bashrc`:
+For a specific script, just source it:
+
+    $ source /path/to/shell-completions/bash/commandname.bash
+
+Put this in your `.bashrc` for using all completions:
 
     for i in /path/to/shell-completions/bash/*.bash; do source $i; done
 
 ### Zsh
 
-Put this in your `.zshrc`:
+For activating the completions, you can do:
+
+    % fpath=(/path/to/shell-completions/zsh $fpath)
+    % compinit
+
+To just try out completion for one specific script, you can also do:
+
+    % source /path/to/shell-completions/zsh/_commandname
+    % compdef _commandname commandname
+
+Put this in your `.zshrc` for activating all completions:
 
     # before the compinit call
     fpath=('/path/to/shell-completions/zsh' $fpath)
 
-Now `exec zsh`.
+This way zsh won't load all functions at startup, but the completions will get
+autoloaded dynamically when the command is first used.
 
-If you just updated an existing completion script, it's enough to source it:
+When developing a new completion, after a change it's enough to source it,
+without calling `compinit` again:
 
-    source /path/to/shell-completions/zsh/_scriptname
+    % source /path/to/shell-completions/zsh/_commandname
 
 ## See Also
 
 * https://github.com/zsh-users/zsh-completions - Over 130 completion scripts
   for zsh
+* https://github.com/unixorn/awesome-zsh-plugins - A collection of ZSH
+  frameworks, plugins & themes
 * https://github.com/complete-shell - A different approach for generating
-  completions
+  and installing completions for bash
