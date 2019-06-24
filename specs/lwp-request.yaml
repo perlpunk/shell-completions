@@ -1,7 +1,7 @@
 ---
 name: lwp-request
 appspec: { version: 0.001 }
-title: Simple command line user agent
+title: Simple command line user agent (Aliases GET, HEAD, POST)
 
 options:
 - name: m

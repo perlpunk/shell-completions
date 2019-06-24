@@ -1,0 +1,68 @@
+#compdef POST
+
+# Generated with perl module App::Spec v0.010
+
+_POST() {
+    local program=POST
+    typeset -A opt_args
+    local curcontext="$curcontext" state line context
+
+
+        # ---- Command: 
+        _arguments -s  \
+            '1: :->url' \
+            '-m[use method for the request (default is '"'"'GET'"'"')]:m:("GET" "HEAD" "POST" "PUT" "DELETE" "CONNECT" "OPTIONS" "TRACE" "PATCH")' \
+            '-f[make request even if lwp-request believes method is illegal]' \
+            '-b[Use the specified URL as base]:b' \
+            '-t[Set timeout value]:t' \
+            '-i[Set the If-Modified-Since header on the request]:i' \
+            '-c[use this content-type for POST, PUT, CHECKIN]:c' \
+            '-a[Use text mode for content I/O]' \
+            '-p[use this as a proxy]:p' \
+            '-P[don'"'"'t load proxy settings from environment]' \
+            '-H[send this HTTP header (you can specify several)]:H' \
+            '-C[provide credentials for basic authentication (<username>:<password>)]:C' \
+            '-u[Display method and URL before any response]' \
+            '-U[Display request headers (implies -u)]' \
+            '-s[Display response status code]' \
+            '-S[Display response status chain (implies -u)]' \
+            '-e[Display response headers (implies -s)]' \
+            '-E[Display whole chain of headers (implies -S and -U)]' \
+            '-d[Do not display content]' \
+            '-v[Show program version]' \
+            '-o[Process HTML content in various ways]:o:("text" "ps" "links" "html" "dump")' \
+            '--help[Show command help]' \
+            '-h[Show command help]' \
+            && ret=0
+
+        case $state in
+        url)
+
+        ;;
+        esac
+
+
+}
+
+
+__POST_dynamic_comp() {
+    local argname="$1"
+    local arg="$2"
+    local comp="arg:$argname:(("
+    local line
+    while read -r line; do
+        local name="$line"
+        local desc="$line"
+        name="${name%$'\t'*}"
+        desc="${desc/*$'\t'}"
+        comp="$comp$name"
+        if [[ -n "$desc" && "$name" != "$desc" ]]; then
+            comp="$comp\\:"'"'"$desc"'"'
+        fi
+        comp="$comp "
+    done <<< "$arg"
+
+    comp="$comp))"
+    _alternative "$comp"
+}
+
