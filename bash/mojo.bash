@@ -16,7 +16,7 @@ _mojo() {
     MYWORDS=("${words[@]:1:$cword}")
 
     FLAGS=('--help' 'Show command help' '-h' 'Show command help')
-    OPTIONS=('--mode' 'Operating mode for your application' '-m' 'Operating mode for your application')
+    OPTIONS=('--mode' 'Operating mode for your application' '-m' 'Operating mode for your application' '--home' 'Path to application home directory')
     __mojo_handle_options_flags
 
     case $INDEX in
@@ -59,6 +59,8 @@ _mojo() {
                 __mojo_handle_options_flags
                 case ${MYWORDS[$INDEX-1]} in
                   --mode|-m)
+                  ;;
+                  --home)
                   ;;
                   --name)
                   ;;
@@ -108,6 +110,8 @@ _mojo() {
         case ${MYWORDS[$INDEX-1]} in
           --mode|-m)
           ;;
+          --home)
+          ;;
 
         esac
         case $INDEX in
@@ -122,6 +126,8 @@ _mojo() {
         __mojo_handle_options_flags
         case ${MYWORDS[$INDEX-1]} in
           --mode|-m)
+          ;;
+          --home)
           ;;
           --password|-p)
           ;;
@@ -138,10 +144,12 @@ _mojo() {
       ;;
       daemon)
         FLAGS+=('--proxy' 'Activate reverse proxy support' '-p' 'Activate reverse proxy support')
-        OPTIONS+=('--clients' 'Maximum number of concurrent connections' '-c' 'Maximum number of concurrent connections' '--listen' 'One or more locations you want to listen on' '-l' 'One or more locations you want to listen on' '--requests' 'Maximum number of requests per keep-alive connection' '-r' 'Maximum number of requests per keep-alive connection' '--backlog' 'Listen backlog size' '-b' 'Listen backlog size' '--home' 'Path to application home directory' '--inactivity-timeout' 'Inactivity timeout' '-i' 'Inactivity timeout')
+        OPTIONS+=('--clients' 'Maximum number of concurrent connections' '-c' 'Maximum number of concurrent connections' '--listen' 'One or more locations you want to listen on' '-l' 'One or more locations you want to listen on' '--requests' 'Maximum number of requests per keep-alive connection' '-r' 'Maximum number of requests per keep-alive connection' '--backlog' 'Listen backlog size' '-b' 'Listen backlog size' '--inactivity-timeout' 'Inactivity timeout' '-i' 'Inactivity timeout')
         __mojo_handle_options_flags
         case ${MYWORDS[$INDEX-1]} in
           --mode|-m)
+          ;;
+          --home)
           ;;
           --clients|-c)
           ;;
@@ -150,8 +158,6 @@ _mojo() {
           --requests|-r)
           ;;
           --backlog|-b)
-          ;;
-          --home)
           ;;
           --inactivity-timeout|-i)
           ;;
@@ -165,10 +171,12 @@ _mojo() {
         esac
       ;;
       eval)
-        FLAGS+=('--verbode' 'Print return value to STDOUT' '-v' 'Print return value to STDOUT' '-V' 'Print returned data structure to STDOUT')
+        FLAGS+=('--verbose' 'Print return value to STDOUT' '-v' 'Print return value to STDOUT' '-V' 'Print returned data structure to STDOUT')
         __mojo_handle_options_flags
         case ${MYWORDS[$INDEX-1]} in
           --mode|-m)
+          ;;
+          --home)
           ;;
 
         esac
@@ -214,10 +222,12 @@ _mojo() {
       ;;
       get)
         FLAGS+=('--redirect' 'Follow up to 10 redirects' '-r' 'Follow up to 10 redirects' '--verbose' 'Print request and response headers to STDERR' '-v' 'Print request and response headers to STDERR')
-        OPTIONS+=('--charset' 'Charset of HTML/XML content' '-C' 'Charset of HTML/XML content' '--content' 'Content to send with request' '-c' 'Content to send with request' '--form' 'One or more form values and file uploads' '-f' 'One or more form values and file uploads' '--header' 'One or more additional HTTP headers' '-h' 'One or more additional HTTP headers' '--connect-timeout' 'Connect timeout' '-o' 'Connect timeout' '--response-size' 'Maximum response size in bytes' '-S' 'Maximum response size in bytes' '--user' 'Alternate mechanism for specifying colon-separated username and password' '-u' 'Alternate mechanism for specifying colon-separated username and password' '--method' 'HTTP method to use' '-M' 'HTTP method to use' '--home' 'Path to application home directory' '--inactivity-timeout' 'Inactivity timeout' '-i' 'Inactivity timeout')
+        OPTIONS+=('--charset' 'Charset of HTML/XML content' '-C' 'Charset of HTML/XML content' '--content' 'Content to send with request' '-c' 'Content to send with request' '--form' 'One or more form values and file uploads' '-f' 'One or more form values and file uploads' '--header' 'One or more additional HTTP headers' '-h' 'One or more additional HTTP headers' '--connect-timeout' 'Connect timeout' '-o' 'Connect timeout' '--response-size' 'Maximum response size in bytes' '-S' 'Maximum response size in bytes' '--user' 'Alternate mechanism for specifying colon-separated username and password' '-u' 'Alternate mechanism for specifying colon-separated username and password' '--method' 'HTTP method to use' '-M' 'HTTP method to use' '--inactivity-timeout' 'Inactivity timeout' '-i' 'Inactivity timeout')
         __mojo_handle_options_flags
         case ${MYWORDS[$INDEX-1]} in
           --mode|-m)
+          ;;
+          --home)
           ;;
           --charset|-C)
           ;;
@@ -236,8 +246,6 @@ _mojo() {
           --method|-M)
             _mojo_compreply "GET" "HEAD" "POST" "PUT" "DELETE" "CONNECT" "OPTIONS" "TRACE" "PATCH"
             return
-          ;;
-          --home)
           ;;
           --inactivity-timeout|-i)
           ;;
@@ -405,28 +413,17 @@ _mojo() {
         esac
       ;;
       inflate)
-        OPTIONS+=('--home' 'Path to application home directory')
+        __mojo_handle_options_flags
+        __comp_current_options true || return # no subcmds, no params/opts
+      ;;
+      prefork)
+        FLAGS+=('--proxy' 'Activate reverse proxy support' '-p' 'Activate reverse proxy support')
+        OPTIONS+=('--accepts' 'Number of connections for workers to accept' '-a' 'Number of connections for workers to accept' '--clients' 'Maximum number of concurrent connections' '-c' 'Maximum number of concurrent connections' '--graceful-timeout' 'Graceful timeout' '-G' 'Graceful timeout' '--heartbeat-interval' 'Heartbeat interval' '-I' 'Heartbeat interval' '--heartbeat-timeout' 'Heartbeat timeout' '-H' 'Heartbeat timeout' '--listen' 'One or more locations you want to listen on' '-l' 'One or more locations you want to listen on' '--pid-file' 'Path to process id file' '-P' 'Path to process id file' '--requests' 'Maximum number of requests per keep-alive connection' '-r' 'Maximum number of requests per keep-alive connection' '--spare' 'Temporarily spawn up to this number of additional workers' '-s' 'Temporarily spawn up to this number of additional workers' '--workers' 'Number of workers' '-w' 'Number of workers' '--backlog' 'Listen backlog size' '-b' 'Listen backlog size' '--inactivity-timeout' 'Inactivity timeout' '-i' 'Inactivity timeout')
         __mojo_handle_options_flags
         case ${MYWORDS[$INDEX-1]} in
           --mode|-m)
           ;;
           --home)
-          ;;
-
-        esac
-        case $INDEX in
-
-        *)
-            __comp_current_options || return
-        ;;
-        esac
-      ;;
-      prefork)
-        FLAGS+=('--proxy' 'Activate reverse proxy support' '-p' 'Activate reverse proxy support')
-        OPTIONS+=('--accepts' 'Number of connections for workers to accept' '-a' 'Number of connections for workers to accept' '--clients' 'Maximum number of concurrent connections' '-c' 'Maximum number of concurrent connections' '--graceful-timeout' 'Graceful timeout' '-G' 'Graceful timeout' '--heartbeat-interval' 'Heartbeat interval' '-I' 'Heartbeat interval' '--heartbeat-timeout' 'Heartbeat timeout' '-H' 'Heartbeat timeout' '--listen' 'One or more locations you want to listen on' '-l' 'One or more locations you want to listen on' '--pid-file' 'Path to process id file' '-P' 'Path to process id file' '--requests' 'Maximum number of requests per keep-alive connection' '-r' 'Maximum number of requests per keep-alive connection' '--spare' 'Temporarily spawn up to this number of additional workers' '-s' 'Temporarily spawn up to this number of additional workers' '--workers' 'Number of workers' '-w' 'Number of workers' '--backlog' 'Listen backlog size' '-b' 'Listen backlog size' '--home' 'Path to application home directory' '--inactivity-timeout' 'Inactivity timeout' '-i' 'Inactivity timeout')
-        __mojo_handle_options_flags
-        case ${MYWORDS[$INDEX-1]} in
-          --mode|-m)
           ;;
           --accepts|-a)
           ;;
@@ -450,8 +447,6 @@ _mojo() {
           ;;
           --backlog|-b)
           ;;
-          --home)
-          ;;
           --inactivity-timeout|-i)
           ;;
 
@@ -464,25 +459,11 @@ _mojo() {
         esac
       ;;
       psgi)
-        OPTIONS+=('--home' 'Path to application home directory')
         __mojo_handle_options_flags
-        case ${MYWORDS[$INDEX-1]} in
-          --mode|-m)
-          ;;
-          --home)
-          ;;
-
-        esac
-        case $INDEX in
-
-        *)
-            __comp_current_options || return
-        ;;
-        esac
+        __comp_current_options true || return # no subcmds, no params/opts
       ;;
       routes)
         FLAGS+=('--verbose' 'Print additional details about routes' '-v' 'Print additional details about routes')
-        OPTIONS+=('--home' 'Path to application home directory')
         __mojo_handle_options_flags
         case ${MYWORDS[$INDEX-1]} in
           --mode|-m)
@@ -503,6 +484,8 @@ _mojo() {
         __mojo_handle_options_flags
         case ${MYWORDS[$INDEX-1]} in
           --mode|-m)
+          ;;
+          --home)
           ;;
 
         esac

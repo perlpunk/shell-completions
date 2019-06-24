@@ -4,7 +4,8 @@ name: mojo
 appspec: { version: '0.001' }
 title: The Mojolicious command system
 options:
-- mode|m=s  --Operating mode for your application
+- mode|m=s      --Operating mode for your application
+- home= +file   --Path to application home directory
 
 subcommands:
   cgi:
@@ -26,13 +27,12 @@ subcommands:
     - proxy|p                 --Activate reverse proxy support
     - requests|r=i            --Maximum number of requests per keep-alive connection
     - &backlog backlog|b=s          --Listen backlog size
-    - &home home= +file             --Path to application home directory
     - &inactivity-timeout inactivity-timeout|i=i  --Inactivity timeout
 
   eval:
     summary: Run code against application
     options:
-    - verbode|v --Print return value to STDOUT
+    - verbose|v --Print return value to STDOUT
     - V         --Print returned data structure to STDOUT
 
   generate:
@@ -69,13 +69,11 @@ subcommands:
       aliases: [M]
       type: string
       enum: [GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH]
-    - *home
     - *inactivity-timeout
 
   inflate:
     summary: Inflate embedded files to real files
-    options:
-    - *home
+    options: []
 
   prefork:
     summary: Start application with pre-forking HTTP and WebSocket server
@@ -92,19 +90,16 @@ subcommands:
     - spare|s=i               --Temporarily spawn up to this number of additional workers
     - workers|w=i             --Number of workers
     - *backlog
-    - *home
     - *inactivity-timeout
 
   psgi:
     summary: Start application with PSGI
-    options:
-    - *home
+    options: []
 
   routes:
     summary: Show available routes
     options:
     - verbose|v               --Print additional details about routes
-    - *home
 
   test:
     summary: Run tests
