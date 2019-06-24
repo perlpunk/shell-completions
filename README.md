@@ -24,6 +24,7 @@ Currently it supports bash and zsh completions.
 * `json_pp` - JSON::PP command utility
 * `json_xs` - JSON::XS commandline utility
 * `lwp-request` - Simple command line user agent
+* `mojo` - The Mojolicious command system
 * `morbo` - Morbo HTTP and WebSocket development server
 * `mpath` - display the full path to a perl module (installed locally)
 * `pip` - A tool for installing and managing Python packages

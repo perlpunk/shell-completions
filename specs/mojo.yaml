@@ -1,0 +1,119 @@
+
+---
+name: mojo
+appspec: { version: '0.001' }
+title: The Mojolicious command system
+options:
+- mode|m=s  --Operating mode for your application
+
+subcommands:
+  cgi:
+    summary: Start application with CGI
+    options:
+    - nph   --Enable non-parsed-header mode
+
+  cpanify:
+    summary: Upload distribution to CPAN
+    options:
+    - password|p=s  --PAUSE password
+    - user|u=s      --PAUSE username
+
+  daemon:
+    summary: Start application with HTTP and WebSocket server
+    options:
+    - clients|c=i             --Maximum number of concurrent connections
+    - listen|l=s              --One or more locations you want to listen on
+    - proxy|p                 --Activate reverse proxy support
+    - requests|r=i            --Maximum number of requests per keep-alive connection
+    - &backlog backlog|b=s          --Listen backlog size
+    - &home home= +file             --Path to application home directory
+    - &inactivity-timeout inactivity-timeout|i=i  --Inactivity timeout
+
+  eval:
+    summary: Run code against application
+    options:
+    - verbode|v --Print return value to STDOUT
+    - V         --Print returned data structure to STDOUT
+
+  generate:
+    summary: Generate files and directories from templates
+
+    subcommands:
+
+      app:
+        summary: Generate Mojolicious application directory structure
+
+      lite_app:
+        summary: Generate Mojolicious::Lite application
+
+      makefile:
+        summary: Generate Makefile.PL
+
+      plugin:
+        summary: Generate Mojolicious plugin directory structure
+
+  get:
+    summary: Perform HTTP request
+    options:
+    - charset|C=s             --Charset of HTML/XML content
+    - content|c=s             --Content to send with request
+    - form|f=s@               --One or more form values and file uploads
+    - header|h=s@             --One or more additional HTTP headers
+    - connect-timeout|o=i     --Connect timeout
+    - redirect|r              --Follow up to 10 redirects
+    - response-size|S=i       --Maximum response size in bytes
+    - user|u=s                --Alternate mechanism for specifying colon-separated username and password
+    - verbose|v               --Print request and response headers to STDERR
+    - name: method
+      summary: HTTP method to use
+      aliases: [M]
+      type: string
+      enum: [GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH]
+    - *home
+    - *inactivity-timeout
+
+  inflate:
+    summary: Inflate embedded files to real files
+    options:
+    - *home
+
+  prefork:
+    summary: Start application with pre-forking HTTP and WebSocket server
+    options:
+    - accepts|a=i             --Number of connections for workers to accept
+    - clients|c=i             --Maximum number of concurrent connections
+    - graceful-timeout|G=i    --Graceful timeout
+    - heartbeat-interval|I=i  --Heartbeat interval
+    - heartbeat-timeout|H=i   --Heartbeat timeout
+    - listen|l=s@             --One or more locations you want to listen on
+    - pid-file|P= +file       --Path to process id file
+    - proxy|p                 --Activate reverse proxy support
+    - requests|r=i            --Maximum number of requests per keep-alive connection
+    - spare|s=i               --Temporarily spawn up to this number of additional workers
+    - workers|w=i             --Number of workers
+    - *backlog
+    - *home
+    - *inactivity-timeout
+
+  psgi:
+    summary: Start application with PSGI
+    options:
+    - *home
+
+  routes:
+    summary: Show available routes
+    options:
+    - verbose|v               --Print additional details about routes
+    - *home
+
+  test:
+    summary: Run tests
+    options:
+    - verbose|v               --Print verbose debug information to STDERR
+
+  version:
+    summary: Show versions of available modules
+    options: []
+
+
+# vim:et:sts=2:sws=2:sw=2:foldmethod=indent

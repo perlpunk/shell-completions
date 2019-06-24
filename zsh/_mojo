@@ -1,0 +1,842 @@
+#compdef mojo
+
+# Generated with perl module App::Spec v0.010
+
+_mojo() {
+    local program=mojo
+    typeset -A opt_args
+    local curcontext="$curcontext" state line context
+
+
+        # ---- Command: 
+        _arguments -s  \
+            '1: :->cmd1' \
+            '*: :->args' \
+            && ret=0
+
+
+        case $state in
+        cmd1)
+            _alternative 'args:cmd2:((cgi\:"Start application with CGI" cpanify\:"Upload distribution to CPAN" daemon\:"Start application with HTTP and WebSocket server" eval\:"Run code against application" generate\:"Generate files and directories from templates" get\:"Perform HTTP request" help\:"Show command help" inflate\:"Inflate embedded files to real files" prefork\:"Start application with pre-forking HTTP and WebSocket server" psgi\:"Start application with PSGI" routes\:"Show available routes" test\:"Run tests" version\:"Show versions of available modules"))'
+        ;;
+
+        args)
+            case $line[1] in
+            _meta)
+
+                # ---- Command: _meta
+                _arguments -s -C \
+                    '1: :->cmd1' \
+                    '2: :->cmd2' \
+                    '*: :->args' \
+                    && ret=0
+
+
+                case $state in
+                cmd2)
+                    _alternative 'args:cmd3:((completion\:"Shell completion functions" pod\:"Pod documentation"))'
+                ;;
+
+                args)
+                    case $line[2] in
+                    completion)
+
+                        # ---- Command: _meta completion
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '3: :->cmd3' \
+                            '*: :->args' \
+                            && ret=0
+
+
+                        case $state in
+                        cmd3)
+                            _alternative 'args:cmd4:((generate\:"Generate self completion"))'
+                        ;;
+
+                        args)
+                            case $line[3] in
+                            generate)
+
+                                # ---- Command: _meta completion generate
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--mode[Operating mode for your application]:mode' \
+                                    '-m[Operating mode for your application]:mode' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--name[name of the program (optional, override name in spec)]:name' \
+                                    '--zsh[for zsh]' \
+                                    '--bash[for bash]' \
+                                    && ret=0
+
+
+                            ;;
+                            esac
+
+                        ;;
+
+                        esac
+                    ;;
+                    pod)
+
+                        # ---- Command: _meta pod
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '3: :->cmd3' \
+                            '*: :->args' \
+                            && ret=0
+
+
+                        case $state in
+                        cmd3)
+                            _alternative 'args:cmd4:((generate\:"Generate self pod"))'
+                        ;;
+
+                        args)
+                            case $line[3] in
+                            generate)
+
+                                # ---- Command: _meta pod generate
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--mode[Operating mode for your application]:mode' \
+                                    '-m[Operating mode for your application]:mode' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    && ret=0
+
+
+                            ;;
+                            esac
+
+                        ;;
+
+                        esac
+                    ;;
+                    esac
+
+                ;;
+
+                esac
+            ;;
+            cgi)
+
+                # ---- Command: cgi
+                _arguments -s -C \
+                    '1: :->cmd1' \
+                    '--mode[Operating mode for your application]:mode' \
+                    '-m[Operating mode for your application]:mode' \
+                    '--help[Show command help]' \
+                    '-h[Show command help]' \
+                    '--nph[Enable non-parsed-header mode]' \
+                    && ret=0
+
+
+            ;;
+            cpanify)
+
+                # ---- Command: cpanify
+                _arguments -s -C \
+                    '1: :->cmd1' \
+                    '--mode[Operating mode for your application]:mode' \
+                    '-m[Operating mode for your application]:mode' \
+                    '--help[Show command help]' \
+                    '-h[Show command help]' \
+                    '--password[PAUSE password]:password' \
+                    '-p[PAUSE password]:password' \
+                    '--user[PAUSE username]:user' \
+                    '-u[PAUSE username]:user' \
+                    && ret=0
+
+
+            ;;
+            daemon)
+
+                # ---- Command: daemon
+                _arguments -s -C \
+                    '1: :->cmd1' \
+                    '--mode[Operating mode for your application]:mode' \
+                    '-m[Operating mode for your application]:mode' \
+                    '--help[Show command help]' \
+                    '-h[Show command help]' \
+                    '--clients[Maximum number of concurrent connections]:clients' \
+                    '-c[Maximum number of concurrent connections]:clients' \
+                    '--listen[One or more locations you want to listen on]:listen' \
+                    '-l[One or more locations you want to listen on]:listen' \
+                    '--proxy[Activate reverse proxy support]' \
+                    '-p[Activate reverse proxy support]' \
+                    '--requests[Maximum number of requests per keep-alive connection]:requests' \
+                    '-r[Maximum number of requests per keep-alive connection]:requests' \
+                    '--backlog[Listen backlog size]:backlog' \
+                    '-b[Listen backlog size]:backlog' \
+                    '--home[Path to application home directory]:home:_files' \
+                    '--inactivity-timeout[Inactivity timeout]:inactivity-timeout' \
+                    '-i[Inactivity timeout]:inactivity-timeout' \
+                    && ret=0
+
+
+            ;;
+            eval)
+
+                # ---- Command: eval
+                _arguments -s -C \
+                    '1: :->cmd1' \
+                    '--mode[Operating mode for your application]:mode' \
+                    '-m[Operating mode for your application]:mode' \
+                    '--help[Show command help]' \
+                    '-h[Show command help]' \
+                    '--verbode[Print return value to STDOUT]' \
+                    '-v[Print return value to STDOUT]' \
+                    '-V[Print returned data structure to STDOUT]' \
+                    && ret=0
+
+
+            ;;
+            generate)
+
+                # ---- Command: generate
+                _arguments -s -C \
+                    '1: :->cmd1' \
+                    '2: :->cmd2' \
+                    '*: :->args' \
+                    && ret=0
+
+
+                case $state in
+                cmd2)
+                    _alternative 'args:cmd3:((app\:"Generate Mojolicious application directory structure" lite_app\:"Generate Mojolicious::Lite application" makefile\:"Generate Makefile.PL" plugin\:"Generate Mojolicious plugin directory structure"))'
+                ;;
+
+                args)
+                    case $line[2] in
+                    app)
+
+                        # ---- Command: generate app
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--mode[Operating mode for your application]:mode' \
+                            '-m[Operating mode for your application]:mode' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    lite_app)
+
+                        # ---- Command: generate lite_app
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--mode[Operating mode for your application]:mode' \
+                            '-m[Operating mode for your application]:mode' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    makefile)
+
+                        # ---- Command: generate makefile
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--mode[Operating mode for your application]:mode' \
+                            '-m[Operating mode for your application]:mode' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    plugin)
+
+                        # ---- Command: generate plugin
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--mode[Operating mode for your application]:mode' \
+                            '-m[Operating mode for your application]:mode' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            && ret=0
+
+
+                    ;;
+                    esac
+
+                ;;
+
+                esac
+            ;;
+            get)
+
+                # ---- Command: get
+                _arguments -s -C \
+                    '1: :->cmd1' \
+                    '--mode[Operating mode for your application]:mode' \
+                    '-m[Operating mode for your application]:mode' \
+                    '--help[Show command help]' \
+                    '-h[Show command help]' \
+                    '--charset[Charset of HTML/XML content]:charset' \
+                    '-C[Charset of HTML/XML content]:charset' \
+                    '--content[Content to send with request]:content' \
+                    '-c[Content to send with request]:content' \
+                    '*--form[One or more form values and file uploads]:form' \
+                    '*-f[One or more form values and file uploads]:form' \
+                    '*--header[One or more additional HTTP headers]:header' \
+                    '*-h[One or more additional HTTP headers]:header' \
+                    '--connect-timeout[Connect timeout]:connect-timeout' \
+                    '-o[Connect timeout]:connect-timeout' \
+                    '--redirect[Follow up to 10 redirects]' \
+                    '-r[Follow up to 10 redirects]' \
+                    '--response-size[Maximum response size in bytes]:response-size' \
+                    '-S[Maximum response size in bytes]:response-size' \
+                    '--user[Alternate mechanism for specifying colon-separated username and password]:user' \
+                    '-u[Alternate mechanism for specifying colon-separated username and password]:user' \
+                    '--verbose[Print request and response headers to STDERR]' \
+                    '-v[Print request and response headers to STDERR]' \
+                    '--method[HTTP method to use]:method:("GET" "HEAD" "POST" "PUT" "DELETE" "CONNECT" "OPTIONS" "TRACE" "PATCH")' \
+                    '-M[HTTP method to use]:method:("GET" "HEAD" "POST" "PUT" "DELETE" "CONNECT" "OPTIONS" "TRACE" "PATCH")' \
+                    '--home[Path to application home directory]:home:_files' \
+                    '--inactivity-timeout[Inactivity timeout]:inactivity-timeout' \
+                    '-i[Inactivity timeout]:inactivity-timeout' \
+                    && ret=0
+
+
+            ;;
+            help)
+
+                # ---- Command: help
+                _arguments -s -C \
+                    '1: :->cmd1' \
+                    '2: :->cmd2' \
+                    '*: :->args' \
+                    && ret=0
+
+
+                case $state in
+                cmd2)
+                    _alternative 'args:cmd3:((cgi cpanify daemon eval generate get inflate prefork psgi routes test version))'
+                ;;
+
+                args)
+                    case $line[2] in
+                    _meta)
+
+                        # ---- Command: help _meta
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '3: :->cmd3' \
+                            '*: :->args' \
+                            && ret=0
+
+
+                        case $state in
+                        cmd3)
+                            _alternative 'args:cmd4:((completion pod))'
+                        ;;
+
+                        args)
+                            case $line[3] in
+                            completion)
+
+                                # ---- Command: help _meta completion
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '4: :->cmd4' \
+                                    '*: :->args' \
+                                    && ret=0
+
+
+                                case $state in
+                                cmd4)
+                                    _alternative 'args:cmd5:((generate))'
+                                ;;
+
+                                args)
+                                    case $line[4] in
+                                    generate)
+
+                                        # ---- Command: help _meta completion generate
+                                        _arguments -s -C \
+                                            '1: :->cmd1' \
+                                            '2: :->cmd2' \
+                                            '3: :->cmd3' \
+                                            '4: :->cmd4' \
+                                            '--mode[Operating mode for your application]:mode' \
+                                            '-m[Operating mode for your application]:mode' \
+                                            '--help[Show command help]' \
+                                            '-h[Show command help]' \
+                                            '--all[]' \
+                                            && ret=0
+
+
+                                    ;;
+                                    esac
+
+                                ;;
+
+                                esac
+                            ;;
+                            pod)
+
+                                # ---- Command: help _meta pod
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '4: :->cmd4' \
+                                    '*: :->args' \
+                                    && ret=0
+
+
+                                case $state in
+                                cmd4)
+                                    _alternative 'args:cmd5:((generate))'
+                                ;;
+
+                                args)
+                                    case $line[4] in
+                                    generate)
+
+                                        # ---- Command: help _meta pod generate
+                                        _arguments -s -C \
+                                            '1: :->cmd1' \
+                                            '2: :->cmd2' \
+                                            '3: :->cmd3' \
+                                            '4: :->cmd4' \
+                                            '--mode[Operating mode for your application]:mode' \
+                                            '-m[Operating mode for your application]:mode' \
+                                            '--help[Show command help]' \
+                                            '-h[Show command help]' \
+                                            '--all[]' \
+                                            && ret=0
+
+
+                                    ;;
+                                    esac
+
+                                ;;
+
+                                esac
+                            ;;
+                            esac
+
+                        ;;
+
+                        esac
+                    ;;
+                    cgi)
+
+                        # ---- Command: help cgi
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--mode[Operating mode for your application]:mode' \
+                            '-m[Operating mode for your application]:mode' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            '--all[]' \
+                            && ret=0
+
+
+                    ;;
+                    cpanify)
+
+                        # ---- Command: help cpanify
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--mode[Operating mode for your application]:mode' \
+                            '-m[Operating mode for your application]:mode' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            '--all[]' \
+                            && ret=0
+
+
+                    ;;
+                    daemon)
+
+                        # ---- Command: help daemon
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--mode[Operating mode for your application]:mode' \
+                            '-m[Operating mode for your application]:mode' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            '--all[]' \
+                            && ret=0
+
+
+                    ;;
+                    eval)
+
+                        # ---- Command: help eval
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--mode[Operating mode for your application]:mode' \
+                            '-m[Operating mode for your application]:mode' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            '--all[]' \
+                            && ret=0
+
+
+                    ;;
+                    generate)
+
+                        # ---- Command: help generate
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '3: :->cmd3' \
+                            '*: :->args' \
+                            && ret=0
+
+
+                        case $state in
+                        cmd3)
+                            _alternative 'args:cmd4:((app lite_app makefile plugin))'
+                        ;;
+
+                        args)
+                            case $line[3] in
+                            app)
+
+                                # ---- Command: help generate app
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--mode[Operating mode for your application]:mode' \
+                                    '-m[Operating mode for your application]:mode' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            lite_app)
+
+                                # ---- Command: help generate lite_app
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--mode[Operating mode for your application]:mode' \
+                                    '-m[Operating mode for your application]:mode' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            makefile)
+
+                                # ---- Command: help generate makefile
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--mode[Operating mode for your application]:mode' \
+                                    '-m[Operating mode for your application]:mode' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            plugin)
+
+                                # ---- Command: help generate plugin
+                                _arguments -s -C \
+                                    '1: :->cmd1' \
+                                    '2: :->cmd2' \
+                                    '3: :->cmd3' \
+                                    '--mode[Operating mode for your application]:mode' \
+                                    '-m[Operating mode for your application]:mode' \
+                                    '--help[Show command help]' \
+                                    '-h[Show command help]' \
+                                    '--all[]' \
+                                    && ret=0
+
+
+                            ;;
+                            esac
+
+                        ;;
+
+                        esac
+                    ;;
+                    get)
+
+                        # ---- Command: help get
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--mode[Operating mode for your application]:mode' \
+                            '-m[Operating mode for your application]:mode' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            '--all[]' \
+                            && ret=0
+
+
+                    ;;
+                    inflate)
+
+                        # ---- Command: help inflate
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--mode[Operating mode for your application]:mode' \
+                            '-m[Operating mode for your application]:mode' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            '--all[]' \
+                            && ret=0
+
+
+                    ;;
+                    prefork)
+
+                        # ---- Command: help prefork
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--mode[Operating mode for your application]:mode' \
+                            '-m[Operating mode for your application]:mode' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            '--all[]' \
+                            && ret=0
+
+
+                    ;;
+                    psgi)
+
+                        # ---- Command: help psgi
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--mode[Operating mode for your application]:mode' \
+                            '-m[Operating mode for your application]:mode' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            '--all[]' \
+                            && ret=0
+
+
+                    ;;
+                    routes)
+
+                        # ---- Command: help routes
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--mode[Operating mode for your application]:mode' \
+                            '-m[Operating mode for your application]:mode' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            '--all[]' \
+                            && ret=0
+
+
+                    ;;
+                    test)
+
+                        # ---- Command: help test
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--mode[Operating mode for your application]:mode' \
+                            '-m[Operating mode for your application]:mode' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            '--all[]' \
+                            && ret=0
+
+
+                    ;;
+                    version)
+
+                        # ---- Command: help version
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--mode[Operating mode for your application]:mode' \
+                            '-m[Operating mode for your application]:mode' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            '--all[]' \
+                            && ret=0
+
+
+                    ;;
+                    esac
+
+                ;;
+
+                esac
+            ;;
+            inflate)
+
+                # ---- Command: inflate
+                _arguments -s -C \
+                    '1: :->cmd1' \
+                    '--mode[Operating mode for your application]:mode' \
+                    '-m[Operating mode for your application]:mode' \
+                    '--help[Show command help]' \
+                    '-h[Show command help]' \
+                    '--home[Path to application home directory]:home:_files' \
+                    && ret=0
+
+
+            ;;
+            prefork)
+
+                # ---- Command: prefork
+                _arguments -s -C \
+                    '1: :->cmd1' \
+                    '--mode[Operating mode for your application]:mode' \
+                    '-m[Operating mode for your application]:mode' \
+                    '--help[Show command help]' \
+                    '-h[Show command help]' \
+                    '--accepts[Number of connections for workers to accept]:accepts' \
+                    '-a[Number of connections for workers to accept]:accepts' \
+                    '--clients[Maximum number of concurrent connections]:clients' \
+                    '-c[Maximum number of concurrent connections]:clients' \
+                    '--graceful-timeout[Graceful timeout]:graceful-timeout' \
+                    '-G[Graceful timeout]:graceful-timeout' \
+                    '--heartbeat-interval[Heartbeat interval]:heartbeat-interval' \
+                    '-I[Heartbeat interval]:heartbeat-interval' \
+                    '--heartbeat-timeout[Heartbeat timeout]:heartbeat-timeout' \
+                    '-H[Heartbeat timeout]:heartbeat-timeout' \
+                    '*--listen[One or more locations you want to listen on]:listen' \
+                    '*-l[One or more locations you want to listen on]:listen' \
+                    '--pid-file[Path to process id file]:pid-file:_files' \
+                    '-P[Path to process id file]:pid-file:_files' \
+                    '--proxy[Activate reverse proxy support]' \
+                    '-p[Activate reverse proxy support]' \
+                    '--requests[Maximum number of requests per keep-alive connection]:requests' \
+                    '-r[Maximum number of requests per keep-alive connection]:requests' \
+                    '--spare[Temporarily spawn up to this number of additional workers]:spare' \
+                    '-s[Temporarily spawn up to this number of additional workers]:spare' \
+                    '--workers[Number of workers]:workers' \
+                    '-w[Number of workers]:workers' \
+                    '--backlog[Listen backlog size]:backlog' \
+                    '-b[Listen backlog size]:backlog' \
+                    '--home[Path to application home directory]:home:_files' \
+                    '--inactivity-timeout[Inactivity timeout]:inactivity-timeout' \
+                    '-i[Inactivity timeout]:inactivity-timeout' \
+                    && ret=0
+
+
+            ;;
+            psgi)
+
+                # ---- Command: psgi
+                _arguments -s -C \
+                    '1: :->cmd1' \
+                    '--mode[Operating mode for your application]:mode' \
+                    '-m[Operating mode for your application]:mode' \
+                    '--help[Show command help]' \
+                    '-h[Show command help]' \
+                    '--home[Path to application home directory]:home:_files' \
+                    && ret=0
+
+
+            ;;
+            routes)
+
+                # ---- Command: routes
+                _arguments -s -C \
+                    '1: :->cmd1' \
+                    '--mode[Operating mode for your application]:mode' \
+                    '-m[Operating mode for your application]:mode' \
+                    '--help[Show command help]' \
+                    '-h[Show command help]' \
+                    '--verbose[Print additional details about routes]' \
+                    '-v[Print additional details about routes]' \
+                    '--home[Path to application home directory]:home:_files' \
+                    && ret=0
+
+
+            ;;
+            test)
+
+                # ---- Command: test
+                _arguments -s -C \
+                    '1: :->cmd1' \
+                    '--mode[Operating mode for your application]:mode' \
+                    '-m[Operating mode for your application]:mode' \
+                    '--help[Show command help]' \
+                    '-h[Show command help]' \
+                    '--verbose[Print verbose debug information to STDERR]' \
+                    '-v[Print verbose debug information to STDERR]' \
+                    && ret=0
+
+
+            ;;
+            version)
+
+                # ---- Command: version
+                _arguments -s -C \
+                    '1: :->cmd1' \
+                    '--mode[Operating mode for your application]:mode' \
+                    '-m[Operating mode for your application]:mode' \
+                    '--help[Show command help]' \
+                    '-h[Show command help]' \
+                    && ret=0
+
+
+            ;;
+            esac
+
+        ;;
+
+        esac
+
+}
+
+
+__mojo_dynamic_comp() {
+    local argname="$1"
+    local arg="$2"
+    local comp="arg:$argname:(("
+    local line
+    while read -r line; do
+        local name="$line"
+        local desc="$line"
+        name="${name%$'\t'*}"
+        desc="${desc/*$'\t'}"
+        comp="$comp$name"
+        if [[ -n "$desc" && "$name" != "$desc" ]]; then
+            comp="$comp\\:"'"'"$desc"'"'
+        fi
+        comp="$comp "
+    done <<< "$arg"
+
+    comp="$comp))"
+    _alternative "$comp"
+}
+
