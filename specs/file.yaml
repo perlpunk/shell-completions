@@ -1,0 +1,46 @@
+---
+name: file
+appspec: { version: 0.001 }
+title: determine file type
+
+options:
+
+- apple                   --output file type and creator code as used by older MacOS versions
+- brief|b                 --Do not prepend filenames to output
+- compile|C               --Write a magic.mgc output file
+- checking-printout|c     --Cause a checking printout of the parsed form of the magic file
+- d                       --Prints internal debugging information
+- E                       --On filesystem errors, issue an error message and exit
+- extension               --Print a slash-separated list of valid extensions
+- seperator|F=s           --Use the specified string as the separator
+- files-from|f= +file     --Read the names of the files to be examined from file
+- no-dereference|h        --option causes symlinks not to be followed
+- mime|i                  --Causes the file command to output mime type strings
+- keep-going|k            --Don't stop at the first match
+- list|l                  --Shows a list of patterns and their strength
+- dereference|L           --option causes symlinks to be followed
+- magic-file|m= +file     --Specify an alternate list of files and directories containing magic
+- no-pad|N                --Dont pad filenames
+- no-buffer|n             --Force stdout to be flushed after checking each file
+- preserve-date|p         --attempt to preserve the access time of files
+- raw|r                   --Dont translate unprintable characters to \ooo
+- special-files|s         --causes file to also read argument files which are block or character special files
+- version|v               --Print the version of the program and exit
+- uncompress|z            --Try to look inside compressed files
+- uncompress-noreport|Z   --Like uncompress, but report information about the contents only not the compression
+- print0|0                --Output a null character \0 after the end of the filename
+- spec: exclude|e=s@      --Exclude named tests from the list of tests made to determine the file type
+  enum: [apptype, ascii, encoding, tokens, cdf, compress, elf, soft, tar, text]
+- spec: mime-type         --Like --mime, but print only the specified element(s)
+  aliases: [mime-encoding]
+- spec: parameter|P=s     --Set various parameter limits
+  enum: [indir=, name=, elf_notes=, elf_phnum=, elf_shnum=, regex=, bytes=]
+
+parameters:
+- name: file
+  summary: File(s)
+  multiple: true
+  type: file
+
+# vim:et:sts=2:sws=2:sw=2:foldmethod=indent
+

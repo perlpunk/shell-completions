@@ -19,6 +19,7 @@ Currently it supports bash and zsh completions.
 * `dancer2` - Dancer2 command line interface
 * `dzil` - do stuff with your dist
 * `fatpack` - Pack perl script and modules into standalone script
+* `file` - determine file type
 * `hypnotoad` - Hypnotoad HTTP and WebSocket server
 * `jq` - Command-line JSON processor
 * `json_pp` - JSON::PP command utility

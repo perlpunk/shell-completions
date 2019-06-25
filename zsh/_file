@@ -1,0 +1,98 @@
+#compdef file
+
+# Generated with perl module App::Spec v0.010
+
+_file() {
+    local program=file
+    typeset -A opt_args
+    local curcontext="$curcontext" state line context
+
+
+        # ---- Command: 
+        _arguments -s  \
+            '*: :->file' \
+            '--apple[output file type and creator code as used by older MacOS versions]' \
+            '--brief[Do not prepend filenames to output]' \
+            '-b[Do not prepend filenames to output]' \
+            '--compile[Write a magic.mgc output file]' \
+            '-C[Write a magic.mgc output file]' \
+            '--checking-printout[Cause a checking printout of the parsed form of the magic file]' \
+            '-c[Cause a checking printout of the parsed form of the magic file]' \
+            '-d[Prints internal debugging information]' \
+            '-E[On filesystem errors, issue an error message and exit]' \
+            '--extension[Print a slash-separated list of valid extensions]' \
+            '--seperator[Use the specified string as the separator]:seperator' \
+            '-F[Use the specified string as the separator]:seperator' \
+            '--files-from[Read the names of the files to be examined from file]:files-from:_files' \
+            '-f[Read the names of the files to be examined from file]:files-from:_files' \
+            '--no-dereference[option causes symlinks not to be followed]' \
+            '-h[option causes symlinks not to be followed]' \
+            '--mime[Causes the file command to output mime type strings]' \
+            '-i[Causes the file command to output mime type strings]' \
+            '--keep-going[Don'"'"'t stop at the first match]' \
+            '-k[Don'"'"'t stop at the first match]' \
+            '--list[Shows a list of patterns and their strength]' \
+            '-l[Shows a list of patterns and their strength]' \
+            '--dereference[option causes symlinks to be followed]' \
+            '-L[option causes symlinks to be followed]' \
+            '--magic-file[Specify an alternate list of files and directories containing magic]:magic-file:_files' \
+            '-m[Specify an alternate list of files and directories containing magic]:magic-file:_files' \
+            '--no-pad[Dont pad filenames]' \
+            '-N[Dont pad filenames]' \
+            '--no-buffer[Force stdout to be flushed after checking each file]' \
+            '-n[Force stdout to be flushed after checking each file]' \
+            '--preserve-date[attempt to preserve the access time of files]' \
+            '-p[attempt to preserve the access time of files]' \
+            '--raw[Dont translate unprintable characters to \ooo]' \
+            '-r[Dont translate unprintable characters to \ooo]' \
+            '--special-files[causes file to also read argument files which are block or character special files]' \
+            '-s[causes file to also read argument files which are block or character special files]' \
+            '--version[Print the version of the program and exit]' \
+            '-v[Print the version of the program and exit]' \
+            '--uncompress[Try to look inside compressed files]' \
+            '-z[Try to look inside compressed files]' \
+            '--uncompress-noreport[Like uncompress, but report information about the contents only not the compression]' \
+            '-Z[Like uncompress, but report information about the contents only not the compression]' \
+            '--print0[Output a null character \0 after the end of the filename]' \
+            '-0[Output a null character \0 after the end of the filename]' \
+            '*--exclude[Exclude named tests from the list of tests made to determine the file type]:exclude:("apptype" "ascii" "encoding" "tokens" "cdf" "compress" "elf" "soft" "tar" "text")' \
+            '*-e[Exclude named tests from the list of tests made to determine the file type]:exclude:("apptype" "ascii" "encoding" "tokens" "cdf" "compress" "elf" "soft" "tar" "text")' \
+            '--mime-type[Like --mime, but print only the specified element(s)]' \
+            '--mime-encoding[Like --mime, but print only the specified element(s)]' \
+            '--parameter[Set various parameter limits]:parameter:("indir=" "name=" "elf_notes=" "elf_phnum=" "elf_shnum=" "regex=" "bytes=")' \
+            '-P[Set various parameter limits]:parameter:("indir=" "name=" "elf_notes=" "elf_phnum=" "elf_shnum=" "regex=" "bytes=")' \
+            '--help[Show command help]' \
+            '-h[Show command help]' \
+            && ret=0
+
+        case $state in
+        file)
+_files
+        ;;
+        esac
+
+
+}
+
+
+__file_dynamic_comp() {
+    local argname="$1"
+    local arg="$2"
+    local comp="arg:$argname:(("
+    local line
+    while read -r line; do
+        local name="$line"
+        local desc="$line"
+        name="${name%$'\t'*}"
+        desc="${desc/*$'\t'}"
+        comp="$comp$name"
+        if [[ -n "$desc" && "$name" != "$desc" ]]; then
+            comp="$comp\\:"'"'"$desc"'"'
+        fi
+        comp="$comp "
+    done <<< "$arg"
+
+    comp="$comp))"
+    _alternative "$comp"
+}
+
