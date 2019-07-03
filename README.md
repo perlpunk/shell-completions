@@ -30,6 +30,7 @@ Currently it supports bash and zsh completions.
 * `mpath` - display the full path to a perl module (installed locally)
 * `pip` - A tool for installing and managing Python packages
 * `plackup` - Run PSGI application with Plack handlers
+* `pod2html` - convert .pod files to .html files
 * `prove` - Run tests through a TAP harness
 * `starman` - High-performance preforking PSGI/Plack web server
 * `tower-cli` - Ansible Tower Commandline

@@ -1,0 +1,33 @@
+---
+name: pod2html
+appspec: { version: 0.001 }
+title: convert .pod files to .html files
+
+options:
+- backlink          --turn =head1 directives into links pointing to the top
+- nobacklink        --disable --backlink
+- cachedir= +file   --directory for the directory cache files
+- css=s             --stylesheet URL
+- flush             --flushes the directory cache
+- header            --produce block header/footer
+- noheader          --disable --header
+- htmldir= +file    --directory for resulting HTML files
+- htmlroot=s        --http-server base directory
+- index             --generate an index at the top
+- noindex           --disable --index
+- infile= +file     --filename for the pod to convert
+- outfile= +file    --filename for the resulting html file
+- poderrors         --include a POD ERRORS section in the output
+- nopoderrors       --disable --poderrors
+- podpath= +file    --colon-separated list of directories containing library pods
+- podroot= +file    --filesystem base directory
+- quiet             --suppress some benign warning messages
+- noquiet           --disable --quiet
+- recurse           --recurse on those subdirectories listed in podpath
+- norecurse         --disable --recurse
+- title=s           --title that will appear in resulting html file
+- verbose           --self-explanatory
+- noverbose         --disable --verbose
+
+# vim:et:sts=2:sws=2:sw=2:foldmethod=indent
+

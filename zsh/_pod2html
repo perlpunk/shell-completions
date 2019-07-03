@@ -1,0 +1,66 @@
+#compdef pod2html
+
+# Generated with perl module App::Spec v0.010
+
+_pod2html() {
+    local program=pod2html
+    typeset -A opt_args
+    local curcontext="$curcontext" state line context
+
+
+        # ---- Command: 
+        _arguments -s  \
+            '--backlink[turn =head1 directives into links pointing to the top]' \
+            '--nobacklink[disable --backlink]' \
+            '--cachedir[directory for the directory cache files]:cachedir:_files' \
+            '--css[stylesheet URL]:css' \
+            '--flush[flushes the directory cache]' \
+            '--header[produce block header/footer]' \
+            '--noheader[disable --header]' \
+            '--htmldir[directory for resulting HTML files]:htmldir:_files' \
+            '--htmlroot[http-server base directory]:htmlroot' \
+            '--index[generate an index at the top]' \
+            '--noindex[disable --index]' \
+            '--infile[filename for the pod to convert]:infile:_files' \
+            '--outfile[filename for the resulting html file]:outfile:_files' \
+            '--poderrors[include a POD ERRORS section in the output]' \
+            '--nopoderrors[disable --poderrors]' \
+            '--podpath[colon-separated list of directories containing library pods]:podpath:_files' \
+            '--podroot[filesystem base directory]:podroot:_files' \
+            '--quiet[suppress some benign warning messages]' \
+            '--noquiet[disable --quiet]' \
+            '--recurse[recurse on those subdirectories listed in podpath]' \
+            '--norecurse[disable --recurse]' \
+            '--title[title that will appear in resulting html file]:title' \
+            '--verbose[self-explanatory]' \
+            '--noverbose[disable --verbose]' \
+            '--help[Show command help]' \
+            '-h[Show command help]' \
+            && ret=0
+
+
+
+}
+
+
+__pod2html_dynamic_comp() {
+    local argname="$1"
+    local arg="$2"
+    local comp="arg:$argname:(("
+    local line
+    while read -r line; do
+        local name="$line"
+        local desc="$line"
+        name="${name%$'\t'*}"
+        desc="${desc/*$'\t'}"
+        comp="$comp$name"
+        if [[ -n "$desc" && "$name" != "$desc" ]]; then
+            comp="$comp\\:"'"'"$desc"'"'
+        fi
+        comp="$comp "
+    done <<< "$arg"
+
+    comp="$comp))"
+    _alternative "$comp"
+}
+
