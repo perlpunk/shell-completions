@@ -29,5 +29,10 @@ options:
 - verbose           --self-explanatory
 - noverbose         --disable --verbose
 
+parameters:
+- name: file
+  summary: File
+  type: file
+
 # vim:et:sts=2:sws=2:sw=2:foldmethod=indent
 

@@ -10,6 +10,7 @@ _pod2html() {
 
         # ---- Command: 
         _arguments -s  \
+            '1: :->file' \
             '--backlink[turn =head1 directives into links pointing to the top]' \
             '--nobacklink[disable --backlink]' \
             '--cachedir[directory for the directory cache files]:cachedir:_files' \
@@ -38,6 +39,11 @@ _pod2html() {
             '-h[Show command help]' \
             && ret=0
 
+        case $state in
+        file)
+_files
+        ;;
+        esac
 
 
 }

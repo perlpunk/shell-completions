@@ -41,6 +41,10 @@ _pod2html() {
 
     esac
     case $INDEX in
+      0)
+          __comp_current_options || return
+      ;;
+
 
     *)
         __comp_current_options || return
