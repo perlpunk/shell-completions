@@ -1,6 +1,7 @@
 ---
 name: file
 appspec: { version: 0.001 }
+plugins: [ -Meta ]
 title: determine file type
 
 options:

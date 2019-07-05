@@ -11,6 +11,7 @@
 ---
 name: cpanm
 appspec: { version: 0.001 }
+plugins: [ -Meta ]
 title: Install CPAN modules
 abstract: get, unpack build and install modules from CPAN
 

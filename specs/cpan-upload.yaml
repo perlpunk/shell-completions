@@ -1,6 +1,7 @@
 ---
 name: cpan-upload
 appspec: { version: 0.001 }
+plugins: [ -Meta ]
 title: upload a distribution to the CPAN
 
 options:

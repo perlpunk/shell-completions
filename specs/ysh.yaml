@@ -1,6 +1,7 @@
 ---
 name: ysh
 appspec: { version: 0.001 }
+plugins: [ -Meta ]
 title: The YAML Test Shell
 
 options:

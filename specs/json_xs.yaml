@@ -1,6 +1,7 @@
 ---
 name: json_xs
 appspec: { version: 0.001 }
+plugins: [ -Meta ]
 title: JSON::XS commandline utility
 
 options:

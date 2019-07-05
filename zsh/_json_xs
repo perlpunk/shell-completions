@@ -1,6 +1,6 @@
 #compdef json_xs
 
-# Generated with perl module App::Spec v0.010
+# Generated with perl module App::Spec v0.012
 
 _json_xs() {
     local program=json_xs

@@ -11,6 +11,7 @@
 ---
 name: cpan
 appspec: { version: 0.001 }
+plugins: [ -Meta ]
 title: easily interact with CPAN from the command line
 
 options:

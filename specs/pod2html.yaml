@@ -1,6 +1,7 @@
 ---
 name: pod2html
 appspec: { version: 0.001 }
+plugins: [ -Meta ]
 title: convert .pod files to .html files
 
 options:

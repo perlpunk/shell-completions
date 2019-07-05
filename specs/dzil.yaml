@@ -1,6 +1,7 @@
 ---
 name: dzil
 appspec: { version: '0.001' }
+plugins: [ -Meta ]
 title: do stuff with your dist
 options:
 - verbose|v          --log additional output

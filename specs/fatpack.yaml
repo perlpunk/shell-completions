@@ -1,6 +1,7 @@
 ---
 name: fatpack
 appspec: { version: '0.001' }
+plugins: [ -Meta ]
 title: Pack perl script and modules into standalone script
 
 subcommands:

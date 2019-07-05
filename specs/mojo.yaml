@@ -2,6 +2,7 @@
 ---
 name: mojo
 appspec: { version: '0.001' }
+plugins: [ -Meta ]
 title: The Mojolicious command system
 options:
 - mode|m=s      --Operating mode for your application

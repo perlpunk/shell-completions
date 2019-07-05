@@ -1,6 +1,7 @@
 ---
 name: pip
 appspec: { version: '0.001' }
+plugins: [ -Meta ]
 title: A tool for installing and managing Python packages
 
 options:

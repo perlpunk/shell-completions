@@ -1,6 +1,6 @@
 #compdef prove
 
-# Generated with perl module App::Spec v0.010
+# Generated with perl module App::Spec v0.012
 
 _prove() {
     local program=prove
@@ -87,18 +87,18 @@ _files
 _prove__option_P_completion() {
     local __dynamic_completion
     local CURRENT_WORD="$words[CURRENT]"
-    IFS=$'\n' set -A __dynamic_completion $( find `perl -wE'say for @INC'` | grep '/App/Prove/Plugin/.*.pm$' | perl -plE's{^.*/(App/Prove/Plugin/.*)\.pm$}{$1}; s{/}{::}g' )
+    IFS=$'\n' __dynamic_completion=( $( find `perl -wE'say for @INC'` | grep '/App/Prove/Plugin/.*.pm$' | perl -plE's{^.*/(App/Prove/Plugin/.*)\.pm$}{$1}; s{/}{::}g' ) )
     compadd -X "P:" $__dynamic_completion
 }
 _prove__option_M_completion() {
     local __dynamic_completion
     local CURRENT_WORD="$words[CURRENT]"
-    IFS=$'\n' set -A __dynamic_completion $( \
+    IFS=$'\n' __dynamic_completion=( $( \
 for incpath in $(perl -wE'say for @INC'); do \
   find $incpath -name "*.pm" -printf "%P\n" \
   | perl -plE's{/}{::}g; s{\.pm}{}' \
   | grep "^$CURRENT_WORD"; \
-done )
+done ) )
     compadd -X "M:" $__dynamic_completion
 }
 

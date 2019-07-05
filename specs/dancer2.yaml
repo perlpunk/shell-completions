@@ -1,6 +1,7 @@
 ---
 name: dancer2
 appspec: { version: '0.001' }
+plugins: [ -Meta ]
 title: Dancer2 command line interface
 
 subcommands:

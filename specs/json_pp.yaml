@@ -1,6 +1,7 @@
 ---
 name: json_pp
 appspec: { version: 0.001 }
+plugins: [ -Meta ]
 title: JSON::PP command utility
 
 options:

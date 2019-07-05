@@ -1,6 +1,6 @@
 #compdef tower-cli
 
-# Generated with perl module App::Spec v0.010
+# Generated with perl module App::Spec v0.012
 
 _tower-cli() {
     local program=tower-cli
@@ -22,108 +22,6 @@ _tower-cli() {
 
         args)
             case $line[1] in
-            _meta)
-
-                # ---- Command: _meta
-                _arguments -s -C \
-                    '1: :->cmd1' \
-                    '2: :->cmd2' \
-                    '*: :->args' \
-                    && ret=0
-
-
-                case $state in
-                cmd2)
-                    _alternative 'args:cmd3:((completion\:"Shell completion functions" pod\:"Pod documentation"))'
-                ;;
-
-                args)
-                    case $line[2] in
-                    completion)
-
-                        # ---- Command: _meta completion
-                        _arguments -s -C \
-                            '1: :->cmd1' \
-                            '2: :->cmd2' \
-                            '3: :->cmd3' \
-                            '*: :->args' \
-                            && ret=0
-
-
-                        case $state in
-                        cmd3)
-                            _alternative 'args:cmd4:((generate\:"Generate self completion"))'
-                        ;;
-
-                        args)
-                            case $line[3] in
-                            generate)
-
-                                # ---- Command: _meta completion generate
-                                _arguments -s -C \
-                                    '1: :->cmd1' \
-                                    '2: :->cmd2' \
-                                    '3: :->cmd3' \
-                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
-                                    '--help[Show command help]' \
-                                    '-h[Show command help]' \
-                                    '--name[name of the program (optional, override name in spec)]:name' \
-                                    '--zsh[for zsh]' \
-                                    '--bash[for bash]' \
-                                    && ret=0
-
-
-                            ;;
-                            esac
-
-                        ;;
-
-                        esac
-                    ;;
-                    pod)
-
-                        # ---- Command: _meta pod
-                        _arguments -s -C \
-                            '1: :->cmd1' \
-                            '2: :->cmd2' \
-                            '3: :->cmd3' \
-                            '*: :->args' \
-                            && ret=0
-
-
-                        case $state in
-                        cmd3)
-                            _alternative 'args:cmd4:((generate\:"Generate self pod"))'
-                        ;;
-
-                        args)
-                            case $line[3] in
-                            generate)
-
-                                # ---- Command: _meta pod generate
-                                _arguments -s -C \
-                                    '1: :->cmd1' \
-                                    '2: :->cmd2' \
-                                    '3: :->cmd3' \
-                                    '--format[Output format]:format:("human" "json" "yaml" "id")' \
-                                    '--help[Show command help]' \
-                                    '-h[Show command help]' \
-                                    && ret=0
-
-
-                            ;;
-                            esac
-
-                        ;;
-
-                        esac
-                    ;;
-                    esac
-
-                ;;
-
-                esac
-            ;;
             ad_hoc)
 
                 # ---- Command: ad_hoc
@@ -555,112 +453,6 @@ _tower-cli() {
 
                 args)
                     case $line[2] in
-                    _meta)
-
-                        # ---- Command: help _meta
-                        _arguments -s -C \
-                            '1: :->cmd1' \
-                            '2: :->cmd2' \
-                            '3: :->cmd3' \
-                            '*: :->args' \
-                            && ret=0
-
-
-                        case $state in
-                        cmd3)
-                            _alternative 'args:cmd4:((completion pod))'
-                        ;;
-
-                        args)
-                            case $line[3] in
-                            completion)
-
-                                # ---- Command: help _meta completion
-                                _arguments -s -C \
-                                    '1: :->cmd1' \
-                                    '2: :->cmd2' \
-                                    '3: :->cmd3' \
-                                    '4: :->cmd4' \
-                                    '*: :->args' \
-                                    && ret=0
-
-
-                                case $state in
-                                cmd4)
-                                    _alternative 'args:cmd5:((generate))'
-                                ;;
-
-                                args)
-                                    case $line[4] in
-                                    generate)
-
-                                        # ---- Command: help _meta completion generate
-                                        _arguments -s -C \
-                                            '1: :->cmd1' \
-                                            '2: :->cmd2' \
-                                            '3: :->cmd3' \
-                                            '4: :->cmd4' \
-                                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
-                                            '--help[Show command help]' \
-                                            '-h[Show command help]' \
-                                            '--all[]' \
-                                            && ret=0
-
-
-                                    ;;
-                                    esac
-
-                                ;;
-
-                                esac
-                            ;;
-                            pod)
-
-                                # ---- Command: help _meta pod
-                                _arguments -s -C \
-                                    '1: :->cmd1' \
-                                    '2: :->cmd2' \
-                                    '3: :->cmd3' \
-                                    '4: :->cmd4' \
-                                    '*: :->args' \
-                                    && ret=0
-
-
-                                case $state in
-                                cmd4)
-                                    _alternative 'args:cmd5:((generate))'
-                                ;;
-
-                                args)
-                                    case $line[4] in
-                                    generate)
-
-                                        # ---- Command: help _meta pod generate
-                                        _arguments -s -C \
-                                            '1: :->cmd1' \
-                                            '2: :->cmd2' \
-                                            '3: :->cmd3' \
-                                            '4: :->cmd4' \
-                                            '--format[Output format]:format:("human" "json" "yaml" "id")' \
-                                            '--help[Show command help]' \
-                                            '-h[Show command help]' \
-                                            '--all[]' \
-                                            && ret=0
-
-
-                                    ;;
-                                    esac
-
-                                ;;
-
-                                esac
-                            ;;
-                            esac
-
-                        ;;
-
-                        esac
-                    ;;
                     ad_hoc)
 
                         # ---- Command: help ad_hoc
@@ -3873,8 +3665,8 @@ _tower-cli_host_get_param_host_id_completion
 _tower-cli_host_get_param_host_id_completion() {
     local __dynamic_completion
     local CURRENT_WORD="$words[CURRENT]"
-    IFS=$'\n' set -A __dynamic_completion $( tower-cli host list | perl -nlwE ' if (m/^ *(\d+) +(\S+)/) { print "$1 -- $2" }'
- )
+    IFS=$'\n' __dynamic_completion=( $( tower-cli host list | perl -nlwE ' if (m/^ *(\d+) +(\S+)/) { print "$1 -- $2" }'
+ ) )
     compadd -X "host_id:" $__dynamic_completion
 }
 

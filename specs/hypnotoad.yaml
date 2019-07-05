@@ -1,6 +1,7 @@
 ---
 name: hypnotoad
 appspec: { version: 0.001 }
+plugins: [ -Meta ]
 title: Hypnotoad HTTP and WebSocket server
 
 options:

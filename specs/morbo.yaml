@@ -1,6 +1,7 @@
 ---
 name: morbo
 appspec: { version: 0.001 }
+plugins: [ -Meta ]
 title: Morbo HTTP and WebSocket development server
 
 options:

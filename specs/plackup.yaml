@@ -1,6 +1,7 @@
 ---
 name: plackup
 appspec: { version: 0.001 }
+plugins: [ -Meta ]
 title: Run PSGI application with Plack handlers
 
 options:

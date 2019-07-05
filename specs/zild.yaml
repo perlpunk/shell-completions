@@ -1,6 +1,7 @@
 ---
 name: zild
 appspec: { version: '0.001' }
+plugins: [ -Meta ]
 title: Dist::Zilla Mixed Up
 
 subcommands:

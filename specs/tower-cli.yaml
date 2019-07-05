@@ -1,6 +1,7 @@
 ---
 name: tower-cli
 appspec: { version: '0.001' }
+plugins: [ -Meta ]
 title: Ansible Tower Commandline
 class: App::towercli
 options:

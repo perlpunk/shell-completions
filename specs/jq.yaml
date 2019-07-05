@@ -1,6 +1,7 @@
 ---
 name: jq
 appspec: { version: 0.001 }
+plugins: [ -Meta ]
 title: Command-line JSON processor
 
 options:

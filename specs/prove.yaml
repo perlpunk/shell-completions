@@ -4,6 +4,7 @@
 ---
 name: prove
 appspec: { version: 0.001 }
+plugins: [ -Meta ]
 title: Run tests through a TAP harness
 
 options:

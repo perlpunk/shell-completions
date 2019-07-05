@@ -1,6 +1,7 @@
 ---
 name: starman
 appspec: { version: 0.001 }
+plugins: [ -Meta ]
 title: High-performance preforking PSGI/Plack web server
 
 options:

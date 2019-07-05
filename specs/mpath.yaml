@@ -1,6 +1,7 @@
 ---
 name: mpath
 appspec: { version: 0.001 }
+plugins: [ -Meta ]
 title: display the full path to a perl module (installed locally)
 
 options:

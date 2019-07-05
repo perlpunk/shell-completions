@@ -1,6 +1,6 @@
 #!bash
 
-# Generated with perl module App::Spec v0.010
+# Generated with perl module App::Spec v0.012
 
 _dzil() {
 
@@ -29,81 +29,6 @@ _dzil() {
     *)
     # subcmds
     case ${MYWORDS[0]} in
-      _meta)
-        __dzil_handle_options_flags
-        case $INDEX in
-
-        1)
-            __comp_current_options || return
-            __dzil_dynamic_comp 'commands' 'completion'$'\t''Shell completion functions'$'\n''pod'$'\t''Pod documentation'
-
-        ;;
-        *)
-        # subcmds
-        case ${MYWORDS[1]} in
-          completion)
-            __dzil_handle_options_flags
-            case $INDEX in
-
-            2)
-                __comp_current_options || return
-                __dzil_dynamic_comp 'commands' 'generate'$'\t''Generate self completion'
-
-            ;;
-            *)
-            # subcmds
-            case ${MYWORDS[2]} in
-              generate)
-                FLAGS+=('--zsh' 'for zsh' '--bash' 'for bash')
-                OPTIONS+=('--name' 'name of the program (optional, override name in spec)')
-                __dzil_handle_options_flags
-                case ${MYWORDS[$INDEX-1]} in
-                  --verbose-plugin|-V)
-                  ;;
-                  --lib-inc|-I)
-                  ;;
-                  --name)
-                  ;;
-
-                esac
-                case $INDEX in
-
-                *)
-                    __comp_current_options || return
-                ;;
-                esac
-              ;;
-            esac
-
-            ;;
-            esac
-          ;;
-          pod)
-            __dzil_handle_options_flags
-            case $INDEX in
-
-            2)
-                __comp_current_options || return
-                __dzil_dynamic_comp 'commands' 'generate'$'\t''Generate self pod'
-
-            ;;
-            *)
-            # subcmds
-            case ${MYWORDS[2]} in
-              generate)
-                __dzil_handle_options_flags
-                __comp_current_options true || return # no subcmds, no params/opts
-              ;;
-            esac
-
-            ;;
-            esac
-          ;;
-        esac
-
-        ;;
-        esac
-      ;;
       add)
         OPTIONS+=('--profile' 'name of the profile to use' '-p' 'name of the profile to use' '--provider' 'name of the profile provider to use' '-P' 'name of the profile provider to use')
         __dzil_handle_options_flags
@@ -199,65 +124,6 @@ _dzil() {
         *)
         # subcmds
         case ${MYWORDS[1]} in
-          _meta)
-            __dzil_handle_options_flags
-            case $INDEX in
-
-            2)
-                __comp_current_options || return
-                __dzil_dynamic_comp 'commands' 'completion'$'\n''pod'
-
-            ;;
-            *)
-            # subcmds
-            case ${MYWORDS[2]} in
-              completion)
-                __dzil_handle_options_flags
-                case $INDEX in
-
-                3)
-                    __comp_current_options || return
-                    __dzil_dynamic_comp 'commands' 'generate'
-
-                ;;
-                *)
-                # subcmds
-                case ${MYWORDS[3]} in
-                  generate)
-                    __dzil_handle_options_flags
-                    __comp_current_options true || return # no subcmds, no params/opts
-                  ;;
-                esac
-
-                ;;
-                esac
-              ;;
-              pod)
-                __dzil_handle_options_flags
-                case $INDEX in
-
-                3)
-                    __comp_current_options || return
-                    __dzil_dynamic_comp 'commands' 'generate'
-
-                ;;
-                *)
-                # subcmds
-                case ${MYWORDS[3]} in
-                  generate)
-                    __dzil_handle_options_flags
-                    __comp_current_options true || return # no subcmds, no params/opts
-                  ;;
-                esac
-
-                ;;
-                esac
-              ;;
-            esac
-
-            ;;
-            esac
-          ;;
           add)
             __dzil_handle_options_flags
             __comp_current_options true || return # no subcmds, no params/opts
