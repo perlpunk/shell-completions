@@ -20,6 +20,7 @@ Currently it supports bash and zsh completions.
 * `dzil` - do stuff with your dist
 * `fatpack` - Pack perl script and modules into standalone script
 * `file` - determine file type
+* `h2xs` - convert .h C header files to Perl extensions
 * `hypnotoad` - Hypnotoad HTTP and WebSocket server
 * `jq` - Command-line JSON processor
 * `json_pp` - JSON::PP command utility
