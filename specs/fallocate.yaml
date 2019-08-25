@@ -1,0 +1,25 @@
+---
+name: fallocate
+appspec: { version: 0.001 }
+plugins: [ -Meta ]
+title: Preallocate or deallocate space to a file
+
+options:
+- collapse-range|c    --Removes a byte range from a file, without leaving a hole
+- dig-holes|d         --Detect and dig holes
+- insert-range|i      --nsert a hole of length bytes from offset, shifting existing data
+- length|l=i          --Specifies the length of the range, in bytes
+- keep-size|n         --Do not modify the apparent length of the file
+- offset|o=i          --Specifies the beginning offset of the range, in bytes
+- punch-hole|p        --Deallocates space (i.e., creates a hole) in the byte range...
+- verbose|v           --Enable verbose mode
+- posix|x             --Enable POSIX operation mode
+- zero-range|z        --Zeroes space in the byte range starting at offset and continuing...
+- version|V           --Display version information
+
+parameters:
+- name: file
+  summary: File
+  type: file
+
+# vim:et:sts=2:sws=2:sw=2:foldmethod=indent

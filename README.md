@@ -18,6 +18,7 @@ Currently it supports bash and zsh completions.
 * `cpanm` - Install CPAN modules
 * `dancer2` - Dancer2 command line interface
 * `dzil` - do stuff with your dist
+* `fallocate` - Preallocate or deallocate space to a file
 * `fatpack` - Pack perl script and modules into standalone script
 * `file` - determine file type
 * `h2xs` - convert .h C header files to Perl extensions
