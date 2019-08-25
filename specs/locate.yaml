@@ -1,0 +1,32 @@
+---
+name: locate
+appspec: { version: 0.001 }
+plugins: [ -Meta ]
+title: Find files by name
+
+options:
+- all|A             --Print only entries that match all PATTERNs
+- basename|b        --Match only the base name against the specified patterns
+- count|c           --Write the number of matching entries only
+- database|d= +file --Replace the default database with DBPATH
+- existing|e        --Print only entries that refer to files existing at...
+- follow|f          --When checking whether files exist, follow trailing...
+- ignore-case|i     --Ignore case distinctions when matching patterns
+- limit|n|l=i       --Exit successfully after finding LIMIT entries
+- mmap|m            --Ignored, for compatibility with BSD and GNU locate
+- nofollow|P|H      --do not follow trailing symbolic links
+- null|0            --Separate the entries on output using the ASCII NUL character
+- statistics|S      --Write statistics about each read database to standard output
+- quiet|q           --Write no messages about errors
+- regexp|r=         --Search for a basic regexp REGEXP
+- regex             --Interpret all PATTERNs as extended regexps
+- stdio|s           --Ignored, for compatibility with BSD and GNU locate
+- version|V         --Write information about the version and license
+- wholename|w       --Match only the whole path name
+
+parameters:
+- name: pattern
+  summary: Pattern
+  type: file
+
+# vim:et:sts=2:sws=2:sw=2:foldmethod=indent

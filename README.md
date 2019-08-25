@@ -26,6 +26,7 @@ Currently it supports bash and zsh completions.
 * `jq` - Command-line JSON processor
 * `json_pp` - JSON::PP command utility
 * `json_xs` - JSON::XS commandline utility
+* `locate` - Find files by name
 * `lwp-request` - Simple command line user agent (Aliases GET, HEAD, POST)
 * `mojo` - The Mojolicious command system
 * `morbo` - Morbo HTTP and WebSocket development server

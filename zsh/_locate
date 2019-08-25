@@ -1,0 +1,85 @@
+#compdef locate
+
+# Generated with perl module App::Spec v0.012
+
+_locate() {
+    local program=locate
+    typeset -A opt_args
+    local curcontext="$curcontext" state line context
+
+
+        # ---- Command: 
+        _arguments -s  \
+            '1: :->pattern' \
+            '--all[Print only entries that match all PATTERNs]' \
+            '-A[Print only entries that match all PATTERNs]' \
+            '--basename[Match only the base name against the specified patterns]' \
+            '-b[Match only the base name against the specified patterns]' \
+            '--count[Write the number of matching entries only]' \
+            '-c[Write the number of matching entries only]' \
+            '--database[Replace the default database with DBPATH]:database:_files' \
+            '-d[Replace the default database with DBPATH]:database:_files' \
+            '--existing[Print only entries that refer to files existing at...]' \
+            '-e[Print only entries that refer to files existing at...]' \
+            '--follow[When checking whether files exist, follow trailing...]' \
+            '-f[When checking whether files exist, follow trailing...]' \
+            '--ignore-case[Ignore case distinctions when matching patterns]' \
+            '-i[Ignore case distinctions when matching patterns]' \
+            '--limit[Exit successfully after finding LIMIT entries]:limit' \
+            '-n[Exit successfully after finding LIMIT entries]:limit' \
+            '-l[Exit successfully after finding LIMIT entries]:limit' \
+            '--mmap[Ignored, for compatibility with BSD and GNU locate]' \
+            '-m[Ignored, for compatibility with BSD and GNU locate]' \
+            '--nofollow[do not follow trailing symbolic links]' \
+            '-P[do not follow trailing symbolic links]' \
+            '-H[do not follow trailing symbolic links]' \
+            '--null[Separate the entries on output using the ASCII NUL character]' \
+            '-0[Separate the entries on output using the ASCII NUL character]' \
+            '--statistics[Write statistics about each read database to standard output]' \
+            '-S[Write statistics about each read database to standard output]' \
+            '--quiet[Write no messages about errors]' \
+            '-q[Write no messages about errors]' \
+            '--regexp[Search for a basic regexp REGEXP]:regexp' \
+            '-r[Search for a basic regexp REGEXP]:regexp' \
+            '--regex[Interpret all PATTERNs as extended regexps]' \
+            '--stdio[Ignored, for compatibility with BSD and GNU locate]' \
+            '-s[Ignored, for compatibility with BSD and GNU locate]' \
+            '--version[Write information about the version and license]' \
+            '-V[Write information about the version and license]' \
+            '--wholename[Match only the whole path name]' \
+            '-w[Match only the whole path name]' \
+            '--help[Show command help]' \
+            '-h[Show command help]' \
+            && ret=0
+
+        case $state in
+        pattern)
+_files
+        ;;
+        esac
+
+
+}
+
+
+__locate_dynamic_comp() {
+    local argname="$1"
+    local arg="$2"
+    local comp="arg:$argname:(("
+    local line
+    while read -r line; do
+        local name="$line"
+        local desc="$line"
+        name="${name%$'\t'*}"
+        desc="${desc/*$'\t'}"
+        comp="$comp$name"
+        if [[ -n "$desc" && "$name" != "$desc" ]]; then
+            comp="$comp\\:"'"'"$desc"'"'
+        fi
+        comp="$comp "
+    done <<< "$arg"
+
+    comp="$comp))"
+    _alternative "$comp"
+}
+
