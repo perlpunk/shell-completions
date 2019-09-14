@@ -9,7 +9,7 @@ options:
 - dry-run           --do not actually upload anything
 - user|u=s          --your PAUSE username
 - password|p=s      --the password to your PAUSE account
-- directory|d +file --a dir in your CPAN space in which to put the file
+- directory|d=      --a dir in your CPAN space in which to put the file
 - http-proxy        --URL of the http proxy to use in uploading
 - ignore-errors     --instead of aborting, continue to next file on error
 - config|c +file    --config file to use; defaults to ~/.pause

@@ -1,6 +1,6 @@
 #!bash
 
-# Generated with perl module App::Spec v0.012
+# Generated with perl module App::Spec v0.013
 
 _cpanm() {
 
@@ -21,18 +21,28 @@ _cpanm() {
 
     case ${MYWORDS[$INDEX-1]} in
       --local-lib|-l)
+        compopt -o dirnames
+        return
       ;;
       --local-lib-contained|-L)
+        compopt -o dirnames
+        return
       ;;
       --mirror)
       ;;
       --from|-M)
       ;;
       --mirror-index)
+        compopt -o filenames
+        return
       ;;
       --cpanmetadb)
+        compopt -o filenames
+        return
       ;;
       --cpanfile)
+        compopt -o filenames
+        return
       ;;
       --configure-timeout)
       ;;
@@ -53,6 +63,8 @@ _cpanm() {
         return
       ;;
       --save-dists)
+        compopt -o filenames
+        return
       ;;
       --auto-cleanup)
       ;;

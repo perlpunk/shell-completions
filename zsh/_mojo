@@ -1,6 +1,6 @@
 #compdef mojo
 
-# Generated with perl module App::Spec v0.012
+# Generated with perl module App::Spec v0.013
 
 _mojo() {
     local program=mojo
@@ -29,7 +29,7 @@ _mojo() {
                     '1: :->cmd1' \
                     '--mode[Operating mode for your application]:mode' \
                     '-m[Operating mode for your application]:mode' \
-                    '--home[Path to application home directory]:home:_files' \
+                    '--home[Path to application home directory]:home:_path_files -/' \
                     '--help[Show command help]' \
                     '-h[Show command help]' \
                     '--nph[Enable non-parsed-header mode]' \
@@ -44,7 +44,7 @@ _mojo() {
                     '1: :->cmd1' \
                     '--mode[Operating mode for your application]:mode' \
                     '-m[Operating mode for your application]:mode' \
-                    '--home[Path to application home directory]:home:_files' \
+                    '--home[Path to application home directory]:home:_path_files -/' \
                     '--help[Show command help]' \
                     '-h[Show command help]' \
                     '--password[PAUSE password]:password' \
@@ -62,7 +62,7 @@ _mojo() {
                     '1: :->cmd1' \
                     '--mode[Operating mode for your application]:mode' \
                     '-m[Operating mode for your application]:mode' \
-                    '--home[Path to application home directory]:home:_files' \
+                    '--home[Path to application home directory]:home:_path_files -/' \
                     '--help[Show command help]' \
                     '-h[Show command help]' \
                     '--clients[Maximum number of concurrent connections]:clients' \
@@ -88,7 +88,7 @@ _mojo() {
                     '1: :->cmd1' \
                     '--mode[Operating mode for your application]:mode' \
                     '-m[Operating mode for your application]:mode' \
-                    '--home[Path to application home directory]:home:_files' \
+                    '--home[Path to application home directory]:home:_path_files -/' \
                     '--help[Show command help]' \
                     '-h[Show command help]' \
                     '--verbose[Print return value to STDOUT]' \
@@ -123,7 +123,7 @@ _mojo() {
                             '2: :->cmd2' \
                             '--mode[Operating mode for your application]:mode' \
                             '-m[Operating mode for your application]:mode' \
-                            '--home[Path to application home directory]:home:_files' \
+                            '--home[Path to application home directory]:home:_path_files -/' \
                             '--help[Show command help]' \
                             '-h[Show command help]' \
                             && ret=0
@@ -138,7 +138,7 @@ _mojo() {
                             '2: :->cmd2' \
                             '--mode[Operating mode for your application]:mode' \
                             '-m[Operating mode for your application]:mode' \
-                            '--home[Path to application home directory]:home:_files' \
+                            '--home[Path to application home directory]:home:_path_files -/' \
                             '--help[Show command help]' \
                             '-h[Show command help]' \
                             && ret=0
@@ -153,7 +153,7 @@ _mojo() {
                             '2: :->cmd2' \
                             '--mode[Operating mode for your application]:mode' \
                             '-m[Operating mode for your application]:mode' \
-                            '--home[Path to application home directory]:home:_files' \
+                            '--home[Path to application home directory]:home:_path_files -/' \
                             '--help[Show command help]' \
                             '-h[Show command help]' \
                             && ret=0
@@ -168,7 +168,7 @@ _mojo() {
                             '2: :->cmd2' \
                             '--mode[Operating mode for your application]:mode' \
                             '-m[Operating mode for your application]:mode' \
-                            '--home[Path to application home directory]:home:_files' \
+                            '--home[Path to application home directory]:home:_path_files -/' \
                             '--help[Show command help]' \
                             '-h[Show command help]' \
                             && ret=0
@@ -188,7 +188,7 @@ _mojo() {
                     '1: :->cmd1' \
                     '--mode[Operating mode for your application]:mode' \
                     '-m[Operating mode for your application]:mode' \
-                    '--home[Path to application home directory]:home:_files' \
+                    '--home[Path to application home directory]:home:_path_files -/' \
                     '--help[Show command help]' \
                     '-h[Show command help]' \
                     '--charset[Charset of HTML/XML content]:charset' \
@@ -242,7 +242,7 @@ _mojo() {
                             '2: :->cmd2' \
                             '--mode[Operating mode for your application]:mode' \
                             '-m[Operating mode for your application]:mode' \
-                            '--home[Path to application home directory]:home:_files' \
+                            '--home[Path to application home directory]:home:_path_files -/' \
                             '--help[Show command help]' \
                             '-h[Show command help]' \
                             '--all[]' \
@@ -258,7 +258,7 @@ _mojo() {
                             '2: :->cmd2' \
                             '--mode[Operating mode for your application]:mode' \
                             '-m[Operating mode for your application]:mode' \
-                            '--home[Path to application home directory]:home:_files' \
+                            '--home[Path to application home directory]:home:_path_files -/' \
                             '--help[Show command help]' \
                             '-h[Show command help]' \
                             '--all[]' \
@@ -274,7 +274,7 @@ _mojo() {
                             '2: :->cmd2' \
                             '--mode[Operating mode for your application]:mode' \
                             '-m[Operating mode for your application]:mode' \
-                            '--home[Path to application home directory]:home:_files' \
+                            '--home[Path to application home directory]:home:_path_files -/' \
                             '--help[Show command help]' \
                             '-h[Show command help]' \
                             '--all[]' \
@@ -290,7 +290,7 @@ _mojo() {
                             '2: :->cmd2' \
                             '--mode[Operating mode for your application]:mode' \
                             '-m[Operating mode for your application]:mode' \
-                            '--home[Path to application home directory]:home:_files' \
+                            '--home[Path to application home directory]:home:_path_files -/' \
                             '--help[Show command help]' \
                             '-h[Show command help]' \
                             '--all[]' \
@@ -325,7 +325,7 @@ _mojo() {
                                     '3: :->cmd3' \
                                     '--mode[Operating mode for your application]:mode' \
                                     '-m[Operating mode for your application]:mode' \
-                                    '--home[Path to application home directory]:home:_files' \
+                                    '--home[Path to application home directory]:home:_path_files -/' \
                                     '--help[Show command help]' \
                                     '-h[Show command help]' \
                                     '--all[]' \
@@ -342,7 +342,7 @@ _mojo() {
                                     '3: :->cmd3' \
                                     '--mode[Operating mode for your application]:mode' \
                                     '-m[Operating mode for your application]:mode' \
-                                    '--home[Path to application home directory]:home:_files' \
+                                    '--home[Path to application home directory]:home:_path_files -/' \
                                     '--help[Show command help]' \
                                     '-h[Show command help]' \
                                     '--all[]' \
@@ -359,7 +359,7 @@ _mojo() {
                                     '3: :->cmd3' \
                                     '--mode[Operating mode for your application]:mode' \
                                     '-m[Operating mode for your application]:mode' \
-                                    '--home[Path to application home directory]:home:_files' \
+                                    '--home[Path to application home directory]:home:_path_files -/' \
                                     '--help[Show command help]' \
                                     '-h[Show command help]' \
                                     '--all[]' \
@@ -376,7 +376,7 @@ _mojo() {
                                     '3: :->cmd3' \
                                     '--mode[Operating mode for your application]:mode' \
                                     '-m[Operating mode for your application]:mode' \
-                                    '--home[Path to application home directory]:home:_files' \
+                                    '--home[Path to application home directory]:home:_path_files -/' \
                                     '--help[Show command help]' \
                                     '-h[Show command help]' \
                                     '--all[]' \
@@ -398,7 +398,7 @@ _mojo() {
                             '2: :->cmd2' \
                             '--mode[Operating mode for your application]:mode' \
                             '-m[Operating mode for your application]:mode' \
-                            '--home[Path to application home directory]:home:_files' \
+                            '--home[Path to application home directory]:home:_path_files -/' \
                             '--help[Show command help]' \
                             '-h[Show command help]' \
                             '--all[]' \
@@ -414,7 +414,7 @@ _mojo() {
                             '2: :->cmd2' \
                             '--mode[Operating mode for your application]:mode' \
                             '-m[Operating mode for your application]:mode' \
-                            '--home[Path to application home directory]:home:_files' \
+                            '--home[Path to application home directory]:home:_path_files -/' \
                             '--help[Show command help]' \
                             '-h[Show command help]' \
                             '--all[]' \
@@ -430,7 +430,7 @@ _mojo() {
                             '2: :->cmd2' \
                             '--mode[Operating mode for your application]:mode' \
                             '-m[Operating mode for your application]:mode' \
-                            '--home[Path to application home directory]:home:_files' \
+                            '--home[Path to application home directory]:home:_path_files -/' \
                             '--help[Show command help]' \
                             '-h[Show command help]' \
                             '--all[]' \
@@ -446,7 +446,7 @@ _mojo() {
                             '2: :->cmd2' \
                             '--mode[Operating mode for your application]:mode' \
                             '-m[Operating mode for your application]:mode' \
-                            '--home[Path to application home directory]:home:_files' \
+                            '--home[Path to application home directory]:home:_path_files -/' \
                             '--help[Show command help]' \
                             '-h[Show command help]' \
                             '--all[]' \
@@ -462,7 +462,7 @@ _mojo() {
                             '2: :->cmd2' \
                             '--mode[Operating mode for your application]:mode' \
                             '-m[Operating mode for your application]:mode' \
-                            '--home[Path to application home directory]:home:_files' \
+                            '--home[Path to application home directory]:home:_path_files -/' \
                             '--help[Show command help]' \
                             '-h[Show command help]' \
                             '--all[]' \
@@ -478,7 +478,7 @@ _mojo() {
                             '2: :->cmd2' \
                             '--mode[Operating mode for your application]:mode' \
                             '-m[Operating mode for your application]:mode' \
-                            '--home[Path to application home directory]:home:_files' \
+                            '--home[Path to application home directory]:home:_path_files -/' \
                             '--help[Show command help]' \
                             '-h[Show command help]' \
                             '--all[]' \
@@ -494,7 +494,7 @@ _mojo() {
                             '2: :->cmd2' \
                             '--mode[Operating mode for your application]:mode' \
                             '-m[Operating mode for your application]:mode' \
-                            '--home[Path to application home directory]:home:_files' \
+                            '--home[Path to application home directory]:home:_path_files -/' \
                             '--help[Show command help]' \
                             '-h[Show command help]' \
                             '--all[]' \
@@ -515,7 +515,7 @@ _mojo() {
                     '1: :->cmd1' \
                     '--mode[Operating mode for your application]:mode' \
                     '-m[Operating mode for your application]:mode' \
-                    '--home[Path to application home directory]:home:_files' \
+                    '--home[Path to application home directory]:home:_path_files -/' \
                     '--help[Show command help]' \
                     '-h[Show command help]' \
                     && ret=0
@@ -529,7 +529,7 @@ _mojo() {
                     '1: :->cmd1' \
                     '--mode[Operating mode for your application]:mode' \
                     '-m[Operating mode for your application]:mode' \
-                    '--home[Path to application home directory]:home:_files' \
+                    '--home[Path to application home directory]:home:_path_files -/' \
                     '--help[Show command help]' \
                     '-h[Show command help]' \
                     '--accepts[Number of connections for workers to accept]:accepts' \
@@ -569,7 +569,7 @@ _mojo() {
                     '1: :->cmd1' \
                     '--mode[Operating mode for your application]:mode' \
                     '-m[Operating mode for your application]:mode' \
-                    '--home[Path to application home directory]:home:_files' \
+                    '--home[Path to application home directory]:home:_path_files -/' \
                     '--help[Show command help]' \
                     '-h[Show command help]' \
                     && ret=0
@@ -583,7 +583,7 @@ _mojo() {
                     '1: :->cmd1' \
                     '--mode[Operating mode for your application]:mode' \
                     '-m[Operating mode for your application]:mode' \
-                    '--home[Path to application home directory]:home:_files' \
+                    '--home[Path to application home directory]:home:_path_files -/' \
                     '--help[Show command help]' \
                     '-h[Show command help]' \
                     '--verbose[Print additional details about routes]' \
@@ -599,7 +599,7 @@ _mojo() {
                     '1: :->cmd1' \
                     '--mode[Operating mode for your application]:mode' \
                     '-m[Operating mode for your application]:mode' \
-                    '--home[Path to application home directory]:home:_files' \
+                    '--home[Path to application home directory]:home:_path_files -/' \
                     '--help[Show command help]' \
                     '-h[Show command help]' \
                     '--verbose[Print verbose debug information to STDERR]' \
@@ -615,7 +615,7 @@ _mojo() {
                     '1: :->cmd1' \
                     '--mode[Operating mode for your application]:mode' \
                     '-m[Operating mode for your application]:mode' \
-                    '--home[Path to application home directory]:home:_files' \
+                    '--home[Path to application home directory]:home:_path_files -/' \
                     '--help[Show command help]' \
                     '-h[Show command help]' \
                     && ret=0

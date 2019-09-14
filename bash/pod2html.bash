@@ -1,6 +1,6 @@
 #!bash
 
-# Generated with perl module App::Spec v0.012
+# Generated with perl module App::Spec v0.013
 
 _pod2html() {
 
@@ -21,20 +21,32 @@ _pod2html() {
 
     case ${MYWORDS[$INDEX-1]} in
       --cachedir)
+        compopt -o dirnames
+        return
       ;;
       --css)
       ;;
       --htmldir)
+        compopt -o dirnames
+        return
       ;;
       --htmlroot)
       ;;
       --infile)
+        compopt -o filenames
+        return
       ;;
       --outfile)
+        compopt -o filenames
+        return
       ;;
       --podpath)
+        compopt -o filenames
+        return
       ;;
       --podroot)
+        compopt -o dirnames
+        return
       ;;
       --title)
       ;;
@@ -43,6 +55,7 @@ _pod2html() {
     case $INDEX in
       0)
           __comp_current_options || return
+            compopt -o filenames
       ;;
 
 

@@ -1,6 +1,6 @@
 #compdef pod2html
 
-# Generated with perl module App::Spec v0.012
+# Generated with perl module App::Spec v0.013
 
 _pod2html() {
     local program=pod2html
@@ -13,12 +13,12 @@ _pod2html() {
             '1: :->file' \
             '--backlink[turn =head1 directives into links pointing to the top]' \
             '--nobacklink[disable --backlink]' \
-            '--cachedir[directory for the directory cache files]:cachedir:_files' \
+            '--cachedir[directory for the directory cache files]:cachedir:_path_files -/' \
             '--css[stylesheet URL]:css' \
             '--flush[flushes the directory cache]' \
             '--header[produce block header/footer]' \
             '--noheader[disable --header]' \
-            '--htmldir[directory for resulting HTML files]:htmldir:_files' \
+            '--htmldir[directory for resulting HTML files]:htmldir:_path_files -/' \
             '--htmlroot[http-server base directory]:htmlroot' \
             '--index[generate an index at the top]' \
             '--noindex[disable --index]' \
@@ -27,7 +27,7 @@ _pod2html() {
             '--poderrors[include a POD ERRORS section in the output]' \
             '--nopoderrors[disable --poderrors]' \
             '--podpath[colon-separated list of directories containing library pods]:podpath:_files' \
-            '--podroot[filesystem base directory]:podroot:_files' \
+            '--podroot[filesystem base directory]:podroot:_path_files -/' \
             '--quiet[suppress some benign warning messages]' \
             '--noquiet[disable --quiet]' \
             '--recurse[recurse on those subdirectories listed in podpath]' \

@@ -1,6 +1,6 @@
 #compdef dancer2
 
-# Generated with perl module App::Spec v0.012
+# Generated with perl module App::Spec v0.013
 
 _dancer2() {
     local program=dancer2
@@ -42,16 +42,16 @@ _dancer2() {
                     '-h[Show command help]' \
                     '--application[application name]:application' \
                     '-a[application name]:application' \
-                    '--directory[application folder]:directory:_files' \
-                    '-d[application folder]:directory:_files' \
+                    '--directory[application folder]:directory:_path_files -/' \
+                    '-d[application folder]:directory:_path_files -/' \
                     '--path[application path]:path:_files' \
                     '-p[application path]:path:_files' \
                     '--overwrite[overwrite existing files]' \
                     '-o[overwrite existing files]' \
                     '--no-check[don'"'"'t check latest Dancer2 version]' \
                     '-x[don'"'"'t check latest Dancer2 version]' \
-                    '--skel[skeleton directory]:skel:_files' \
-                    '-s[skeleton directory]:skel:_files' \
+                    '--skel[skeleton directory]:skel:_path_files -/' \
+                    '-s[skeleton directory]:skel:_path_files -/' \
                     && ret=0
 
 

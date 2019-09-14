@@ -13,7 +13,7 @@ subcommands:
     options:
     - application|a=s      --application name
     - directory|d +dir     --application folder
-    - path|p +file         --application path
+    - path|p +filename     --application path
     - overwrite|o          --overwrite existing files
     - no-check|x           --don't check latest Dancer2 version
     - skel|s +dir          --skeleton directory

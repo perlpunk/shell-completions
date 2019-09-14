@@ -20,6 +20,6 @@ options:
 parameters:
 - name: file
   summary: File
-  type: file
+  type: filename
 
 # vim:et:sts=2:sws=2:sw=2:foldmethod=indent

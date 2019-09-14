@@ -1,6 +1,6 @@
 #!bash
 
-# Generated with perl module App::Spec v0.012
+# Generated with perl module App::Spec v0.013
 
 _prove() {
 
@@ -21,6 +21,8 @@ _prove() {
 
     case ${MYWORDS[$INDEX-1]} in
       -I)
+        compopt -o dirnames
+        return
       ;;
       --exec|-e)
       ;;
@@ -33,8 +35,12 @@ _prove() {
       --source)
       ;;
       --archive|-a)
+        compopt -o filenames
+        return
       ;;
       --rc)
+        compopt -o filenames
+        return
       ;;
       --rules)
       ;;
@@ -57,6 +63,7 @@ _prove() {
     case $INDEX in
       0)
           __comp_current_options || return
+            compopt -o filenames
       ;;
 
 

@@ -1,6 +1,6 @@
 #compdef cpan-upload
 
-# Generated with perl module App::Spec v0.012
+# Generated with perl module App::Spec v0.013
 
 _cpan-upload() {
     local program=cpan-upload
@@ -18,8 +18,8 @@ _cpan-upload() {
             '-u[your PAUSE username]:user' \
             '--password[the password to your PAUSE account]:password' \
             '-p[the password to your PAUSE account]:password' \
-            '--directory[a dir in your CPAN space in which to put the file]:directory:_files' \
-            '-d[a dir in your CPAN space in which to put the file]:directory:_files' \
+            '--directory[a dir in your CPAN space in which to put the file]:directory' \
+            '-d[a dir in your CPAN space in which to put the file]:directory' \
             '--http-proxy[URL of the http proxy to use in uploading]' \
             '--ignore-errors[instead of aborting, continue to next file on error]' \
             '--config[config file to use; defaults to ~/.pause]:config:_files' \

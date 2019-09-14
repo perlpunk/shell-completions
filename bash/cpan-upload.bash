@@ -1,6 +1,6 @@
 #!bash
 
-# Generated with perl module App::Spec v0.012
+# Generated with perl module App::Spec v0.013
 
 _cpan-upload() {
 
@@ -27,12 +27,15 @@ _cpan-upload() {
       --directory|-d)
       ;;
       --config|-c)
+        compopt -o filenames
+        return
       ;;
 
     esac
     case $INDEX in
       0)
           __comp_current_options || return
+            compopt -o filenames
       ;;
 
 

@@ -1,6 +1,6 @@
 #compdef cpanm
 
-# Generated with perl module App::Spec v0.012
+# Generated with perl module App::Spec v0.013
 
 _cpanm() {
     local program=cpanm
@@ -30,10 +30,10 @@ _cpanm() {
             '-v[Makes the output verbose]' \
             '--quiet[Makes the output even more quiet than the default]' \
             '-q[Makes the output even more quiet than the default]' \
-            '--local-lib[Sets the local::lib compatible path to install modules to]:local-lib:_files' \
-            '-l[Sets the local::lib compatible path to install modules to]:local-lib:_files' \
-            '--local-lib-contained[Same with "--local-lib" but with --self-contained set]:local-lib-contained:_files' \
-            '-L[Same with "--local-lib" but with --self-contained set]:local-lib-contained:_files' \
+            '--local-lib[Sets the local::lib compatible path to install modules to]:local-lib:_path_files -/' \
+            '-l[Sets the local::lib compatible path to install modules to]:local-lib:_path_files -/' \
+            '--local-lib-contained[Same with "--local-lib" but with --self-contained set]:local-lib-contained:_path_files -/' \
+            '-L[Same with "--local-lib" but with --self-contained set]:local-lib-contained:_path_files -/' \
             '--self-contained[When examining the dependencies, assume no non-core modules are installed on the system]' \
             '--exclude-vendor[Don'"'"'t include modules installed under the '"'"'vendor'"'"' paths...]' \
             '--mirror[Specifies the base URL for the CPAN mirror to use]:mirror' \

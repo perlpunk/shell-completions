@@ -1,6 +1,6 @@
 #compdef prove
 
-# Generated with perl module App::Spec v0.012
+# Generated with perl module App::Spec v0.013
 
 _prove() {
     local program=prove
@@ -55,7 +55,7 @@ _prove() {
             '--man[Longer manpage]' \
             '-H[Longer manpage]' \
             '--norc[Dont process default .proverc]' \
-            '-I[Library paths to include]:I:_files' \
+            '-I[Library paths to include]:I:_path_files -/' \
             '--exec[Interpreter to run the tests]:exec' \
             '-e[Interpreter to run the tests]:exec' \
             '--ext[Set the extension for tests]:ext' \

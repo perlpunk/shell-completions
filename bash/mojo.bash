@@ -1,6 +1,6 @@
 #!bash
 
-# Generated with perl module App::Spec v0.012
+# Generated with perl module App::Spec v0.013
 
 _mojo() {
 
@@ -36,6 +36,8 @@ _mojo() {
           --mode|-m)
           ;;
           --home)
+            compopt -o dirnames
+            return
           ;;
 
         esac
@@ -53,6 +55,8 @@ _mojo() {
           --mode|-m)
           ;;
           --home)
+            compopt -o dirnames
+            return
           ;;
           --password|-p)
           ;;
@@ -75,6 +79,8 @@ _mojo() {
           --mode|-m)
           ;;
           --home)
+            compopt -o dirnames
+            return
           ;;
           --clients|-c)
           ;;
@@ -102,6 +108,8 @@ _mojo() {
           --mode|-m)
           ;;
           --home)
+            compopt -o dirnames
+            return
           ;;
 
         esac
@@ -153,6 +161,8 @@ _mojo() {
           --mode|-m)
           ;;
           --home)
+            compopt -o dirnames
+            return
           ;;
           --charset|-C)
           ;;
@@ -290,6 +300,8 @@ _mojo() {
           --mode|-m)
           ;;
           --home)
+            compopt -o dirnames
+            return
           ;;
           --accepts|-a)
           ;;
@@ -304,6 +316,8 @@ _mojo() {
           --listen|-l)
           ;;
           --pid-file|-P)
+            compopt -o filenames
+            return
           ;;
           --requests|-r)
           ;;
@@ -335,6 +349,8 @@ _mojo() {
           --mode|-m)
           ;;
           --home)
+            compopt -o dirnames
+            return
           ;;
 
         esac
@@ -352,6 +368,8 @@ _mojo() {
           --mode|-m)
           ;;
           --home)
+            compopt -o dirnames
+            return
           ;;
 
         esac

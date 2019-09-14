@@ -1,6 +1,6 @@
 #!bash
 
-# Generated with perl module App::Spec v0.012
+# Generated with perl module App::Spec v0.013
 
 _fatpack() {
 
@@ -37,6 +37,7 @@ _fatpack() {
         case $INDEX in
           1)
               __comp_current_options || return
+                compopt -o filenames
           ;;
 
 
@@ -91,6 +92,7 @@ _fatpack() {
         case $INDEX in
           1)
               __comp_current_options || return
+                compopt -o filenames
           ;;
 
 
@@ -122,6 +124,8 @@ _fatpack() {
         __fatpack_handle_options_flags
         case ${MYWORDS[$INDEX-1]} in
           --to)
+            compopt -o filenames
+            return
           ;;
           --use)
             _fatpack_trace_option_use_completion
@@ -131,6 +135,7 @@ _fatpack() {
         case $INDEX in
           1)
               __comp_current_options || return
+                compopt -o filenames
           ;;
 
 
@@ -147,6 +152,7 @@ _fatpack() {
         case $INDEX in
           1)
               __comp_current_options || return
+                compopt -o filenames
           ;;
 
 

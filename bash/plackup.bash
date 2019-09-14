@@ -1,6 +1,6 @@
 #!bash
 
-# Generated with perl module App::Spec v0.012
+# Generated with perl module App::Spec v0.013
 
 _plackup() {
 
@@ -21,6 +21,8 @@ _plackup() {
 
     case ${MYWORDS[$INDEX-1]} in
       --app|-a)
+        compopt -o filenames
+        return
       ;;
       -e)
       ;;
@@ -41,8 +43,12 @@ _plackup() {
       --env|-E)
       ;;
       --Reload|-R)
+        compopt -o filenames
+        return
       ;;
       --access-log)
+        compopt -o filenames
+        return
       ;;
       --path)
       ;;
@@ -55,6 +61,7 @@ _plackup() {
     case $INDEX in
       0)
           __comp_current_options || return
+            compopt -o filenames
       ;;
 
 

@@ -28,14 +28,14 @@ options:
 - sudo|S               --Switch to the root user with "sudo" when installing modules
 - verbose|v            --Makes the output verbose
 - quiet|q              --Makes the output even more quiet than the default
-- local-lib|l +file    --Sets the local::lib compatible path to install modules to
-- local-lib-contained|L +file --Same with "--local-lib" but with --self-contained set
+- local-lib|l +dirname --Sets the local::lib compatible path to install modules to
+- local-lib-contained|L +dirname --Same with "--local-lib" but with --self-contained set
 - self-contained       --When examining the dependencies, assume no non-core modules are installed on the system
 - exclude-vendor       --Don't include modules installed under the 'vendor' paths...
 - mirror=s             --Specifies the base URL for the CPAN mirror to use
 - mirror-only          --Download the mirror's index file instead of querying the CPAN Meta DB
 - from|M=s             --Use the given mirror URL and its index as the only source
-- mirror-index +file    --EXPERIMENTAL Specifies the file path to "02packages.details.txt"
+- mirror-index +file   --EXPERIMENTAL Specifies the file path to "02packages.details.txt"
 - cpanmetadb +file     --EXPERIMENTAL Specifies an alternate URI for CPAN MetaDB
 - metacpan             --Prefers MetaCPAN API over CPAN MetaDB
 - cpanfile +file       --EXPERIMENTAL Specified an alternate path for cpanfile
@@ -64,7 +64,7 @@ options:
   type: string
   enum: [tree, json, yaml, dists]
   summary: DEPRECATED Determines what format to display the scanned dependency tree
-- save-dists +file    --Specifies the optional directory path to copy downloaded tarballs
+- save-dists +filename --Specifies the optional directory path to copy downloaded tarballs
 - uninst-shadows      --Uninstalls the shadow files of the distribution
 - uninstall|U         --Uninstalls a module from the library path
 - cascade-search      --EXPERIMENTAL Specifies whether to cascade search when you specify multiple mirrors

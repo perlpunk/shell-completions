@@ -38,7 +38,7 @@ options:
 - man|H             --Longer manpage
 - norc              --Dont process default .proverc
 
-- I +file           --Library paths to include
+- I +dir            --Library paths to include
 - exec|e=s          --Interpreter to run the tests
 - ext=s             --Set the extension for tests
 - harness=s         --Define test harness to use

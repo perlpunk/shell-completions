@@ -1,6 +1,6 @@
 #!bash
 
-# Generated with perl module App::Spec v0.012
+# Generated with perl module App::Spec v0.013
 
 _dancer2() {
 
@@ -41,10 +41,16 @@ _dancer2() {
           --application|-a)
           ;;
           --directory|-d)
+            compopt -o dirnames
+            return
           ;;
           --path|-p)
+            compopt -o filenames
+            return
           ;;
           --skel|-s)
+            compopt -o dirnames
+            return
           ;;
 
         esac

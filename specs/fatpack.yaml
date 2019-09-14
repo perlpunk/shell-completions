@@ -18,7 +18,7 @@ subcommands:
     - script +file --Script
 
     options:
-    - to +file      --Location of trace file
+    - to +filename  --Location of trace file
     - to-stderr     --Write the trace to STDERR instead
     - name: use
       summary: Specify module(s) to be included additionally

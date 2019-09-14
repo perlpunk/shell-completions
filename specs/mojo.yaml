@@ -5,8 +5,8 @@ appspec: { version: '0.001' }
 plugins: [ -Meta ]
 title: The Mojolicious command system
 options:
-- mode|m=s      --Operating mode for your application
-- home= +file   --Path to application home directory
+- mode|m=s       --Operating mode for your application
+- home= +dirname --Path to application home directory
 
 subcommands:
   cgi:
@@ -85,7 +85,7 @@ subcommands:
     - heartbeat-interval|I=i  --Heartbeat interval
     - heartbeat-timeout|H=i   --Heartbeat timeout
     - listen|l=s@             --One or more locations you want to listen on
-    - pid-file|P= +file       --Path to process id file
+    - pid-file|P= +filename   --Path to process id file
     - proxy|p                 --Activate reverse proxy support
     - requests|r=i            --Maximum number of requests per keep-alive connection
     - spare|s=i               --Temporarily spawn up to this number of additional workers
