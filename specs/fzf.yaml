@@ -1,0 +1,61 @@
+---
+name: fzf
+appspec: { version: 0.001 }
+plugins: [ -Meta ]
+title: a command-line fuzzy finder
+
+options:
+- extended|x          --Extended-search mode
+- exact|e             --Enable exact-match
+- i                   --Case-insensitive match
+- literal             --Do not normalize latin script letters for matching
+- spec: algo=s        --Fuzzy matching algorithm
+  enum: [v1, v2]
+- nth|n=s             --Comma-separated list of field index expressions for limiting search scope
+- with-nth=s          --Transform the presentation of each line using field index expressions
+- delimiter|d=s       --Field delimiter regex for --nth and --with-nth
+- no-sort             --Do not sort the result
+- tac                 --Reverse the order of the input
+- spec: tiebreak=s@   --Comma-separated list of sort criteria
+  enum: [length, begin, end, index]
+- multi|m             --Enable multi-select with tab/shift-tab
+- no-multi            --Disable multi-select
+- no-mouse            --Disable mouse
+- bind=s              --Comma-separated list of custom key binding
+- cycle               --Enable cyclic scroll
+- no-hscroll          --Disable horizontal scroll
+- hscroll-off=i       --Number of screen columns to keep to the right of the highlighted substring
+- filepath-word       --Make word-wise movements and actions respect path separators
+- jump-labels=s       --Label characters for jump and jump-accept
+- height=i            --Display fzf window below the cursor with the given height
+- min-height=i        --Minimum height when --height is given in percent
+- spec: layout=s      --Choose the layout
+  enum: [default, reverse, reverse-list]
+- reverse             -- A synonym for --layout=reverse
+- border              --Draw border above and below the finder
+- margin=s            --Comma-separated expression for margins around the finder
+- inline-info         --Display finder info inline with the query
+- prompt=s            --Input prompt
+- header=s            --The given string will be printed as the sticky header
+- header-lines=i      --The first N lines of the input are treated as the sticky header
+- ansi                --Enable processing of ANSI color codes
+- tabstop=i           --Number of spaces for a tab character
+- color=s             --Color  configuration
+- no-bold             --Do not use bold text
+- black               --Use black background
+- history= +file      --Load  search history from the specified file
+- history-size=i      --Maximum number of entries in the history file
+- preview=s           --Execute  the  given  command for the current line
+- preview-window=s    --Determine the layout of the preview window
+- query|q=s           --Start the finder with the given query
+- select-1|1          --Automatically select the only match
+- exit-0|0            --Exit immediately when there's no match
+- filter|f=s          --Filter mode
+- print-query         --Print query as the first line
+- expect=s            --Comma-separated  list of keys that can be used to complete fzf...
+- read0               --Read input delimited by ASCII NUL characters
+- print0              --Print output delimited by ASCII NUL characters
+- no-clear            --Do not clear finder interface on exit
+- sync                --Synchronous  search  for  multi-staged filtering
+- version             --Display version information and exit
+

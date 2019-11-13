@@ -21,6 +21,7 @@ Currently it supports bash and zsh completions.
 * `fallocate` - Preallocate or deallocate space to a file
 * `fatpack` - Pack perl script and modules into standalone script
 * `file` - determine file type
+* `fzf` - a command-line fuzzy finder
 * `h2xs` - convert .h C header files to Perl extensions
 * `hypnotoad` - Hypnotoad HTTP and WebSocket server
 * `jq` - Command-line JSON processor

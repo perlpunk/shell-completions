@@ -1,0 +1,101 @@
+#compdef fzf
+
+# Generated with perl module App::Spec v0.013
+
+_fzf() {
+    local program=fzf
+    typeset -A opt_args
+    local curcontext="$curcontext" state line context
+
+
+        # ---- Command: 
+        _arguments -s  \
+            '--extended[Extended-search mode]' \
+            '-x[Extended-search mode]' \
+            '--exact[Enable exact-match]' \
+            '-e[Enable exact-match]' \
+            '-i[Case-insensitive match]' \
+            '--literal[Do not normalize latin script letters for matching]' \
+            '--algo[Fuzzy matching algorithm]:algo:("v1" "v2")' \
+            '--nth[Comma-separated list of field index expressions for limiting search scope]:nth' \
+            '-n[Comma-separated list of field index expressions for limiting search scope]:nth' \
+            '--with-nth[Transform the presentation of each line using field index expressions]:with-nth' \
+            '--delimiter[Field delimiter regex for --nth and --with-nth]:delimiter' \
+            '-d[Field delimiter regex for --nth and --with-nth]:delimiter' \
+            '--no-sort[Do not sort the result]' \
+            '--tac[Reverse the order of the input]' \
+            '*--tiebreak[Comma-separated list of sort criteria]:tiebreak:("length" "begin" "end" "index")' \
+            '--multi[Enable multi-select with tab/shift-tab]' \
+            '-m[Enable multi-select with tab/shift-tab]' \
+            '--no-multi[Disable multi-select]' \
+            '--no-mouse[Disable mouse]' \
+            '--bind[Comma-separated list of custom key binding]:bind' \
+            '--cycle[Enable cyclic scroll]' \
+            '--no-hscroll[Disable horizontal scroll]' \
+            '--hscroll-off[Number of screen columns to keep to the right of the highlighted substring]:hscroll-off' \
+            '--filepath-word[Make word-wise movements and actions respect path separators]' \
+            '--jump-labels[Label characters for jump and jump-accept]:jump-labels' \
+            '--height[Display fzf window below the cursor with the given height]:height' \
+            '--min-height[Minimum height when --height is given in percent]:min-height' \
+            '--layout[Choose the layout]:layout:("default" "reverse" "reverse-list")' \
+            '--reverse[A synonym for --layout=reverse]' \
+            '--border[Draw border above and below the finder]' \
+            '--margin[Comma-separated expression for margins around the finder]:margin' \
+            '--inline-info[Display finder info inline with the query]' \
+            '--prompt[Input prompt]:prompt' \
+            '--header[The given string will be printed as the sticky header]:header' \
+            '--header-lines[The first N lines of the input are treated as the sticky header]:header-lines' \
+            '--ansi[Enable processing of ANSI color codes]' \
+            '--tabstop[Number of spaces for a tab character]:tabstop' \
+            '--color[Color  configuration]:color' \
+            '--no-bold[Do not use bold text]' \
+            '--black[Use black background]' \
+            '--history[Load  search history from the specified file]:history:_files' \
+            '--history-size[Maximum number of entries in the history file]:history-size' \
+            '--preview[Execute  the  given  command for the current line]:preview' \
+            '--preview-window[Determine the layout of the preview window]:preview-window' \
+            '--query[Start the finder with the given query]:query' \
+            '-q[Start the finder with the given query]:query' \
+            '--select-1[Automatically select the only match]' \
+            '-1[Automatically select the only match]' \
+            '--exit-0[Exit immediately when there'"'"'s no match]' \
+            '-0[Exit immediately when there'"'"'s no match]' \
+            '--filter[Filter mode]:filter' \
+            '-f[Filter mode]:filter' \
+            '--print-query[Print query as the first line]' \
+            '--expect[Comma-separated  list of keys that can be used to complete fzf...]:expect' \
+            '--read0[Read input delimited by ASCII NUL characters]' \
+            '--print0[Print output delimited by ASCII NUL characters]' \
+            '--no-clear[Do not clear finder interface on exit]' \
+            '--sync[Synchronous  search  for  multi-staged filtering]' \
+            '--version[Display version information and exit]' \
+            '--help[Show command help]' \
+            '-h[Show command help]' \
+            && ret=0
+
+
+
+}
+
+
+__fzf_dynamic_comp() {
+    local argname="$1"
+    local arg="$2"
+    local comp="arg:$argname:(("
+    local line
+    while read -r line; do
+        local name="$line"
+        local desc="$line"
+        name="${name%$'\t'*}"
+        desc="${desc/*$'\t'}"
+        comp="$comp$name"
+        if [[ -n "$desc" && "$name" != "$desc" ]]; then
+            comp="$comp\\:"'"'"$desc"'"'
+        fi
+        comp="$comp "
+    done <<< "$arg"
+
+    comp="$comp))"
+    _alternative "$comp"
+}
+
