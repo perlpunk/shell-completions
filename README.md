@@ -23,6 +23,7 @@ Currently it supports bash and zsh completions.
 * `file` - determine file type
 * `fzf` - a command-line fuzzy finder
 * `h2xs` - convert .h C header files to Perl extensions
+* `htpasswd` - Manage user files for basic authentication
 * `hypnotoad` - Hypnotoad HTTP and WebSocket server
 * `jq` - Command-line JSON processor
 * `json_pp` - JSON::PP command utility
