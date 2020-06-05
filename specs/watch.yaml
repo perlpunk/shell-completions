@@ -1,0 +1,30 @@
+---
+name: watch
+appspec: { version: 0.001 }
+plugins: [ -Meta ]
+title: execute a program periodically, showing output fullscreen
+
+options:
+- version|v     --output version information and exit
+- beep|b        --beep if command has a non-zero exit
+- color|c       --interpret ANSI color and style sequences
+- errexit       --exit if command has a non-zero exit
+- chgexit       --exit when output from command changes
+- interval|n=i  --seconds to wait between updates
+- precise|p     --attempt run command in precise intervals
+- no-title|t    --turn off header
+- exec|x=s      --pass command to exec instead of "sh -c"
+
+- spec: differences|d= --highlight changes between updates
+  enum: [cumulative]
+
+
+parameters:
+- name: command
+  summary: Command to watch
+  # TODO
+  type: string
+  completion:
+#    command_string: >-
+#      command?
+
