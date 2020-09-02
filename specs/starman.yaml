@@ -41,8 +41,8 @@ options:
 - path=s                --Specify the root path of your app
 - name: loader
   type: string
-# TODO colon needs to be escaped in zsh
-#  enum: [Plack::Loader, Restarter, Delayed, Shotgun]
+  # TODO colon needs to be escaped in zsh
+  # enum: [Plack::Loader, Restarter, Delayed, Shotgun]
   enum: [Restarter, Delayed, Shotgun]
   summary: Specifies the server loading subclass
   aliases: [L]

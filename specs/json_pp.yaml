@@ -16,8 +16,8 @@ options:
 - name: json_opt
   type: string
   enum: [ascii, latin1, utf8, pretty, indent, space_before, space_after,
-    relaxed, canonical, allow_nonref, allow_singlequote, allow_barekey,
-    allow_bignum, loose, escape_slash]
+         relaxed, canonical, allow_nonref, allow_singlequote, allow_barekey,
+         allow_bignum, loose, escape_slash]
   summary: options to JSON::PP
 - v  --Verbose option, but currently no action in fact
 - V  --Prints version and exits

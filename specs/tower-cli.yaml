@@ -5,14 +5,14 @@ plugins: [ -Meta ]
 title: Ansible Tower Commandline
 class: App::towercli
 options:
-#- use-token          --Turn on Tower's token-based authentication
-#- certificate=s      --Path to a custom certificate file
-#- insecure           --Turn off insecure connection warnings
-#- description-on     --Show description in human-formatted output
-#- verbose|v          --Show information about requests being made
-#- tower-password|p=s --Password to use to authenticate to Ansible Tower
-#- tower-username|u=s --Username to use to authenticate to Ansible Tower
-#- tower-host|h=s     --The location of the Ansible Tower host
+# - use-token          --Turn on Tower's token-based authentication
+# - certificate=s      --Path to a custom certificate file
+# - insecure           --Turn off insecure connection warnings
+# - description-on     --Show description in human-formatted output
+# - verbose|v          --Show information about requests being made
+# - tower-password|p=s --Password to use to authenticate to Ansible Tower
+# - tower-username|u=s --Username to use to authenticate to Ansible Tower
+# - tower-host|h=s     --The location of the Ansible Tower host
 - name: format
   summary: Output format
   type: string
@@ -139,24 +139,24 @@ subcommands:
   inventory:
     summary: Manage inventory within Ansible Tower
     subcommands:
-        associate_ig:
-            summary: Associate an ig with this inventory.
-        batch_update:
-            summary: Update all related inventory sources of the...
-        copy:
-            summary: Copy an inventory.
-        create:
-            summary: Create an inventory.
-        delete:
-            summary: Remove the given inventory.
-        disassociate_ig:
-            summary: Disassociate an ig with this inventory.
-        get:
-            summary: Return one and exactly one inventory.
-        list:
-            summary: Return a list of inventories.
-        modify:
-            summary: Modify an already existing inventory.
+      associate_ig:
+        summary: Associate an ig with this inventory.
+      batch_update:
+        summary: Update all related inventory sources of the...
+      copy:
+        summary: Copy an inventory.
+      create:
+        summary: Create an inventory.
+      delete:
+        summary: Remove the given inventory.
+      disassociate_ig:
+        summary: Disassociate an ig with this inventory.
+      get:
+        summary: Return one and exactly one inventory.
+      list:
+        summary: Return a list of inventories.
+      modify:
+        summary: Modify an already existing inventory.
 
   inventory_script:
     summary: Manage inventory scripts within Ansible...
@@ -340,5 +340,4 @@ subcommands:
 
   workflow_job:
     summary: Launch or monitor workflow jobs
-
 

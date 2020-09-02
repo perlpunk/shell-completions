@@ -65,7 +65,6 @@ subcommands:
     - &noindex no-index                     --Ignore package index
     - &processdep process-dependency-links  --Enable the processing of dependency links
 
-
   uninstall:
     summary: Uninstall packages
     options:
@@ -80,7 +79,6 @@ subcommands:
     - local|l   --If in a virtualenv that has global access, do not output globally-installed packages
     - user      --Only output packages installed in user-site
     - all       --Do not skip pip, setuptools, distribute, wheel
-
 
   list:
     summary: List installed packages

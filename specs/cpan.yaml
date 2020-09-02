@@ -56,6 +56,5 @@ parameters:
         | grep "^$CURRENT_WORD" \
         | head -${CPAN_MAX_MODULES:-10000}
 
-
 # vim:et:sts=2:sws=2:sw=2:foldmethod=indent
 
