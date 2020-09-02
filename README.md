@@ -39,6 +39,7 @@ Currently it supports bash and zsh completions.
 * `prove` - Run tests through a TAP harness
 * `starman` - High-performance preforking PSGI/Plack web server
 * `tower-cli` - Ansible Tower Commandline
+* `yamllint` - A linter for YAML files
 * `ysh` - The YAML Test Shell
 * `zild` - Dist::Zilla Mixed Up
 
