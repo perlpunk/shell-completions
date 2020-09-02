@@ -1,0 +1,19 @@
+---
+name: yamllint
+appspec: { version: '0.001' }
+plugins: [ -Meta ]
+title: A linter for YAML files
+
+options:
+- config-file|c= +file  --path to a custom configuration
+- config-data|d=s       --custom configuration as YAML source
+- spec: format|f=s      --format for parsing output
+  enum: [parsable, standard, colored, auto]
+- strict|s             --return non-zero exit code on warnings as well as errors
+- version|v            --show programs version number and exit
+
+parameters:
+- name: file
+  summary: File(s)
+  multiple: true
+  type: file
