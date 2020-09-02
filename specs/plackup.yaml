@@ -23,7 +23,7 @@ options:
 - path=s                --Specify the root path of your app
 - name: loader
   type: string
-  enum: [Plack::Loader, Restarter, Delayed, Shotgun]
+  enum: ['Plack::Loader', Restarter, Delayed, Shotgun]
   summary: Specifies the server loading subclass
   aliases: [L]
 
