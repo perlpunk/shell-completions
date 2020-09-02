@@ -12,8 +12,8 @@ options:
 - name: t
   type: string
   enum: [json, json-utf-8, json-pretty, json-utf-16le, json-utf-16be,
-        json-utf-32le, json-utf-32be, cbor, cbor-packed, storable, storable-file,
-        bencode, clzf, yaml, dump, dumper, string, none]
+         json-utf-32le, json-utf-32be, cbor, cbor-packed, storable, storable-file,
+         bencode, clzf, yaml, dump, dumper, string, none]
   summary: Write the file in the given format to STDOUT
 - e=s --Evaluate perl code after reading the data
 

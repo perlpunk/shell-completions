@@ -1,4 +1,3 @@
-
 ---
 name: mojo
 appspec: { version: '0.001' }
@@ -110,6 +109,5 @@ subcommands:
   version:
     summary: Show versions of available modules
     options: []
-
 
 # vim:et:sts=2:sws=2:sw=2:foldmethod=indent

@@ -36,3 +36,6 @@ check:
 
 README.md: specs/*.yaml
 	perl tools/update-readme.pl
+
+lint:
+	yamllint -c .yamllint.yaml specs/

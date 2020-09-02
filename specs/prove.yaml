@@ -48,7 +48,6 @@ options:
 - rc +file          --Process options from rcfile
 - rules=s           --Rules for parallel vs sequential processing
 
-
 - name: j
   summary: Run N test jobs in parallel
   type: integer
